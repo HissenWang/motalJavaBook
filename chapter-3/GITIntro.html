@@ -1,0 +1,928 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第三章:版本管理工具GIT详细介绍 · 《凡人学Java》</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="守护之王觉行">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="../chapter-2/MavenIntro.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://space.bilibili.com/331874257" target="_blank" class="custom-link">B站@觉行</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../chapter-1/IDEAIntro.html">
+            
+                <a href="../chapter-1/IDEAIntro.html">
+            
+                    
+                    第一章:开发工具IDEA介绍、安装、优化配置与快捷键
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../chapter-2/MavenIntro.html">
+            
+                <a href="../chapter-2/MavenIntro.html">
+            
+                    
+                    第二章:管理工具Maven详细介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4" data-path="GITIntro.html">
+            
+                <a href="GITIntro.html">
+            
+                    
+                    第三章:版本管理工具GIT详细介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第三章:版本管理工具GIT详细介绍</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
+<li><div><a href="#&#x4E00;&#x3001;&#x7248;&#x672C;&#x63A7;&#x5236;&#x95EE;&#x9898;&#x5F15;&#x5165;">&#x4E00;&#x3001;&#x7248;&#x672C;&#x63A7;&#x5236;[&#x95EE;&#x9898;&#x5F15;&#x5165;]</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#xFF08;&#x4E00;&#xFF09;&#x7248;&#x672C;&#x63A7;&#x5236;&#x601D;&#x60F3;">&#xFF08;&#x4E00;&#xFF09;&#x7248;&#x672C;&#x63A7;&#x5236;&#x601D;&#x60F3;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E8C;&#xFF09;&#x7248;&#x672C;&#x63A7;&#x5236;&#x8F6F;&#x4EF6;&#x5E94;&#x8BE5;&#x5177;&#x6709;&#x7684;&#x529F;&#x80FD;">&#xFF08;&#x4E8C;&#xFF09;&#x7248;&#x672C;&#x63A7;&#x5236;&#x8F6F;&#x4EF6;&#x5E94;&#x8BE5;&#x5177;&#x6709;&#x7684;&#x529F;&#x80FD;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E09;&#xFF09;&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;&#x4ECB;&#x7ECD;">&#xFF08;&#x4E09;&#xFF09;&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;&#x4ECB;&#x7ECD;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#x4E8C;&#x3001;git&#x4ECB;&#x7ECD;&#x4E86;&#x89E3;">&#x4E8C;&#x3001;Git&#x4ECB;&#x7ECD;[&#x4E86;&#x89E3;]</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#xFF08;&#x4E00;&#xFF09;git&#x7B80;&#x53F2;">&#xFF08;&#x4E00;&#xFF09;Git&#x7B80;&#x53F2;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E8C;&#xFF09;git&#x5B98;&#x7F51;&#x548C;logo">&#xFF08;&#x4E8C;&#xFF09;Git&#x5B98;&#x7F51;&#x548C;Logo</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E09;&#xFF09;git&#x7684;&#x4F18;&#x52BF;">&#xFF08;&#x4E09;&#xFF09;Git&#x7684;&#x4F18;&#x52BF;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#x4E09;&#x3001;git&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x4E86;&#x89E3;">&#x4E09;&#x3001;Git&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;[&#x4E86;&#x89E3;]</a><i></i></div></li>
+<li><div><a href="#&#x56DB;&#x3001;git&#x7684;&#x5B89;&#x88C5;&#x5E94;&#x7528;">&#x56DB;&#x3001;Git&#x7684;&#x5B89;&#x88C5;[&#x5E94;&#x7528;]</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#xFF08;&#x4E00;&#xFF09;&#x8F6F;&#x4EF6;&#x4E0B;&#x8F7D;">&#xFF08;&#x4E00;&#xFF09;&#x8F6F;&#x4EF6;&#x4E0B;&#x8F7D;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E8C;&#xFF09;&#x8F6F;&#x4EF6;&#x5B89;&#x88C5;&#x5E94;&#x7528;">&#xFF08;&#x4E8C;&#xFF09;&#x8F6F;&#x4EF6;&#x5B89;&#x88C5;[&#x5E94;&#x7528;]</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#1&#xFF0E;&#x5B89;&#x88C5;git-for-windows">1&#xFF0E;&#x5B89;&#x88C5;git for windows</a><i></i></div></li>
+<li><div><a href="#2&#xFF0E;&#x5B89;&#x88C5;tortoisegit">2&#xFF0E;&#x5B89;&#x88C5;TortoiseGit</a><i></i></div></li>
+<li><div><a href="#3&#xFF0E;&#x5B89;&#x88C5;&#x4E2D;&#x6587;&#x8BED;&#x8A00;&#x5305;">3&#xFF0E;&#x5B89;&#x88C5;&#x4E2D;&#x6587;&#x8BED;&#x8A00;&#x5305;</a><i></i></div></li>
+</ul></li>
+</ul></li>
+<li><div><a href="#&#x4E94;&#x3001;git&#x7684;&#x7ED3;&#x6784;&#x8BA4;&#x8BC6;">&#x4E94;&#x3001;Git&#x7684;&#x7ED3;&#x6784;[&#x8BA4;&#x8BC6;]</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#xFF08;&#x4E00;&#xFF09;git&#x7684;&#x672C;&#x5730;&#x7ED3;&#x6784;">&#xFF08;&#x4E00;&#xFF09;Git&#x7684;&#x672C;&#x5730;&#x7ED3;&#x6784;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E8C;&#xFF09;git&#x7684;&#x4EE3;&#x7801;&#x6258;&#x7BA1;&#x4E2D;&#x5FC3;">&#xFF08;&#x4E8C;&#xFF09;Git&#x7684;&#x4EE3;&#x7801;&#x6258;&#x7BA1;&#x4E2D;&#x5FC3;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E09;&#xFF09;&#x672C;&#x5730;&#x5E93;&#x548C;&#x8FDC;&#x7A0B;&#x5E93;">&#xFF08;&#x4E09;&#xFF09;&#x672C;&#x5730;&#x5E93;&#x548C;&#x8FDC;&#x7A0B;&#x5E93;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#x516D;&#x3001;git&#x547D;&#x4EE4;&#x884C;&#x64CD;&#x4F5C;&#x638C;&#x63E1;">&#x516D;&#x3001;Git&#x547D;&#x4EE4;&#x884C;&#x64CD;&#x4F5C;[&#x638C;&#x63E1;]</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#xFF08;&#x4E00;&#xFF09;&#x521B;&#x5EFA;&#x7248;&#x672C;&#x5E93;">&#xFF08;&#x4E00;&#xFF09;&#x521B;&#x5EFA;&#x7248;&#x672C;&#x5E93;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#1&#xFF0E;&#x4F7F;&#x7528;gitbash">1&#xFF0E;&#x4F7F;&#x7528;GitBash</a><i></i></div></li>
+<li><div><a href="#2&#xFF0E;&#x4F7F;&#x7528;tortoisegit">2&#xFF0E;&#x4F7F;&#x7528;TortoiseGit</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#xFF08;&#x4E8C;&#xFF09;&#x8BBE;&#x7F6E;&#x7B7E;&#x540D;">&#xFF08;&#x4E8C;&#xFF09;&#x8BBE;&#x7F6E;&#x7B7E;&#x540D;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E09;&#xFF09;&#x57FA;&#x672C;&#x64CD;&#x4F5C;">&#xFF08;&#x4E09;&#xFF09;&#x57FA;&#x672C;&#x64CD;&#x4F5C;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#1&#xFF0E;&#x6DFB;&#x52A0;">1&#xFF0E;&#x6DFB;&#x52A0;</a><i></i></div></li>
+<li><div><a href="#2&#xFF0E;&#x63D0;&#x4EA4;">2&#xFF0E;&#x63D0;&#x4EA4;</a><i></i></div></li>
+<li><div><a href="#3&#xFF0E;&#x67E5;&#x770B;&#x5386;&#x53F2;&#x8BB0;&#x5F55;">3&#xFF0E;&#x67E5;&#x770B;&#x5386;&#x53F2;&#x8BB0;&#x5F55;</a><i></i></div></li>
+<li><div><a href="#4&#xFF0E;&#x72B6;&#x6001;&#x67E5;&#x770B;">4&#xFF0E;&#x72B6;&#x6001;&#x67E5;&#x770B;</a><i></i></div></li>
+<li><div><a href="#5&#xFF0E;&#x5220;&#x9664;&#x6587;&#x4EF6;">5&#xFF0E;&#x5220;&#x9664;&#x6587;&#x4EF6;</a><i></i></div></li>
+<li><div><a href="#6&#xFF0E;&#x5220;&#x9664;&#x6587;&#x4EF6;&#x5E76;&#x627E;&#x56DE;">6&#xFF0E;&#x5220;&#x9664;&#x6587;&#x4EF6;&#x5E76;&#x627E;&#x56DE;</a><i></i></div></li>
+<li><div><a href="#7&#xFF0E;&#x6BD4;&#x8F83;&#x6587;&#x4EF6;&#x5DEE;&#x5F02;">7&#xFF0E;&#x6BD4;&#x8F83;&#x6587;&#x4EF6;&#x5DEE;&#x5F02;</a><i></i></div></li>
+<li><div><a href="#8&#xFF0E;&#x8FD8;&#x539F;&#x4FEE;&#x6539;">8&#xFF0E;&#x8FD8;&#x539F;&#x4FEE;&#x6539;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#xFF08;&#x56DB;&#xFF09;&#x5DE5;&#x4F5C;&#x533A;&#x548C;&#x6682;&#x5B58;&#x533A;">&#xFF08;&#x56DB;&#xFF09;&#x5DE5;&#x4F5C;&#x533A;&#x548C;&#x6682;&#x5B58;&#x533A;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E94;&#xFF09;&#x6848;&#x4F8B;&#xFF1A;&#x5C06;java&#x5DE5;&#x7A0B;&#x63D0;&#x4EA4;&#x5230;&#x7248;&#x672C;&#x5E93;">&#xFF08;&#x4E94;&#xFF09;&#x6848;&#x4F8B;&#xFF1A;&#x5C06;java&#x5DE5;&#x7A0B;&#x63D0;&#x4EA4;&#x5230;&#x7248;&#x672C;&#x5E93;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x516D;&#xFF09;&#x5FFD;&#x7565;&#x6587;&#x4EF6;&#x8BED;&#x6CD5;&#x89C4;&#x8303;">&#xFF08;&#x516D;&#xFF09;&#x5FFD;&#x7565;&#x6587;&#x4EF6;&#x8BED;&#x6CD5;&#x89C4;&#x8303;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#x4E03;&#x3001;git&#x5206;&#x652F;&#x7BA1;&#x7406;&#x4E86;&#x89E3;">&#x4E03;&#x3001;Git&#x5206;&#x652F;&#x7BA1;&#x7406;[&#x4E86;&#x89E3;]</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#xFF08;&#x4E00;&#xFF09;&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x652F;">&#xFF08;&#x4E00;&#xFF09;&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x652F;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E8C;&#xFF09;&#x5206;&#x652F;&#x7684;&#x597D;&#x5904;">&#xFF08;&#x4E8C;&#xFF09;&#x5206;&#x652F;&#x7684;&#x597D;&#x5904;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E09;&#xFF09;&#x5206;&#x652F;&#x64CD;&#x4F5C;">&#xFF08;&#x4E09;&#xFF09;&#x5206;&#x652F;&#x64CD;&#x4F5C;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#1&#xFF0E;&#x521B;&#x5EFA;&#x5206;&#x652F;">1&#xFF0E;&#x521B;&#x5EFA;&#x5206;&#x652F;</a><i></i></div></li>
+<li><div><a href="#2&#xFF0E;&#x67E5;&#x770B;&#x5206;&#x652F;">2&#xFF0E;&#x67E5;&#x770B;&#x5206;&#x652F;</a><i></i></div></li>
+<li><div><a href="#3&#xFF0E;&#x5207;&#x6362;&#x5206;&#x652F;&#xFF08;checkout&#x68C0;&#x51FA;&#xFF09;">3&#xFF0E;&#x5207;&#x6362;&#x5206;&#x652F;&#xFF08;checkout&#x68C0;&#x51FA;&#xFF09;</a><i></i></div></li>
+<li><div><a href="#4&#xFF0E;&#x5408;&#x5E76;&#x5206;&#x652F;">4&#xFF0E;&#x5408;&#x5E76;&#x5206;&#x652F;</a><i></i></div></li>
+<li><div><a href="#5&#xFF0E;&#x89E3;&#x51B3;&#x51B2;&#x7A81;">5&#xFF0E;&#x89E3;&#x51B3;&#x51B2;&#x7A81;</a><i></i></div></li>
+</ul></li>
+</ul></li>
+<li><div><a href="#&#x516B;&#x3001;github&#x5E94;&#x7528;">&#x516B;&#x3001;GitHub[&#x5E94;&#x7528;]</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#xFF08;&#x4E00;&#xFF09;&#x6DFB;&#x52A0;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;">&#xFF08;&#x4E00;&#xFF09;&#x6DFB;&#x52A0;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E8C;&#xFF09;&#x8D26;&#x53F7;&#x4FE1;&#x606F;">&#xFF08;&#x4E8C;&#xFF09;&#x8D26;&#x53F7;&#x4FE1;&#x606F;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E09;&#xFF09;&#x521B;&#x5EFA;github&#x8FDC;&#x7A0B;&#x5E93;">&#xFF08;&#x4E09;&#xFF09;&#x521B;&#x5EFA;GitHub&#x8FDC;&#x7A0B;&#x5E93;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x56DB;&#xFF09;&#x521B;&#x5EFA;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x5730;&#x5740;&#x522B;&#x540D;">&#xFF08;&#x56DB;&#xFF09;&#x521B;&#x5EFA;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x5730;&#x5740;&#x522B;&#x540D;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E94;&#xFF09;&#x540C;&#x6B65;&#x5230;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;">&#xFF08;&#x4E94;&#xFF09;&#x540C;&#x6B65;&#x5230;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x516D;&#xFF09;&#x4ECE;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x514B;&#x9686;">&#xFF08;&#x516D;&#xFF09;&#x4ECE;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x514B;&#x9686;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E03;&#xFF09;&#x56E2;&#x961F;&#x6210;&#x5458;&#x9080;&#x8BF7;">&#xFF08;&#x4E03;&#xFF09;&#x56E2;&#x961F;&#x6210;&#x5458;&#x9080;&#x8BF7;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x516B;&#xFF09;&#x4ECE;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x53D6;&#x4EE3;&#x7801;">&#xFF08;&#x516B;&#xFF09;&#x4ECE;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x53D6;&#x4EE3;&#x7801;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E5D;&#xFF09;&#x89E3;&#x51B3;&#x51B2;&#x7A81;">&#xFF08;&#x4E5D;&#xFF09;&#x89E3;&#x51B3;&#x51B2;&#x7A81;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x5341;&#xFF09;&#x8DE8;&#x56E2;&#x961F;&#x534F;&#x4F5C;">&#xFF08;&#x5341;&#xFF09;&#x8DE8;&#x56E2;&#x961F;&#x534F;&#x4F5C;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x5341;&#x4E00;&#xFF09;ssh&#x64CD;&#x4F5C;">&#xFF08;&#x5341;&#x4E00;&#xFF09;SSH&#x64CD;&#x4F5C;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#1&#xFF0E;&#x4EC0;&#x4E48;&#x662F;ssh">1&#xFF0E;&#x4EC0;&#x4E48;&#x662F;ssh?</a><i></i></div></li>
+<li><div><a href="#2&#xFF0E;&#x57FA;&#x4E8E;&#x5BC6;&#x5319;&#x7684;&#x5B89;&#x5168;&#x9A8C;&#x8BC1;">2&#xFF0E;&#x57FA;&#x4E8E;&#x5BC6;&#x5319;&#x7684;&#x5B89;&#x5168;&#x9A8C;&#x8BC1;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#xFF08;1&#xFF09;ssh&#x5BC6;&#x94A5;&#x751F;&#x6210;">&#xFF08;1&#xFF09;ssh&#x5BC6;&#x94A5;&#x751F;&#x6210;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;2&#xFF09;ssh&#x5BC6;&#x94A5;&#x914D;&#x7F6E;">&#xFF08;2&#xFF09;ssh&#x5BC6;&#x94A5;&#x914D;&#x7F6E;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#3&#xFF0E;ssh&#x539F;&#x7406;">3&#xFF0E;SSH&#x539F;&#x7406;</a><i></i></div></li>
+</ul></li>
+</ul></li>
+<li><div><a href="#&#x4E5D;&#x3001;idea&#x4E2D;&#x64CD;&#x4F5C;git&#x638C;&#x63E1;">&#x4E5D;&#x3001;Idea&#x4E2D;&#x64CD;&#x4F5C;Git[&#x638C;&#x63E1;]</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#xFF08;&#x4E00;&#xFF09;&#x5728;idea&#x4E2D;&#x914D;&#x7F6E;git">&#xFF08;&#x4E00;&#xFF09;&#x5728;Idea&#x4E2D;&#x914D;&#x7F6E;git</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E8C;&#xFF09;&#x5C06;&#x5DE5;&#x7A0B;&#x6DFB;&#x52A0;&#x81F3;git">&#xFF08;&#x4E8C;&#xFF09;&#x5C06;&#x5DE5;&#x7A0B;&#x6DFB;&#x52A0;&#x81F3;git</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E09;&#xFF09;&#x4ECE;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x514B;&#x9686;">&#xFF08;&#x4E09;&#xFF09;&#x4ECE;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x514B;&#x9686;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x56DB;&#xFF09;&#x4ECE;&#x670D;&#x52A1;&#x7AEF;&#x62C9;&#x53D6;&#x4EE3;&#x7801;">&#xFF08;&#x56DB;&#xFF09;&#x4ECE;&#x670D;&#x52A1;&#x7AEF;&#x62C9;&#x53D6;&#x4EE3;&#x7801;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#x5341;&#x3001;git&#x57FA;&#x672C;&#x539F;&#x7406;&#x4E86;&#x89E3;">&#x5341;&#x3001;Git&#x57FA;&#x672C;&#x539F;&#x7406;[&#x4E86;&#x89E3;]</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#xFF08;&#x4E00;&#xFF09;&#x54C8;&#x5E0C;">&#xFF08;&#x4E00;&#xFF09;&#x54C8;&#x5E0C;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E8C;&#xFF09;git&#x4FDD;&#x5B58;&#x7248;&#x672C;&#x7684;&#x673A;&#x5236;">&#xFF08;&#x4E8C;&#xFF09;Git&#x4FDD;&#x5B58;&#x7248;&#x672C;&#x7684;&#x673A;&#x5236;</a><i></i></div></li>
+</ul></li>
+</ul>
+</div>
+
+<h1 id="git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;"><strong>Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;</strong></h1>
+<h1 id="&#x4E00;&#x3001;&#x7248;&#x672C;&#x63A7;&#x5236;&#x95EE;&#x9898;&#x5F15;&#x5165;">&#x4E00;&#x3001;<strong>&#x7248;&#x672C;&#x63A7;&#x5236;[&#x95EE;&#x9898;&#x5F15;&#x5165;]</strong></h1>
+<h2 id="&#xFF08;&#x4E00;&#xFF09;&#x7248;&#x672C;&#x63A7;&#x5236;&#x601D;&#x60F3;">&#xFF08;&#x4E00;&#xFF09;<strong>&#x7248;&#x672C;&#x63A7;&#x5236;&#x601D;&#x60F3;</strong></h2>
+<p>&#x4ECE;&#x4E2A;&#x4EBA;&#x5DE5;&#x4F5C;&#x548C;&#x56E2;&#x961F;&#x534F;&#x4F5C;&#x4E24;&#x4E2A;&#x65B9;&#x9762;&#xFF08;&#x89D2;&#x5EA6;&#xFF09;&#x4ECB;&#x7ECD;&#x7248;&#x672C;&#x63A7;&#x5236;&#x601D;&#x60F3;</p>
+<p>n &#x4E2A;&#x4EBA;&#x5DE5;&#x4F5C;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps251.jpg" alt="img"> </p>
+<p>&#x5F80;&#x5F80;&#x4E3A;&#x4E86;&#x6062;&#x590D;&#x5230;&#x67D0;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x505C;&#x7684;&#x5BF9;&#x6211;&#x4EEC;&#x7684;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x590D;&#x5236;&#x4FEE;&#x6539;&#xFF08;&#x5907;&#x4EFD;&#xFF09;</p>
+<p>n &#x56E2;&#x961F;&#x534F;&#x4F5C;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps252.jpg" alt="img"> </p>
+<p>&#x7248;&#x672C;&#x4ECE;&#x4F55;&#x800C;&#x6765;&#x5462;&#xFF1F;</p>
+<p>&#x8BBE;&#x5B9A;&#x573A;&#x666F;&#xFF1A;</p>
+<p>SVN&#x4EE5;&#x81EA;&#x589E;&#x6570;&#x5B57;&#x7F16;&#x5199;&#x7248;&#x672C;&#x53F7;&#xFF0C;&#x5982;123</p>
+<p>Git&#xFF0C;&#x4EE5;hash&#x7801;&#x6765;&#x6807;&#x8BB0;&#x6BCF;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x7248;&#x672C;</p>
+<p>A&#x63D0;&#x4EA4;&#x4E00;&#x6B21;&#x4EE3;&#x7801;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x7684;&#x7248;&#x672C;&#x4E3A;1</p>
+<p>B&#x63D0;&#x4EA4;&#x4E00;&#x6B21;&#x4EE3;&#x7801;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x7684;&#x7248;&#x672C;&#x4E3A;2</p>
+<p>&#x2026;</p>
+<p>&#x6BCF;&#x63D0;&#x4EA4;&#x4E00;&#x6B21;&#x4EE3;&#x7801;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x7684;&#x6587;&#x4EF6;&#x7248;&#x672C;+1&#xFF0C;&#x8FD9;&#x6837;&#x6BCF;&#x6B21;&#x63D0;&#x4EA4;&#x7684;&#x4E1C;&#x897F;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#x53F7;&#x5BF9;&#x5E94;&#xFF0C;&#x6613;&#x4E8E;&#x7BA1;&#x7406;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x79CD;&#x8F6F;&#x4EF6;&#x5C31;&#x53EB;&#x505A;&#x7248;&#x672C;&#x63A7;&#x5236;&#x8F6F;&#x4EF6;&#x3002;&#x5B89;&#x88C5;&#x4E86;&#x7248;&#x672C;&#x63A7;&#x5236;&#x8F6F;&#x4EF6;&#x7684;&#x670D;&#x52A1;&#x5668;&#x53EB;&#x505A;&#xFF0C;&#x7248;&#x672C;&#x63A7;&#x5236;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x4F5C;&#x7528;&#xFF1A;&#x56E2;&#x961F;&#x534F;&#x4F5C;&#x5F00;&#x53D1;&#x3002;&#x6587;&#x4EF6;&#x4E0A;&#x4F20;&#x5230;&#x7248;&#x672C;&#x63A7;&#x5236;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x4EC5;&#x6709;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x8FD8;&#x4E0D;&#x591F;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x6587;&#x4EF6;&#x7684;&#x5143;&#x6570;&#x636E;&#x4FE1;&#x606F;&#xFF08;&#x63CF;&#x8FF0;&#x6570;&#x636E;&#x7684;&#x6570;&#x636E;&#x5C31;&#x53EB;&#x505A;&#x5143;&#x6570;&#x636E;&#xFF09;&#xFF08;&#x4FEE;&#x6539;&#x65F6;&#x95F4;&#x3001;&#x4FEE;&#x6539;&#x4EBA;&#x3001;&#x5907;&#x6CE8;&#x6CE8;&#x91CA;&#x4FE1;&#x606F;&#x7B49;&#xFF09;&#xFF0C;&#x8FD9;&#x6837;&#x624D;&#x80FD;&#x591F;&#x4FBF;&#x4E8E;&#x6062;&#x590D;&#x7248;&#x672C;&#x3001;&#x8FFD;&#x8D23;&#x7B49;</p>
+<h2 id="&#xFF08;&#x4E8C;&#xFF09;&#x7248;&#x672C;&#x63A7;&#x5236;&#x8F6F;&#x4EF6;&#x5E94;&#x8BE5;&#x5177;&#x6709;&#x7684;&#x529F;&#x80FD;">&#xFF08;&#x4E8C;&#xFF09;<strong>&#x7248;&#x672C;&#x63A7;&#x5236;&#x8F6F;&#x4EF6;&#x5E94;&#x8BE5;&#x5177;&#x6709;&#x7684;&#x529F;&#x80FD;</strong></h2>
+<p>l &#x534F;&#x540C;&#x4FEE;&#x6539;
+&#x591A;&#x4EBA;&#x5E76;&#x884C;&#x4E0D;&#x6096;&#x7684;&#x4FEE;&#x6539;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x7684;&#x540C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x3002;</p>
+<p>l &#x6570;&#x636E;&#x5907;&#x4EFD;
+&#x4E0D;&#x4EC5;&#x4FDD;&#x5B58;&#x76EE;&#x5F55;&#x548C;&#x6587;&#x4EF6;&#x7684;&#x5F53;&#x524D;&#x72B6;&#x6001;&#xFF0C; &#x8FD8;&#x80FD;&#x591F;&#x4FDD;&#x5B58;&#x6BCF;&#x4E00;&#x4E2A;&#x63D0;&#x4EA4;&#x8FC7;&#x7684;&#x5386;&#x53F2;&#x72B6;&#x6001;&#x3002;</p>
+<p>l &#x7248;&#x672C;&#x7BA1;&#x7406;</p>
+<p>&#x5728;&#x4FDD;&#x5B58;&#x6BCF;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#x7684;&#x6587;&#x4EF6;&#x4FE1;&#x606F;&#x7684;&#x65F6;&#x5019;&#x8981;&#x505A;&#x5230;&#x4E0D;&#x4FDD;&#x5B58;&#x91CD;&#x590D;&#x6570;&#x636E;&#xFF0C;&#x4EE5;&#x8282;&#x7EA6;&#x5B58;&#x50A8;&#x7A7A;
+&#x95F4;&#xFF0C;&#x63D0;&#x9AD8;&#x8FD0;&#x884C;&#x6548;&#x7387;&#x3002;&#x8FD9;&#x65B9;&#x9762; SVN &#x91C7;&#x7528;&#x7684;&#x662F;&#x589E;&#x91CF;&#x5F0F;&#x7BA1;&#x7406;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x800C; Git &#x91C7;&#x53D6;&#x4E86;&#x6587;
+&#x4EF6;&#x7CFB;&#x7EDF;&#x5FEB;&#x7167;&#x7684;&#x65B9;&#x5F0F;</p>
+<p>l &#x5386;&#x53F2;&#x8BB0;&#x5F55;
+&#x67E5;&#x770B;&#x4FEE;&#x6539;&#x4EBA;&#x3001; &#x4FEE;&#x6539;&#x65F6;&#x95F4;&#x3001; &#x4FEE;&#x6539;&#x5185;&#x5BB9;&#x3001; &#x65E5;&#x5FD7;&#x4FE1;&#x606F;&#x3002;
+&#x5C06;&#x672C;&#x5730;&#x6587;&#x4EF6;&#x6062;&#x590D;&#x5230;&#x67D0;&#x4E00;&#x4E2A;&#x5386;&#x53F2;&#x72B6;&#x6001;&#x3002;</p>
+<p>l &#x5206;&#x652F;&#x7BA1;&#x7406;
+&#x5141;&#x8BB8;&#x5F00;&#x53D1;&#x56E2;&#x961F;&#x5728;&#x5DE5;&#x4F5C;&#x8FC7;&#x7A0B;&#x4E2D;&#x591A;&#x6761;&#x751F;&#x4EA7;&#x7EBF;&#x540C;&#x65F6;&#x63A8;&#x8FDB;&#x4EFB;&#x52A1;&#xFF0C; &#x8FDB;&#x4E00;&#x6B65;&#x63D0;&#x9AD8;&#x6548;&#x7387;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x7248;&#x672C;&#x63A7;&#x5236;&#x4E0D;&#x4EC5;&#x9002;&#x7528;&#x4E8E;IT&#x9886;&#x57DF;</p>
+<h2 id="&#xFF08;&#x4E09;&#xFF09;&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;&#x4ECB;&#x7ECD;">&#xFF08;&#x4E09;&#xFF09;<strong>&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;&#x4ECB;&#x7ECD;</strong></h2>
+<p>1&#x3001;&#x96C6;&#x4E2D;&#x5F0F;&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;</p>
+<p>&#x4EE3;&#x8868;&#xFF1A;<strong>cvs&#x3001;svn&#x3001;vss</strong></p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps253.jpg" alt="img"> </p>
+<p>&#x5F0A;&#x7AEF;&#xFF1A;&#x5BB9;&#x9519;&#x6027;&#x4E0D;&#x597D;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x5B95;&#x673A;&#x3001;&#x78C1;&#x76D8;&#x574F;&#x6389;&#x90FD;&#x4F1A;&#x5F71;&#x54CD;&#x5DE5;&#x4F5C;&#x8FDB;&#x5EA6;</p>
+<p>2&#x3001;&#x5206;&#x5E03;&#x5F0F;&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;</p>
+<p>&#x4EE3;&#x8868;&#x6027;&#xFF1A;git&#x3001;BitKeeper</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps254.jpg" alt="img"> </p>
+<h1 id="&#x4E8C;&#x3001;git&#x4ECB;&#x7ECD;&#x4E86;&#x89E3;">&#x4E8C;&#x3001;<strong>Git&#x4ECB;&#x7ECD;[&#x4E86;&#x89E3;]</strong></h1>
+<h2 id="&#xFF08;&#x4E00;&#xFF09;git&#x7B80;&#x53F2;">&#xFF08;&#x4E00;&#xFF09;<strong>Git&#x7B80;&#x53F2;</strong></h2>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps255.jpg" alt="img"> </p>
+<h2 id="&#xFF08;&#x4E8C;&#xFF09;git&#x5B98;&#x7F51;&#x548C;logo">&#xFF08;&#x4E8C;&#xFF09;<strong>Git&#x5B98;&#x7F51;&#x548C;Logo</strong></h2>
+<p>&#x5B98;&#x7F51;&#x5730;&#x5740;&#xFF1A;<a href="https://git-scm.com/" target="_blank">https://git-scm.com/</a></p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps256.jpg" alt="img"> </p>
+<h2 id="&#xFF08;&#x4E09;&#xFF09;git&#x7684;&#x4F18;&#x52BF;">&#xFF08;&#x4E09;&#xFF09;<strong>Git&#x7684;&#x4F18;&#x52BF;</strong></h2>
+<ol>
+<li><p>&#x5927;&#x90E8;&#x5206;&#x64CD;&#x4F5C;&#x5728;&#x672C;&#x5730;&#x5B8C;&#x6210;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x8054;&#x7F51;&#xFF08;&#x4E0D;&#x6298;&#x4E0D;&#x6263;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#xFF09;</p>
+</li>
+<li><p>&#x5B8C;&#x6574;&#x6027;&#x4FDD;&#x8BC1;</p>
+</li>
+<li><p>Hash&#x7B97;&#x6CD5;</p>
+</li>
+<li><p>&#x5C3D;&#x53EF;&#x80FD;&#x6DFB;&#x52A0;&#x6570;&#x636E;&#x800C;&#x4E0D;&#x662F;&#x5220;&#x9664;&#x6216;&#x4FEE;&#x6539;&#x6570;&#x636E;</p>
+</li>
+<li><p>&#x5206;&#x652F;&#x64CD;&#x4F5C;&#x975E;&#x5E38;&#x5FEB;&#x6377;&#x6D41;&#x7545;</p>
+</li>
+<li><p>&#x4E0E; Linux &#x547D;&#x4EE4;&#x5168;&#x9762;&#x517C;&#x5BB9;</p>
+</li>
+</ol>
+<h1 id="&#x4E09;&#x3001;git&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x4E86;&#x89E3;">&#x4E09;&#x3001;<strong>Git&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;[&#x4E86;&#x89E3;]</strong></h1>
+<p>&#x4E00;&#x822C;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>1&#xFF0E;&#x4ECE;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x4E2D;&#x514B;&#x9686; Git &#x8D44;&#x6E90;&#x4F5C;&#x4E3A;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#x3002;</p>
+<p>2&#xFF0E;&#x4ECE;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#x4E2D;checkout&#x4EE3;&#x7801;&#x7136;&#x540E;&#x8FDB;&#x884C;&#x4EE3;&#x7801;&#x4FEE;&#x6539;&#x3002;</p>
+<p>3&#xFF0E;&#x5728;&#x63D0;&#x4EA4;&#x524D;&#x5148;&#x5C06;&#x4EE3;&#x7801;&#x63D0;&#x4EA4;&#x5230;&#x6682;&#x5B58;&#x533A;&#x3002;</p>
+<p>4&#xFF0E;&#x63D0;&#x4EA4;&#x4FEE;&#x6539;&#x3002;&#x63D0;&#x4EA4;&#x5230;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#x3002;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#x4E2D;&#x4FDD;&#x5B58;&#x4FEE;&#x6539;&#x7684;&#x5404;&#x4E2A;&#x5386;&#x53F2;&#x7248;&#x672C;&#x3002;</p>
+<p>5&#xFF0E;&#x5728;&#x4FEE;&#x6539;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x548C;&#x56E2;&#x961F;&#x6210;&#x5458;&#x5171;&#x4EAB;&#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x5C06;&#x4EE3;&#x7801;push&#x5230;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x3002;</p>
+<p>&#x4E0B;&#x56FE;&#x5C55;&#x793A;&#x4E86; Git &#x7684;&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;&#xFF1A;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps257.jpg" alt="img"></p>
+<h1 id="&#x56DB;&#x3001;git&#x7684;&#x5B89;&#x88C5;&#x5E94;&#x7528;">&#x56DB;&#x3001;<strong>Git&#x7684;&#x5B89;&#x88C5;[&#x5E94;&#x7528;]</strong></h1>
+<p>&#x6700;&#x65E9;Git&#x662F;&#x5728;Linux&#x4E0A;&#x5F00;&#x53D1;&#x7684;&#xFF0C;&#x5F88;&#x957F;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5185;&#xFF0C;Git&#x4E5F;&#x53EA;&#x80FD;&#x5728;Linux&#x548C;Unix&#x7CFB;&#x7EDF;&#x4E0A;&#x8DD1;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x6162;&#x6162;&#x5730;&#x6709;&#x4EBA;&#x628A;&#x5B83;&#x79FB;&#x690D;&#x5230;&#x4E86;Windows&#x4E0A;&#x3002;&#x73B0;&#x5728;&#xFF0C;Git&#x53EF;&#x4EE5;&#x5728;Linux&#x3001;Unix&#x3001;Mac&#x548C;Windows&#x8FD9;&#x51E0;&#x5927;&#x5E73;&#x53F0;&#x4E0A;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#x4E86;&#x3002;&#x7531;&#x4E8E;&#x5F00;&#x53D1;&#x673A;&#x5927;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x90FD;&#x662F;windows&#xFF0C;&#x6240;&#x4EE5;&#x672C;&#x6559;&#x7A0B;&#x53EA;&#x8BB2;&#x89E3;windows&#x4E0B;&#x7684;git&#x7684;&#x5B89;&#x88C5;&#x53CA;&#x4F7F;&#x7528;&#x3002;</p>
+<h2 id="&#xFF08;&#x4E00;&#xFF09;&#x8F6F;&#x4EF6;&#x4E0B;&#x8F7D;">&#xFF08;&#x4E00;&#xFF09;<strong>&#x8F6F;&#x4EF6;&#x4E0B;&#x8F7D;</strong></h2>
+<p>&#x4E0B;&#x8F7D;&#x5730;&#x5740;&#xFF1A;<a href="https://git-scm.com/download" target="_blank">https://git-scm.com/download</a></p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps258.jpg" alt="img"> </p>
+<h2 id="&#xFF08;&#x4E8C;&#xFF09;&#x8F6F;&#x4EF6;&#x5B89;&#x88C5;&#x5E94;&#x7528;">&#xFF08;&#x4E8C;&#xFF09;<strong>&#x8F6F;&#x4EF6;&#x5B89;&#x88C5;[&#x5E94;&#x7528;]</strong></h2>
+<h3 id="1&#xFF0E;&#x5B89;&#x88C5;git-for-windows">1&#xFF0E;<strong>&#x5B89;&#x88C5;git for windows</strong></h3>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps259.jpg" alt="img"> </p>
+<p>&#x4E00;&#x8DEF;&#x201C;&#x4E0B;&#x4E00;&#x6B65;&#x201D;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9009;&#x9879;&#x5373;&#x53EF;&#x3002;&#x6CE8;&#x610F;&#xFF1A;&#x5B89;&#x88C5;&#x8DEF;&#x5F84;&#x4E0D;&#x8981;&#x7528;&#x4E2D;&#x6587;</p>
+<p>&#x9A8C;&#x8BC1;&#x5B89;&#x88C5;&#x662F;&#x5426;&#x6210;&#x529F;&#xFF1A;&#x5728;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#x4E0B;&#x53F3;&#x952E;&#x770B;&#x662F;&#x5426;&#x6709;&#x83DC;&#x5355;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps260.jpg" alt="img"> </p>
+<h3 id="2&#xFF0E;&#x5B89;&#x88C5;tortoisegit">2&#xFF0E;<strong>&#x5B89;&#x88C5;TortoiseGit</strong></h3>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps261.jpg" alt="img"> </p>
+<p>&#x4E00;&#x8DEF;&#x201C;&#x4E0B;&#x4E00;&#x6B65;&#x201D;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x9009;&#x9879;&#x5373;&#x53EF;&#x3002;</p>
+<p>&#x9ED8;&#x8BA4;&#x9009;&#x9879;&#x4E0B;&#x4F1A;&#x542F;&#x52A8;&#x914D;&#x7F6E;&#x753B;&#x9762;&#xFF1A;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps262.jpg" alt="img"> </p>
+<p>&#x7531;&#x4E8E;&#x76EE;&#x524D;&#x53EA;&#x6709;&#x82F1;&#x6587;&#x8BED;&#x8A00;&#x5305;&#xFF0C;&#x9ED8;&#x8BA4;&#x5373;&#x53EF;&#x7EE7;&#x7EED;&#x4E0B;&#x4E00;&#x6B65;&#x3002;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps263.jpg" alt="img"> </p>
+<p>&#x914D;&#x7F6E;git.exe&#xFF0C;&#x5728;4.2.1&#x4E2D;&#x5DF2;&#x7ECF;&#x5B89;&#x88C5;&#x8FC7;git-for-windows&#x4E86;&#x6240;&#x4EE5;&#x5728;&#x6B64;&#x627E;&#x5230;git.exe&#x6240;&#x5728;&#x7684;&#x76EE;&#x5F55;&#x3002;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps264.jpg" alt="img"> </p>
+<p>&#x914D;&#x7F6E;&#x5F00;&#x53D1;&#x8005;&#x59D3;&#x540D;&#x53CA;&#x90AE;&#x7BB1;&#xFF0C;&#x6BCF;&#x6B21;&#x63D0;&#x4EA4;&#x4EE3;&#x7801;&#x65F6;&#x90FD;&#x4F1A;&#x628A;&#x6B64;&#x4FE1;&#x606F;&#x5305;&#x542B;&#x5230;&#x63D0;&#x4EA4;&#x7684;&#x4FE1;&#x606F;&#x4E2D;&#x3002;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps265.jpg" alt="img"> </p>
+<p>&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#xFF0C;&#x70B9;&#x51FB;&#x201C;&#x5B8C;&#x6210;&#x201D;&#x6309;&#x94AE;&#x5B8C;&#x6210;&#x914D;&#x7F6E;&#x3002;</p>
+<p>&#x5B8C;&#x6574;&#x5B8C;&#x6BD5;&#x540E;&#x5728;&#x7CFB;&#x7EDF;&#x53F3;&#x952E;&#x83DC;&#x5355;&#x4E2D;&#x4F1A;&#x51FA;&#x73B0;git&#x7684;&#x83DC;&#x5355;&#x9879;&#x3002;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps266.jpg" alt="img"> </p>
+<h3 id="3&#xFF0E;&#x5B89;&#x88C5;&#x4E2D;&#x6587;&#x8BED;&#x8A00;&#x5305;">3&#xFF0E;<strong>&#x5B89;&#x88C5;&#x4E2D;&#x6587;&#x8BED;&#x8A00;&#x5305;</strong></h3>
+<p>&#x5B89;&#x88C5;&#x4E2D;&#x6587;&#x8BED;&#x8A00;&#x5305;&#x5E76;&#x4E0D;&#x662F;&#x5FC5;&#x9009;&#x9879;&#x3002;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x4E2A;&#x4EBA;&#x60C5;&#x51B5;&#x6765;&#x9009;&#x62E9;&#x5B89;&#x88C5;&#x3002;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps267.jpg" alt="img"> </p>
+<p>&#x76F4;&#x63A5;&#x201C;&#x4E0B;&#x4E00;&#x6B65;&#x201D;&#x5B8C;&#x6574;&#x5B8C;&#x6BD5;&#x3002;</p>
+<p>&#x8BED;&#x8A00;&#x5305;&#x5B89;&#x88C5;&#x5B8C;&#x6BD5;&#x540E;&#x53EF;&#x4EE5;&#x5728;TortoiseGit&#x7684;&#x8BBE;&#x7F6E;&#x4E2D;&#x8C03;&#x6574;&#x8BED;&#x8A00;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps268.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps269.jpg" alt="img"> </p>
+<h1 id="&#x4E94;&#x3001;git&#x7684;&#x7ED3;&#x6784;&#x8BA4;&#x8BC6;">&#x4E94;&#x3001;<strong>Git&#x7684;&#x7ED3;&#x6784;[&#x8BA4;&#x8BC6;]</strong></h1>
+<h2 id="&#xFF08;&#x4E00;&#xFF09;git&#x7684;&#x672C;&#x5730;&#x7ED3;&#x6784;">&#xFF08;&#x4E00;&#xFF09;<strong>Git&#x7684;&#x672C;&#x5730;&#x7ED3;&#x6784;</strong></h2>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps270.jpg" alt="img"> </p>
+<h2 id="&#xFF08;&#x4E8C;&#xFF09;git&#x7684;&#x4EE3;&#x7801;&#x6258;&#x7BA1;&#x4E2D;&#x5FC3;">&#xFF08;&#x4E8C;&#xFF09;<strong>Git&#x7684;&#x4EE3;&#x7801;&#x6258;&#x7BA1;&#x4E2D;&#x5FC3;</strong></h2>
+<p>&#x4EE3;&#x7801;&#x6258;&#x7BA1;&#x4E2D;&#x5FC3;&#x7684;&#x4EFB;&#x52A1;&#xFF1A;&#x7EF4;&#x62A4;&#x8FDC;&#x7A0B;&#x5E93;</p>
+<ol>
+<li><p>&#x5C40;&#x57DF;&#x7F51;&#x73AF;&#x5883;&#x4E0B;&#xFF1A;GitLab&#x670D;&#x52A1;&#x5668;</p>
+</li>
+<li><p>&#x5916;&#x7F51;&#x73AF;&#x5883;&#x4E0B;&#xFF1A;GitHub&#x3001;&#x7801;&#x4E91;</p>
+</li>
+</ol>
+<h2 id="&#xFF08;&#x4E09;&#xFF09;&#x672C;&#x5730;&#x5E93;&#x548C;&#x8FDC;&#x7A0B;&#x5E93;">&#xFF08;&#x4E09;&#xFF09;<strong>&#x672C;&#x5730;&#x5E93;&#x548C;&#x8FDC;&#x7A0B;&#x5E93;</strong></h2>
+<p>&#x672C;&#x5730;&#x5E93;&#x548C;&#x8FDC;&#x7A0B;&#x5E93;&#x7684;&#x4EA4;&#x4E92;&#x65B9;&#x5F0F;&#xFF0C;&#x4ECB;&#x7ECD;&#x8FD9;&#x4E48;&#x4E24;&#x79CD;&#xFF1A;&#x4E00;&#x79CD;&#x662F;&#x56E2;&#x961F;&#x5185;&#x90E8;&#x534F;&#x4F5C;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x8DE8;&#x56E2;&#x961F;&#x534F;&#x4F5C;</p>
+<h1 id="&#x516D;&#x3001;git&#x547D;&#x4EE4;&#x884C;&#x64CD;&#x4F5C;&#x638C;&#x63E1;">&#x516D;&#x3001;<strong>Git&#x547D;&#x4EE4;&#x884C;&#x64CD;&#x4F5C;[&#x638C;&#x63E1;]</strong></h1>
+<p>Git&#x672C;&#x5730;&#x9879;&#x76EE;&#x4ED3;&#x5E93;(&#x53EF;&#x4EE5;&#x591A;&#x4E2A;)&#x521D;&#x59CB;&#x5316;</p>
+<p>&#x547D;&#x4EE4;&#x884C;&#x64CD;&#x4F5C;&#x5B66;&#x4E60;&#x8DEF;&#x7EBF;&#xFF1A;&#x521D;&#x59CB;&#x5316;git&#x672C;&#x5730;&#x7248;&#x672C;&#x5E93;&#x2014;&#x2014;&gt;&#x5728;&#x672C;&#x5730;&#x7248;&#x672C;&#x5E93;&#x7BA1;&#x7406;&#x6587;&#x4EF6;&#xFF08;&#x65B0;&#x5EFA;&#x6587;&#x4EF6; &#x2014;&gt;&#x628A;&#x6587;&#x4EF6;&#x52A0;&#x5165;git&#x7684;&#x7BA1;&#x7406; &#x2014;&gt; &#x4FEE;&#x6539;&#x6587;&#x4EF6; &#x2014;&gt; &#x6062;&#x590D;&#x5230;&#x4E4B;&#x524D;&#x67D0;&#x4E00;&#x4E2A;&#x7248;&#x672C;&#xFF09;</p>
+<h2 id="&#xFF08;&#x4E00;&#xFF09;&#x521B;&#x5EFA;&#x7248;&#x672C;&#x5E93;">&#xFF08;&#x4E00;&#xFF09;<strong>&#x521B;&#x5EFA;&#x7248;&#x672C;&#x5E93;</strong></h2>
+<h3 id="1&#xFF0E;&#x4F7F;&#x7528;gitbash">1&#xFF0E;<strong>&#x4F7F;&#x7528;GitBash</strong></h3>
+<p>&#x5728;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x4E2D;&#x70B9;&#x51FB;&#x53F3;&#x952E;&#x4E2D;&#x9009;&#x62E9;Git Bash&#x6765;&#x542F;&#x52A8;&#x3002;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps273.jpg" alt="img"><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps274.jpg" alt="img"> </p>
+<p>&#x521B;&#x5EFA;&#x4ED3;&#x5E93;&#x6267;&#x884C;&#x547D;&#x4EE4;&#xFF1A;</p>
+<p>n &#x547D;&#x4EE4;&#xFF1A;git init</p>
+<p>n &#x6548;&#x679C;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps275.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps276.jpg" alt="img"> </p>
+<p>&#x6CE8;&#x610F;&#xFF1A;.git&#x76EE;&#x5F55;&#x4E2D;&#x5B58;&#x653E;&#x7684;&#x662F;&#x672C;&#x5730;&#x5E93;&#x76F8;&#x5173;&#x7684;&#x5B50;&#x76EE;&#x5F55;&#x548C;&#x6587;&#x4EF6;&#xFF0C;&#x4E0D;&#x8981;&#x5220;&#x9664;&#xFF0C;&#x4E5F;&#x4E0D;&#x8981;&#x80E1;&#x4E71;&#x4FEE;&#x6539;</p>
+<h3 id="2&#xFF0E;&#x4F7F;&#x7528;tortoisegit">2&#xFF0E;<strong>&#x4F7F;&#x7528;TortoiseGit</strong></h3>
+<p>&#x4F7F;&#x7528;TortoiseGit&#x65F6;&#x53EA;&#x9700;&#x8981;&#x5728;&#x76EE;&#x5F55;&#x4E2D;&#x70B9;&#x51FB;&#x53F3;&#x952E;&#x83DC;&#x5355;&#x9009;&#x62E9;&#x201C;&#x5728;&#x8FD9;&#x91CC;&#x521B;&#x5EFA;&#x7248;&#x672C;&#x5E93;&#x201D;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps277.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps278.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps279.jpg" alt="img"> </p>
+<p>&#x7248;&#x672C;&#x5E93;&#x521B;&#x5EFA;&#x6210;&#x529F;&#xFF0C;&#x4F1A;&#x5728;&#x6B64;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;.git&#x7684;&#x9690;&#x85CF;&#x76EE;&#x5F55;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps280.jpg" alt="img"> </p>
+<p>&#x5728;windows&#x4E2D;&#x5982;&#x4F55;&#x663E;&#x793A;&#x9690;&#x85CF;&#x76EE;&#x5F55;&#x9690;&#x85CF;&#x76EE;&#x5F55;&#x8BF7;&#x81EA;&#x884C;&#x767E;&#x5EA6;o(&#x256F;&#x25A1;&#x2570;)o</p>
+<p><strong>&#x6982;&#x5FF5;&#xFF1A;</strong></p>
+<p><strong>&#x7248;&#x672C;&#x5E93;&#xFF1A;&#x201C;.git&#x201D;&#x76EE;&#x5F55;&#x5C31;&#x662F;&#x7248;&#x672C;&#x5E93;&#xFF0C;&#x5C06;&#x6765;&#x6587;&#x4EF6;&#x90FD;&#x9700;&#x8981;&#x4FDD;&#x5B58;&#x5230;&#x7248;&#x672C;&#x5E93;&#x4E2D;&#x3002;</strong></p>
+<p><strong>&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#xFF1A;&#x5305;&#x542B;&#x201C;.git&#x201D;&#x76EE;&#x5F55;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;.git&#x76EE;&#x5F55;&#x7684;&#x4E0A;&#x4E00;&#x7EA7;&#x76EE;&#x5F55;&#x5C31;&#x662F;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#x3002;&#x53EA;&#x6709;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#x4E2D;&#x7684;&#x6587;&#x4EF6;&#x624D;&#x80FD;&#x4FDD;&#x5B58;&#x5230;&#x7248;&#x672C;&#x5E93;&#x4E2D;&#x3002;</strong></p>
+<h2 id="&#xFF08;&#x4E8C;&#xFF09;&#x8BBE;&#x7F6E;&#x7B7E;&#x540D;">&#xFF08;&#x4E8C;&#xFF09;<strong>&#x8BBE;&#x7F6E;&#x7B7E;&#x540D;</strong></h2>
+<p><strong>&#x5F62;&#x5F0F;</strong></p>
+<p>&#x7528;&#x6237;&#x540D;&#xFF1A;tom</p>
+<p>Email&#x5730;&#x5740;&#xFF1A;<a href="mailto:helloword@aliyun.com" target="_blank">helloword@aliyun.com</a></p>
+<p><strong>&#x4F5C;&#x7528;</strong>&#xFF1A;&#x533A;&#x5206;&#x4E0D;&#x540C;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x7684;&#x8EAB;&#x4EFD;</p>
+<p><strong>&#x8FA8;&#x6790;</strong>&#xFF1A;&#x8FD9;&#x91CC;&#x8BBE;&#x7F6E;&#x7684;&#x7B7E;&#x540D;&#x548C;&#x767B;&#x5F55;&#x8FDC;&#x7A0B;&#x5E93;(&#x4EE3;&#x7801;&#x6258;&#x7BA1;&#x4E2D;&#x5FC3;)&#x7684;&#x8D26;&#x53F7;&#x3001; &#x5BC6;&#x7801;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5173;
+&#x7CFB;</p>
+<p><strong>&#x547D;&#x4EE4;</strong>&#xFF1A;</p>
+<p>&#x9879;&#x76EE;&#x7EA7;&#x522B;/&#x4ED3;&#x5E93;&#x7EA7;&#x522B;&#xFF1A;&#x4EC5;&#x5728;&#x5F53;&#x524D;&#x672C;&#x5730;&#x5E93;&#x8303;&#x56F4;&#x5185;&#x6709;&#x6548;</p>
+<p>git config user.name tom_pro</p>
+<p>git config user.email <a href="mailto:helloword@aliyun.com" target="_blank">helloword@aliyun.com</a></p>
+<p>l &#x4FE1;&#x606F;&#x4FDD;&#x5B58;&#x4F4D;&#x7F6E;&#xFF1A;.git/config&#x6587;&#x4EF6;
+<img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps281.jpg" alt="img"></p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps282.jpg" alt="img"> </p>
+<p><strong>&#x7CFB;&#x7EDF;&#x7528;&#x6237;&#x7EA7;&#x522B;</strong>&#xFF1A;&#x767B;&#x5F55;&#x5F53;&#x524D;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x7528;&#x6237;&#x8303;&#x56F4;</p>
+<p>git config --global user.name tom_global</p>
+<p>git config --global user.email <a href="mailto:tomabc@aliyun.com" target="_blank">tomabc@aliyun.com</a></p>
+<p>&#x4FE1;&#x606F;&#x4FDD;&#x5B58;&#x4F4D;&#x7F6E;&#xFF1A;&#x4FDD;&#x5B58;&#x5728;&#x5F53;&#x524D;&#x4ED3;&#x5E93;&#x76EE;&#x5F55;&#x4E0B;&#x7684; .git/config &#x6587;&#x4EF6;&#x4E2D;</p>
+<p><strong>&#x7EA7;&#x522B;&#x4F18;&#x5148;&#x7EA7;</strong>&#xFF1A;</p>
+<p>&#x5C31;&#x8FD1;&#x539F;&#x5219;&#xFF1A;&#x9879;&#x76EE;&#x7EA7;&#x522B;&#x4F18;&#x5148;&#x4E8E;&#x7CFB;&#x7EDF;&#x7528;&#x6237;&#x7EA7;&#x522B;&#xFF0C;&#x4E8C;&#x8005;&#x90FD;&#x6709;&#x65F6;&#x91C7;&#x7528;&#x9879;&#x76EE;&#x7EA7;&#x522B;&#x7684;&#x7B7E;&#x540D;</p>
+<p>&#x5982;&#x679C;&#x53EA;&#x6709;&#x7CFB;&#x7EDF;&#x7528;&#x6237;&#x7EA7;&#x522B;&#x7684;&#x7B7E;&#x540D;&#xFF0C;&#x5C31;&#x4EE5;&#x7CFB;&#x7EDF;&#x7528;&#x6237;&#x7EA7;&#x522B;&#x7684;&#x7B7E;&#x540D;&#x4E3A;&#x51C6;</p>
+<p>&#x4E8C;&#x8005;&#x90FD;&#x6CA1;&#x6709;&#x4E0D;&#x5141;&#x8BB8;</p>
+<h2 id="&#xFF08;&#x4E09;&#xFF09;&#x57FA;&#x672C;&#x64CD;&#x4F5C;">&#xFF08;&#x4E09;&#xFF09;<strong>&#x57FA;&#x672C;&#x64CD;&#x4F5C;</strong></h2>
+<h3 id="1&#xFF0E;&#x6DFB;&#x52A0;">1&#xFF0E;<strong>&#x6DFB;&#x52A0;</strong></h3>
+<p><strong>&#x4F7F;&#x7528;GitBash</strong></p>
+<p>&#x200B;    git add [filename]</p>
+<p>&#x200B;    &#x5C06;&#x5DE5;&#x4F5C;&#x533A;&#x7684;&#x201C;&#x65B0;&#x5EFA;/&#x4FEE;&#x6539;&#x201D;&#x6DFB;&#x52A0;&#x5230;&#x6682;&#x5B58;&#x533A;</p>
+<p>&#x5728;~/Desktop/gittest&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;good.txt&#x6587;&#x4EF6;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps283.jpg" alt="img"> </p>
+<p>&#x4F7F;&#x7528;TortoiseGit</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps284.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps285.jpg" alt="img"> </p>
+<h3 id="2&#xFF0E;&#x63D0;&#x4EA4;">2&#xFF0E;<strong>&#x63D0;&#x4EA4;</strong></h3>
+<p><strong>&#x4F7F;&#x7528;GitBash</strong></p>
+<p>&#x200B;    git commit -m &#x201C;commit message&#x201D; [file name]</p>
+<p>&#x200B;    &#x5C06;&#x6682;&#x5B58;&#x533A;&#x7684;&#x5185;&#x5BB9;&#x63D0;&#x4EA4;&#x5230;&#x672C;&#x5730;&#x5E93;&#xFF08;&#x6682;&#x5B58;&#x533A;&#x5185;&#x5BB9;&#x4FEE;&#x6539;&#x540E;&#x8FDB;&#x884C;&#x63D0;&#x4EA4;&#xFF09;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps286.jpg" alt="img"> </p>
+<p>&#x4F7F;&#x7528;TortoiseGit</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps287.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps288.jpg" alt="img"> </p>
+<h3 id="3&#xFF0E;&#x67E5;&#x770B;&#x5386;&#x53F2;&#x8BB0;&#x5F55;">3&#xFF0E;<strong>&#x67E5;&#x770B;&#x5386;&#x53F2;&#x8BB0;&#x5F55;</strong></h3>
+<p><strong>&#x4F7F;&#x7528;GitBash</strong></p>
+<p>&#x200B;    git log</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps289.jpg" alt="img"> </p>
+<p>&#x200B;        git log --pretty=oneline &#x7F8E;&#x5316;log&#x65E5;&#x5FD7;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps290.jpg" alt="img"> </p>
+<p>&#x200B;        git log --oneline &#x7F8E;&#x5316;log&#x65E5;&#x5FD7;</p>
+<p>&#x200B;        <img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps291.jpg" alt="img"></p>
+<p>git reflog<strong>&#xFF08;&#x63A8;&#x8350;&#xFF09;</strong> &#x7528;&#x6765;&#x6062;&#x590D;&#x672C;&#x5730;&#x9519;&#x8BEF;&#x64CD;&#x4F5C;&#x5F88;&#x91CD;&#x8981;&#x7684;&#x4E00;&#x4E2A;&#x547D;&#x4EE4; </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps292.jpg" alt="img"> </p>
+<p>HEAD@{&#x79FB;&#x52A8;&#x5230;&#x5F53;&#x524D;&#x7248;&#x672C;&#x9700;&#x8981;&#x591A;&#x5C11;&#x6B65;}</p>
+<p>&#x4F7F;&#x7528;TortoiseGit</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps293.jpg" alt="img"> </p>
+<h3 id="4&#xFF0E;&#x72B6;&#x6001;&#x67E5;&#x770B;">4&#xFF0E;<strong>&#x72B6;&#x6001;&#x67E5;&#x770B;</strong></h3>
+<p><strong>&#x4F7F;&#x7528;GitBash</strong></p>
+<p>&#x200B;    git status</p>
+<p>&#x200B;    &#x67E5;&#x770B;&#x5DE5;&#x4F5C;&#x533A;&#xFF0C;&#x6682;&#x5B58;&#x533A;&#x72B6;&#x6001;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps294.jpg" alt="img"> </p>
+<p>&#x6587;&#x4EF6;&#x540D;&#x7EA2;&#x8272;&#x8868;&#x660E;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#x4E2D;&#x7684;&#x6587;&#x4EF6;&#x5C1A;&#x672A;&#x88AB;&#x8FFD;&#x8E2A;&#x7BA1;&#x7406;</p>
+<p><strong>&#x524D;&#x8FDB;&#x540E;&#x9000;</strong></p>
+<p>&#x672C;&#x8D28;&#xFF1A;&#x5176;&#x5B9E;&#x5185;&#x90E8;&#x7EF4;&#x62A4;&#x4E86;&#x4E00;&#x4E2A;HEAD&#x6307;&#x9488;&#xFF0C;&#x505A;&#x8FD9;&#x4E48;&#x4E00;&#x4E2A;reset&#x64CD;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5176;&#x5B9E;&#x76F8;&#x5F53;&#x4E8E;&#x79FB;&#x52A8;&#x4E86;HEAD&#x6307;&#x9488;&#xFF08;&#x8868;&#x660E;&#x7684;&#x662F;&#x5F53;&#x524D;&#x7684;&#x72B6;&#x6001;&#xFF09;</p>
+<p><strong>&#x57FA;&#x4E8E;&#x7D22;&#x5F15;&#x503C;&#x64CD;&#x4F5C;</strong>[&#x63A8;&#x8350;]</p>
+<p>git reset --hard [&#x5C40;&#x90E8;&#x7D22;&#x5F15;&#x503C;/&#x7248;&#x672C;&#x53F7;&#x524D;&#x7F00;]</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps295.jpg" alt="img"> </p>
+<p>&#x4F7F;&#x7528;^&#x7B26;&#x53F7;&#xFF1A;&#x53EA;&#x80FD;&#x540E;&#x9000;</p>
+<p>git reset --hard HEAD^ &#x4E00;&#x4E2A;&#x8868;&#x793A;&#x540E;&#x9000;&#x4E00;&#x6B65;&#xFF0C;n&#x4E2A;&#x8868;&#x793A;&#x540E;&#x9000;n&#x6B65;</p>
+<p>&#x4F7F;&#x7528;~&#x7B26;&#x53F7;&#xFF1A;&#x53EA;&#x80FD;&#x540E;&#x9000;</p>
+<p>git reset --hard HEAD~n&#xFF08;&#x6CE8;&#xFF1A;&#x8868;&#x793A;&#x540E;&#x9000;n&#x6B65;&#xFF09;</p>
+<h3 id="5&#xFF0E;&#x5220;&#x9664;&#x6587;&#x4EF6;">5&#xFF0E;<strong>&#x5220;&#x9664;&#x6587;&#x4EF6;</strong></h3>
+<p>&#x4F7F;&#x7528;TortoiseGit</p>
+<p>&#x9700;&#x8981;&#x5220;&#x9664;&#x65E0;&#x7528;&#x7684;&#x6587;&#x4EF6;&#x65F6;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;git&#x63D0;&#x4F9B;&#x7684;&#x5220;&#x9664;&#x529F;&#x80FD;&#x76F4;&#x63A5;&#x5C06;&#x6587;&#x4EF6;&#x4ECE;&#x7248;&#x672C;&#x5E93;&#x4E2D;&#x5220;&#x9664;&#x3002;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps296.jpg" alt="img"> </p>
+<p>&#x6CE8;&#x610F;:&#x4E0D;&#x8981;&#x4EC5;&#x4EC5;&#x4ECE;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#x5220;&#x9664;&#xFF0C;&#x5220;&#x9664;&#x4E4B;&#x540E;&#x4E5F;&#x9700;&#x8981;git add&#x7136;&#x540E;git commit&#x63D0;&#x4EA4;&#x5230;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#x7BA1;&#x7406;</p>
+<h3 id="6&#xFF0E;&#x5220;&#x9664;&#x6587;&#x4EF6;&#x5E76;&#x627E;&#x56DE;">6&#xFF0E;<strong>&#x5220;&#x9664;&#x6587;&#x4EF6;&#x5E76;&#x627E;&#x56DE;</strong></h3>
+<p><strong>&#x4F7F;&#x7528;GitBash</strong></p>
+<p>&#x524D;&#x63D0;&#xFF1A;&#x5220;&#x9664;&#x524D;&#xFF0C;&#x6587;&#x4EF6;&#x5B58;&#x5728;&#x65F6;&#x7684;&#x72B6;&#x6001;&#x63D0;&#x4EA4;&#x5230;&#x4E86;&#x672C;&#x5730;&#x5E93;</p>
+<p>&#x64CD;&#x4F5C;&#xFF1A;git reset --hard &#x6307;&#x9488;&#x4F4D;&#x7F6E;</p>
+<p>&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x5DF2;&#x7ECF;&#x63D0;&#x4EA4;&#x5230;&#x672C;&#x5730;&#x5E93;&#xFF1A;&#x6307;&#x9488;&#x4F4D;&#x7F6E;&#x6307;&#x5411;&#x5386;&#x53F2;&#x8BB0;&#x5F55;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps297.jpg" alt="img"> </p>
+<h3 id="7&#xFF0E;&#x6BD4;&#x8F83;&#x6587;&#x4EF6;&#x5DEE;&#x5F02;">7&#xFF0E;<strong>&#x6BD4;&#x8F83;&#x6587;&#x4EF6;&#x5DEE;&#x5F02;</strong></h3>
+<p><strong>&#x4F7F;&#x7528;GitBash</strong></p>
+<p>git diff [&#x6587;&#x4EF6;&#x540D;]&#xFF1A;&#x5C06;&#x5DE5;&#x4F5C;&#x533A;&#x4E2D;&#x7684;&#x6587;&#x4EF6;&#x548C;&#x6682;&#x5B58;&#x533A;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps298.jpg" alt="img"> </p>
+<p>git diff &#x672C;&#x5730;&#x4ED3;&#x5E93;&#x4E2D;&#x7684;&#x5386;&#x53F2;&#x7248;&#x672C; &#x6587;&#x4EF6;&#x540D;&#xFF1A;&#x5C06;&#x5DE5;&#x4F5C;&#x533A;&#x4E2D;&#x7684;&#x6587;&#x4EF6;&#x548C;&#x7248;&#x672C;&#x5E93;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;(&#x4E3B;&#x8981;)</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps299.jpg" alt="img"> </p>
+<p>&#x4F7F;&#x7528;TortoiseGit</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps300.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps301.jpg" alt="img"> </p>
+<h3 id="8&#xFF0E;&#x8FD8;&#x539F;&#x4FEE;&#x6539;">8&#xFF0E;<strong>&#x8FD8;&#x539F;&#x4FEE;&#x6539;</strong></h3>
+<p>&#x4F7F;&#x7528;TortoiseGit</p>
+<p>&#x5F53;&#x6587;&#x4EF6;&#x4FEE;&#x6539;&#x540E;&#x4E0D;&#x60F3;&#x628A;&#x4FEE;&#x6539;&#x7684;&#x5185;&#x5BB9;&#x63D0;&#x4EA4;&#xFF0C;&#x8FD8;&#x60F3;&#x8FD8;&#x539F;&#x5230;&#x672A;&#x4FEE;&#x6539;&#x4E4B;&#x524D;&#x7684;&#x72B6;&#x6001;&#x3002;&#x6B64;&#x65F6;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x201C;&#x8FD8;&#x539F;&#x201D;&#x529F;&#x80FD;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps302.jpg" alt="img"><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps303.jpg" alt="img"><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps304.jpg" alt="img"> </p>
+<p><strong>&#x6CE8;&#x610F;&#xFF1A;&#x6B64;&#x64CD;&#x4F5C;&#x4F1A;&#x64A4;&#x9500;&#x6240;&#x6709;&#x672A;&#x63D0;&#x4EA4;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x6240;&#x4EE5;&#x5F53;&#x505A;&#x8FD8;&#x539F;&#x64CD;&#x4F5C;&#x662F;&#x9700;&#x8981;&#x614E;&#x91CD;&#x614E;&#x91CD;&#xFF01;&#xFF01;&#xFF01;</strong></p>
+<h2 id="&#xFF08;&#x56DB;&#xFF09;&#x5DE5;&#x4F5C;&#x533A;&#x548C;&#x6682;&#x5B58;&#x533A;">&#xFF08;&#x56DB;&#xFF09;<strong>&#x5DE5;&#x4F5C;&#x533A;&#x548C;&#x6682;&#x5B58;&#x533A;</strong></h2>
+<p>Git&#x548C;&#x5176;&#x4ED6;&#x7248;&#x672C;&#x63A7;&#x5236;&#x7CFB;&#x7EDF;&#x5982;SVN&#x7684;&#x4E00;&#x4E2A;&#x4E0D;&#x540C;&#x4E4B;&#x5904;&#x5C31;&#x662F;&#x6709;&#x6682;&#x5B58;&#x533A;&#x7684;&#x6982;&#x5FF5;&#x3002;</p>
+<p>&#x4EC0;&#x4E48;&#x662F;&#x5DE5;&#x4F5C;&#x533A;&#xFF08;Working Directory&#xFF09;&#xFF1F;</p>
+<p>&#x5DE5;&#x4F5C;&#x533A;&#x5C31;&#x662F;&#x4F60;&#x5728;&#x7535;&#x8111;&#x91CC;&#x80FD;&#x770B;&#x5230;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x6BD4;&#x5982;&#x6211;&#x7684;reporstory&#x6587;&#x4EF6;&#x5939;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5DE5;&#x4F5C;&#x533A;&#x3002;</p>
+<p>&#x6709;&#x7684;&#x540C;&#x5B66;&#x53EF;&#x80FD;&#x4F1A;&#x8BF4;repository&#x4E0D;&#x662F;&#x7248;&#x672C;&#x5E93;&#x5417;&#x600E;&#x4E48;&#x662F;&#x5DE5;&#x4F5C;&#x533A;&#x4E86;&#xFF1F;&#x5176;&#x5B9E;repository&#x76EE;&#x5F55;&#x662F;&#x5DE5;&#x4F5C;&#x533A;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x4E2D;&#x7684;&#x201C;.git&#x201D;&#x9690;&#x85CF;&#x6587;&#x4EF6;&#x5939;&#x624D;&#x662F;&#x7248;&#x672C;&#x5E93;&#x3002;&#x8FD9;&#x56DE;&#x6982;&#x5FF5;&#x6E05;&#x6670;&#x4E86;&#x5427;&#x3002;</p>
+<p><strong>Git&#x7684;&#x7248;&#x672C;&#x5E93;&#x91CC;&#x5B58;&#x4E86;&#x5F88;&#x591A;&#x4E1C;&#x897F;&#xFF0C;&#x5176;&#x4E2D;&#x6700;&#x91CD;&#x8981;&#x7684;&#x5C31;&#x662F;&#x79F0;&#x4E3A;stage&#xFF08;&#x6216;&#x8005;&#x53EB;index&#xFF09;&#x7684;&#x6682;&#x5B58;&#x533A;&#xFF0C;&#x8FD8;&#x6709;Git&#x4E3A;&#x6211;&#x4EEC;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5206;&#x652F;master&#xFF0C;&#x4EE5;&#x53CA;&#x6307;&#x5411;master&#x7684;&#x4E00;&#x4E2A;&#x6307;&#x9488;&#x53EB;HEAD&#x3002;</strong></p>
+<p>&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps305.png" alt="img"></p>
+<p>&#x5206;&#x652F;&#x548C;HEAD&#x7684;&#x6982;&#x5FF5;&#x6211;&#x4EEC;&#x7A0D;&#x540E;&#x518D;&#x8BB2;&#x3002;&#x524D;&#x9762;&#x8BB2;&#x4E86;&#x6211;&#x4EEC;&#x628A;&#x6587;&#x4EF6;&#x5F80;Git&#x7248;&#x672C;&#x5E93;&#x91CC;&#x6DFB;&#x52A0;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x662F;&#x5206;&#x4E24;&#x6B65;&#x6267;&#x884C;&#x7684;&#xFF1A;</p>
+<p>&#x7B2C;&#x4E00;&#x6B65;&#x662F;&#x7528;git add&#x628A;&#x6587;&#x4EF6;&#x6DFB;&#x52A0;&#x8FDB;&#x53BB;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x628A;&#x6587;&#x4EF6;&#x4FEE;&#x6539;&#x6DFB;&#x52A0;&#x5230;&#x6682;&#x5B58;&#x533A;&#xFF1B;</p>
+<p>&#x7B2C;&#x4E8C;&#x6B65;&#x662F;&#x7528;git commit&#x63D0;&#x4EA4;&#x66F4;&#x6539;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x628A;&#x6682;&#x5B58;&#x533A;&#x7684;&#x6240;&#x6709;&#x5185;&#x5BB9;&#x63D0;&#x4EA4;&#x5230;&#x5F53;&#x524D;&#x5206;&#x652F;&#x3002;</p>
+<p>&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x521B;&#x5EFA;Git&#x7248;&#x672C;&#x5E93;&#x65F6;&#xFF0C;Git&#x81EA;&#x52A8;&#x4E3A;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x4E86;&#x552F;&#x4E00;&#x4E00;&#x4E2A;master&#x5206;&#x652F;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x73B0;&#x5728;&#xFF0C;git commit&#x5C31;&#x662F;&#x5F80;master&#x5206;&#x652F;&#x4E0A;&#x63D0;&#x4EA4;&#x66F4;&#x6539;&#x3002;</p>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x7B80;&#x5355;&#x7406;&#x89E3;&#x4E3A;&#xFF0C;&#x9700;&#x8981;&#x63D0;&#x4EA4;&#x7684;&#x6587;&#x4EF6;&#x4FEE;&#x6539;&#x901A;&#x901A;&#x653E;&#x5230;&#x6682;&#x5B58;&#x533A;&#xFF0C;&#x7136;&#x540E;&#xFF0C;&#x4E00;&#x6B21;&#x6027;&#x63D0;&#x4EA4;&#x6682;&#x5B58;&#x533A;&#x7684;&#x6240;&#x6709;&#x4FEE;&#x6539;&#x3002;</p>
+<h2 id="&#xFF08;&#x4E94;&#xFF09;&#x6848;&#x4F8B;&#xFF1A;&#x5C06;java&#x5DE5;&#x7A0B;&#x63D0;&#x4EA4;&#x5230;&#x7248;&#x672C;&#x5E93;">&#xFF08;&#x4E94;&#xFF09;<strong>&#x6848;&#x4F8B;&#xFF1A;&#x5C06;java&#x5DE5;&#x7A0B;&#x63D0;&#x4EA4;&#x5230;&#x7248;&#x672C;&#x5E93;</strong></h2>
+<p><strong>&#x4F7F;&#x7528;TortoiseGit</strong>&#xFF1A;</p>
+<p>&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;&#x5C06;&#x53C2;&#x8003;&#x8D44;&#x6599;&#x4E2D;&#x7684;java&#x5DE5;&#x7A0B;gittest&#x590D;&#x5236;&#x5230;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#x4E2D;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps306.jpg" alt="img"> </p>
+<p>&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A;&#x5C06;&#x5DE5;&#x7A0B;&#x6DFB;&#x52A0;&#x5230;&#x6682;&#x5B58;&#x533A;&#x3002;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps307.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps308.jpg" alt="img"><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps309.jpg" alt="img"> </p>
+<p>&#x70B9;&#x51FB;&#x786E;&#x5B9A;&#x5B8C;&#x6210;&#x6682;&#x5B58;&#x533A;&#x6DFB;&#x52A0;&#x3002;</p>
+<p>&#x4E09;&#x3001;&#x5FFD;&#x7565;&#x6587;&#x4EF6;&#x6216;&#x6587;&#x4EF6;&#x5939;</p>
+<p>&#x5728;&#x6B64;&#x5DE5;&#x7A0B;&#x4E2D;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x6587;&#x4EF6;&#x90FD;&#x9700;&#x8981;&#x4FDD;&#x5B58;&#x5230;&#x7248;&#x672C;&#x5E93;&#x4E2D;&#x7684;&#x4F8B;&#x5982;&#x201C;.idea&#x201D;&#x76EE;&#x5F55;&#x53CA;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6587;&#x4EF6;&#x5C31;&#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#x3002;&#x597D;&#x5728;Git&#x8003;&#x8651;&#x5230;&#x4E86;&#x5927;&#x5BB6;&#x7684;&#x611F;&#x53D7;&#xFF0C;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x89E3;&#x51B3;&#x8D77;&#x6765;&#x4E5F;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x5728;Git&#x5DE5;&#x4F5C;&#x533A;&#x7684;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x7684;.gitignore&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x8981;&#x5FFD;&#x7565;&#x7684;&#x6587;&#x4EF6;&#x540D;&#x586B;&#x8FDB;&#x53BB;&#xFF0C;Git&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x5FFD;&#x7565;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F7F;&#x7528;TortoiseGit&#x7684;&#x8BDD;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x83DC;&#x5355;&#x9879;&#x76F4;&#x63A5;&#x8FDB;&#x884C;&#x5FFD;&#x7565;&#x3002;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps310.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps311.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps312.jpg" alt="img"><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps313.jpg" alt="img"> </p>
+<p>&#x9009;&#x62E9;&#x4FDD;&#x7559;&#x672C;&#x5730;&#x6587;&#x4EF6;&#x3002;&#x5B8C;&#x6210;&#x540E;&#x5728;&#x6B64;&#x6587;&#x4EF6;&#x5939;&#x5185;&#x4F1A;&#x591A;&#x51FA;&#x4E00;&#x4E2A;.gitignore&#x6587;&#x4EF6;&#xFF0C;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x5C31;&#x662F;&#x6587;&#x4EF6;&#x5FFD;&#x7565;&#x6587;&#x4EF6;&#xFF0C;&#x5F53;&#x7136;&#x4E5F;&#x53EF;&#x4EE5;&#x624B;&#x5DE5;&#x7F16;&#x8F91;&#x3002;&#x5176;&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#x5C31;&#x662F;&#x628A;.idea&#x76EE;&#x5F55;&#x5FFD;&#x7565;&#x6389;&#x3002;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps314.jpg" alt="img"> </p>
+<p>&#x56DB;&#x3001;&#x63D0;&#x4EA4;&#x4EE3;&#x7801;</p>
+<p>&#x5C06;&#x4EE3;&#x7801;&#x6DFB;&#x52A0;&#x5230;master&#x5206;&#x652F;&#x4E0A;&#xFF0C;&#x5176;&#x4E2D;.gitignore&#x6587;&#x4EF6;&#x4E5F;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x5230;&#x6682;&#x5B58;&#x533A;&#xFF0C;&#x7136;&#x540E;&#x63D0;&#x4EA4;&#x5230;&#x7248;&#x672C;&#x5E93;&#x3002;</p>
+<h2 id="&#xFF08;&#x516D;&#xFF09;&#x5FFD;&#x7565;&#x6587;&#x4EF6;&#x8BED;&#x6CD5;&#x89C4;&#x8303;">&#xFF08;&#x516D;&#xFF09;<strong>&#x5FFD;&#x7565;&#x6587;&#x4EF6;&#x8BED;&#x6CD5;&#x89C4;&#x8303;</strong></h2>
+<p>&#x7A7A;&#x884C;&#x6216;&#x662F;&#x4EE5; # &#x5F00;&#x5934;&#x7684;&#x884C;&#x5373;&#x6CE8;&#x91CA;&#x884C;&#x5C06;&#x88AB;&#x5FFD;&#x7565;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x5728;&#x524D;&#x9762;&#x6DFB;&#x52A0;&#x6B63;&#x659C;&#x6760; / &#x6765;&#x907F;&#x514D;&#x9012;&#x5F52;,&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#x53EF;&#x4EE5;&#x5F88;&#x660E;&#x767D;&#x7684;&#x770B;&#x51FA;&#x6765;&#x4E0E;&#x4E0B;&#x4E00;&#x6761;&#x7684;&#x533A;&#x522B;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x5728;&#x540E;&#x9762;&#x6DFB;&#x52A0;&#x6B63;&#x659C;&#x6760; / &#x6765;&#x5FFD;&#x7565;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x4F8B;&#x5982; build/ &#x5373;&#x5FFD;&#x7565;build&#x6587;&#x4EF6;&#x5939;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528; ! &#x6765;&#x5426;&#x5B9A;&#x5FFD;&#x7565;&#xFF0C;&#x5373;&#x6BD4;&#x5982;&#x5728;&#x524D;&#x9762;&#x7528;&#x4E86; *.apk &#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528; !a.apk &#xFF0C;&#x5219;&#x8FD9;&#x4E2A;a.apk&#x4E0D;&#x4F1A;&#x88AB;&#x5FFD;&#x7565;&#x3002;</p>
+<p>* &#x7528;&#x6765;&#x5339;&#x914D;&#x96F6;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5B57;&#x7B26;&#xFF0C;&#x5982; <em>.[oa] &#x5FFD;&#x7565;&#x6240;&#x6709;&#x4EE5;&quot;.o&quot;&#x6216;&quot;.a&quot;&#x7ED3;&#x5C3E;&#xFF0C; </em>~ &#x5FFD;&#x7565;&#x6240;&#x6709;&#x4EE5; ~ &#x7ED3;&#x5C3E;&#x7684;&#x6587;&#x4EF6;&#xFF08;&#x8FD9;&#x79CD;&#x6587;&#x4EF6;&#x901A;&#x5E38;&#x88AB;&#x8BB8;&#x591A;&#x7F16;&#x8F91;&#x5668;&#x6807;&#x8BB0;&#x4E3A;&#x4E34;&#x65F6;&#x6587;&#x4EF6;&#xFF09;&#xFF1B; [] &#x7528;&#x6765;&#x5339;&#x914D;&#x62EC;&#x53F7;&#x5185;&#x7684;&#x4EFB;&#x4E00;&#x5B57;&#x7B26;&#xFF0C;&#x5982; [abc] &#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x62EC;&#x53F7;&#x5185;&#x52A0;&#x8FDE;&#x63A5;&#x7B26;&#xFF0C;&#x5982; [0-9] &#x5339;&#x914D;0&#x81F3;9&#x7684;&#x6570;&#xFF1B; ? &#x7528;&#x6765;&#x5339;&#x914D;&#x5355;&#x4E2A;&#x5B57;&#x7B26;&#x3002; </p>
+<p>&#x770B;&#x4E86;&#x8FD9;&#x4E48;&#x591A;&#xFF0C;&#x8FD8;&#x662F;&#x5E94;&#x8BE5;&#x6765;&#x4E2A;&#x6817;&#x5B50;&#xFF1A;</p>
+<p># &#x5FFD;&#x7565; .a &#x6587;&#x4EF6;</p>
+<p>*.a</p>
+<p># &#x4F46;&#x5426;&#x5B9A;&#x5FFD;&#x7565; lib.a, &#x5C3D;&#x7BA1;&#x5DF2;&#x7ECF;&#x5728;&#x524D;&#x9762;&#x5FFD;&#x7565;&#x4E86; .a &#x6587;&#x4EF6;</p>
+<p>!lib.a</p>
+<p># &#x4EC5;&#x5728;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x4E0B;&#x5FFD;&#x7565; TODO &#x6587;&#x4EF6;&#xFF0C; &#x4F46;&#x4E0D;&#x5305;&#x62EC;&#x5B50;&#x76EE;&#x5F55;&#x4E0B;&#x7684; subdir/TODO</p>
+<p>/TODO</p>
+<p># &#x5FFD;&#x7565; build/ &#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x6587;&#x4EF6;</p>
+<p>build/</p>
+<p># &#x5FFD;&#x7565; doc/notes.txt, &#x4E0D;&#x5305;&#x62EC; doc/server/arch.txt</p>
+<p>doc/*.txt</p>
+<p># &#x5FFD;&#x7565;&#x6240;&#x6709;&#x7684; .pdf &#x6587;&#x4EF6; &#x5728; doc/ directory &#x4E0B;&#x7684;</p>
+<p>doc/<em>*/</em>.pdf</p>
+<h1 id="&#x4E03;&#x3001;git&#x5206;&#x652F;&#x7BA1;&#x7406;&#x4E86;&#x89E3;">&#x4E03;&#x3001;<strong>Git&#x5206;&#x652F;&#x7BA1;&#x7406;[&#x4E86;&#x89E3;]</strong></h1>
+<p>&#x5F80;&#x5F80;&#x5E94;&#x7528;&#x4E8E;&#x5927;&#x578B;&#x9879;&#x76EE;&#xFF0C;&#x800C;&#x4E14;&#x5206;&#x652F;&#x7531;&#x9879;&#x76EE;&#x7ECF;&#x7406;&#x7BA1;&#x7406;</p>
+<h2 id="&#xFF08;&#x4E00;&#xFF09;&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x652F;">&#xFF08;&#x4E00;&#xFF09;<strong>&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x652F;</strong></h2>
+<p>&#x5728;&#x7248;&#x672C;&#x63A7;&#x5236;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4F7F;&#x7528;&#x591A;&#x6761;&#x7EBF;&#x540C;&#x65F6;&#x63A8;&#x8FDB;&#x591A;&#x4E2A;&#x4EFB;&#x52A1;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps315.jpg" alt="img"> </p>
+<h2 id="&#xFF08;&#x4E8C;&#xFF09;&#x5206;&#x652F;&#x7684;&#x597D;&#x5904;">&#xFF08;&#x4E8C;&#xFF09;<strong>&#x5206;&#x652F;&#x7684;&#x597D;&#x5904;</strong></h2>
+<p>&#x5404;&#x4E2A;&#x5206;&#x652F;&#x5728;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x67D0;&#x4E00;&#x4E2A;&#x5206;&#x652F;&#x5F00;&#x53D1;&#x5931;&#x8D25;&#xFF0C;&#x4E0D;&#x4F1A;&#x5BF9;&#x5176;&#x4ED6;&#x5206;&#x652F;&#x6709;&#x4EFB;&#x4F55;&#x5F71;&#x54CD;&#xFF0C;&#x5931;&#x8D25;&#x7684;&#x5206;&#x652F;&#x5220;&#x9664;&#x91CD;&#x65B0;&#x5F00;&#x59CB;&#x5373;&#x53EF;</p>
+<h2 id="&#xFF08;&#x4E09;&#xFF09;&#x5206;&#x652F;&#x64CD;&#x4F5C;">&#xFF08;&#x4E09;&#xFF09;<strong>&#x5206;&#x652F;&#x64CD;&#x4F5C;</strong></h2>
+<h3 id="1&#xFF0E;&#x521B;&#x5EFA;&#x5206;&#x652F;">1&#xFF0E;<strong>&#x521B;&#x5EFA;&#x5206;&#x652F;</strong></h3>
+<p><strong>&#x4F7F;&#x7528;GitBash</strong></p>
+<p>git branch &#x5206;&#x652F;&#x540D;</p>
+<p>&#x4F7F;&#x7528;TortoiseGit</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps316.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps317.jpg" alt="img"> </p>
+<p>&#x5982;&#x679C;&#x60F3;&#x521B;&#x5EFA;&#x5B8C;&#x6BD5;&#x540E;&#x76F4;&#x63A5;&#x5207;&#x6362;&#x5230;&#x65B0;&#x5206;&#x652F;&#x53EF;&#x4EE5;&#x52FE;&#x9009;&#x201C;&#x5207;&#x6362;&#x5230;&#x65B0;&#x5206;&#x652F;&#x201D;&#x9009;&#x9879;&#x6216;&#x8005;&#x4ECE;&#x83DC;&#x5355;&#x4E2D;&#x9009;&#x62E9;&#x201C;&#x5207;&#x6362;/&#x68C0;&#x51FA;&#x201D;&#x6765;&#x5207;&#x6362;&#x5206;&#x652F;&#xFF1A;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps318.jpg" alt="img"> </p>
+<h3 id="2&#xFF0E;&#x67E5;&#x770B;&#x5206;&#x652F;">2&#xFF0E;<strong>&#x67E5;&#x770B;&#x5206;&#x652F;</strong></h3>
+<p><strong>&#x4F7F;&#x7528;GitBash</strong></p>
+<p>git branch -v</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps319.jpg" alt="img"> </p>
+<h3 id="3&#xFF0E;&#x5207;&#x6362;&#x5206;&#x652F;&#xFF08;checkout&#x68C0;&#x51FA;&#xFF09;">3&#xFF0E;<strong>&#x5207;&#x6362;&#x5206;&#x652F;&#xFF08;checkout&#x68C0;&#x51FA;&#xFF09;</strong></h3>
+<p><strong>&#x4F7F;&#x7528;GitBash</strong></p>
+<p>git checkout &#x3010;&#x5206;&#x652F;&#x540D;&#x3011;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps320.jpg" alt="img"> </p>
+<h3 id="4&#xFF0E;&#x5408;&#x5E76;&#x5206;&#x652F;">4&#xFF0E;<strong>&#x5408;&#x5E76;&#x5206;&#x652F;</strong></h3>
+<p><strong>&#x4F7F;&#x7528;GitBash</strong></p>
+<p>&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;&#x5207;&#x6362;&#x5230;&#x63A5;&#x53D7;&#x4FEE;&#x6539;&#x7684;&#x5206;&#x652F;</p>
+<p>git checkout &#x3010;&#x88AB;&#x5408;&#x5E76;&#x5206;&#x652F;&#x540D;&#x3011;</p>
+<p>&#x7B2C;&#x4E8C;&#x90E8;&#xFF1A;&#x6267;&#x884C;merge&#xFF08;&#x5408;&#x5E76;&#xFF09;&#x547D;&#x4EE4;</p>
+<p>git merge &#x3010;&#x6709;&#x65B0;&#x5185;&#x5BB9;&#x5206;&#x652F;&#x540D;&#x3011;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps322.jpg" alt="img"> </p>
+<h3 id="5&#xFF0E;&#x89E3;&#x51B3;&#x51B2;&#x7A81;">5&#xFF0E;<strong>&#x89E3;&#x51B3;&#x51B2;&#x7A81;</strong></h3>
+<p><strong>&#x4F7F;&#x7528;GitBash</strong></p>
+<p>&#x51B2;&#x7A81;&#x7684;&#x8868;&#x73B0;&#x53CA;&#x51B2;&#x7A81;&#x7684;&#x89E3;&#x51B3;</p>
+<p>&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;&#x7F16;&#x8F91;&#x6587;&#x4EF6;&#xFF0C;&#x5220;&#x9664;&#x7279;&#x6B8A;&#x7B26;&#x53F7;</p>
+<p>&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A;&#x628A;&#x6587;&#x4EF6;&#x4FEE;&#x6539;&#x5230;&#x6EE1;&#x610F;&#x7684;&#x7A0B;&#x5EA6;&#xFF0C;&#x4FDD;&#x5B58;&#x9000;&#x51FA;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps323.jpg" alt="img"> </p>
+<p>&#x4E0D;&#x8981;&#x7559;&#x6709;&#x7279;&#x6B8A;&#x5B57;&#x7B26;&lt;&lt;&lt;&lt;&lt;&lt;&lt; =&gt;&gt;&gt;&gt;&gt;&gt;</p>
+<p>&#x7B2C;&#x4E09;&#x6B65;&#xFF1A;git add &#x6587;&#x4EF6;&#x540D;</p>
+<p>&#x7B2C;&#x56DB;&#x6B65;&#xFF1A;git commit -m &#x2018;&#x65E5;&#x5FD7;&#x4FE1;&#x606F;&#x2019;&#xFF0C;&#x6CE8;&#x610F;&#x6B64;&#x65F6;&#xFF0C;commit&#x4E00;&#x5B9A;&#x4E0D;&#x80FD;&#x5E26;&#x5177;&#x4F53;&#x7684;&#x6587;&#x4EF6;&#x540D;,&#x5426;&#x5219;&#x4F1A;&#x51FA;&#x73B0;&#x9519;&#x8BEF;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps324.jpg" alt="img"> </p>
+<h1 id="&#x516B;&#x3001;github&#x5E94;&#x7528;">&#x516B;&#x3001;<strong>GitHub[&#x5E94;&#x7528;]</strong></h1>
+<h2 id="&#xFF08;&#x4E00;&#xFF09;&#x6DFB;&#x52A0;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;">&#xFF08;&#x4E00;&#xFF09;<strong>&#x6DFB;&#x52A0;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;</strong></h2>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5728;&#x672C;&#x5730;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;Git&#x4ED3;&#x5E93;&#xFF0C;&#x53C8;&#x60F3;&#x8BA9;&#x5176;&#x4ED6;&#x4EBA;&#x6765;&#x534F;&#x4F5C;&#x5F00;&#x53D1;&#xFF0C;&#x6B64;&#x65F6;&#x5C31;&#x53EF;&#x4EE5;&#x628A;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#x540C;&#x6B65;&#x5230;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#xFF0C;&#x540C;&#x65F6;&#x8FD8;&#x589E;&#x52A0;&#x4E86;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#x7684;&#x4E00;&#x4E2A;&#x5907;&#x4EFD;&#x3002;&#x5E38;&#x7528;&#x7684;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x5C31;&#x662F;github&#xFF1A;<a href="https://github.com/" target="_blank">https://github.com/</a>&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x6F14;&#x793A;&#x5982;&#x4F55;&#x5C06;&#x672C;&#x5730;&#x4EE3;&#x7801;&#x540C;&#x6B65;&#x5230;github&#x3002;</p>
+<h2 id="&#xFF08;&#x4E8C;&#xFF09;&#x8D26;&#x53F7;&#x4FE1;&#x606F;">&#xFF08;&#x4E8C;&#xFF09;<strong>&#x8D26;&#x53F7;&#x4FE1;&#x606F;</strong></h2>
+<p>GitHub&#x9996;&#x9875;&#x5C31;&#x662F;&#x6CE8;&#x518C;&#x9875;&#x9762;&#xFF1A;<a href="https://github.com/" target="_blank">https://github.com/</a></p>
+<p>&#x9996;&#x5148;&#x4F60;&#x5F97;&#x5728;github&#x4E0A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x8D26;&#x53F7;</p>
+<table>
+<thead>
+<tr>
+<th><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps325.jpg" alt="img"></th>
+<th>Email&#x5730;&#x5740;&#xFF1A;github<a href="mailto:yuebuqun@aliyun.com" target="_blank">yuebuqun@aliyun.com</a>GitHub&#x8D26;&#x53F7;&#xFF1A;githubyuebuqun</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps326.jpg" alt="img"></td>
+<td>Email&#x5730;&#x5740;&#xFF1A;github<a href="mailto:linghuchong@aliyun.com" target="_blank">linghuchong@aliyun.com</a>GitHub&#x8D26;&#x53F7;&#xFF1A;githublinghuchong</td>
+</tr>
+<tr>
+<td><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps327.jpg" alt="img"></td>
+<td>Email&#x5730;&#x5740;&#xFF1A;github<a href="mailto:dongfangbubai@aliyun.com" target="_blank">dongfangbubai@aliyun.com</a>GitHub&#x8D26;&#x53F7;&#xFF1A;githubdongfangbubai</td>
+</tr>
+</tbody>
+</table>
+<h2 id="&#xFF08;&#x4E09;&#xFF09;&#x521B;&#x5EFA;github&#x8FDC;&#x7A0B;&#x5E93;">&#xFF08;&#x4E09;&#xFF09;<strong>&#x521B;&#x5EFA;GitHub&#x8FDC;&#x7A0B;&#x5E93;</strong></h2>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps328.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps329.jpg" alt="img"> </p>
+<p>&#x70B9;&#x51FB;&#x201C;create repository&#x201D;&#x6309;&#x94AE;&#x4ED3;&#x5E93;&#x5C31;&#x521B;&#x5EFA;&#x6210;&#x529F;&#x4E86;&#x3002;</p>
+<p>Github&#x652F;&#x6301;&#x4E24;&#x79CD;&#x540C;&#x6B65;&#x65B9;&#x5F0F;&#x201C;https&#x201D;&#x548C;&#x201C;ssh&#x201D;&#x3002;&#x5982;&#x679C;&#x4F7F;&#x7528;https&#x5F88;&#x7B80;&#x5355;&#x57FA;&#x672C;&#x4E0D;&#x9700;&#x8981;&#x914D;&#x7F6E;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#xFF0C;&#x4F46;&#x662F;&#x6BCF;&#x6B21;&#x63D0;&#x4EA4;&#x4EE3;&#x7801;&#x548C;&#x4E0B;&#x8F7D;&#x4EE3;&#x7801;&#x65F6;&#x90FD;&#x9700;&#x8981;&#x8F93;&#x5165;&#x7528;&#x6237;&#x540D;&#x548C;&#x5BC6;&#x7801;&#x3002;&#x5982;&#x679C;&#x4F7F;&#x7528;ssh&#x65B9;&#x5F0F;&#x5C31;&#x9700;&#x8981;&#x5BA2;&#x6237;&#x7AEF;&#x5148;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x5BC6;&#x94A5;&#x5BF9;&#xFF0C;&#x5373;&#x4E00;&#x4E2A;&#x516C;&#x94A5;&#x4E00;&#x4E2A;&#x79C1;&#x94A5;&#x3002;&#x7136;&#x540E;&#x8FD8;&#x9700;&#x8981;&#x628A;&#x516C;&#x94A5;&#x653E;&#x5230;githib&#x7684;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x3002;&#x8FD9;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x5728;&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x4E2D;&#x90FD;&#x7528;&#x5E94;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x90FD;&#x9700;&#x8981;&#x638C;&#x63E1;&#x3002;</p>
+<h2 id="&#xFF08;&#x56DB;&#xFF09;&#x521B;&#x5EFA;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x5730;&#x5740;&#x522B;&#x540D;">&#xFF08;&#x56DB;&#xFF09;<strong>&#x521B;&#x5EFA;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x5730;&#x5740;&#x522B;&#x540D;</strong></h2>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps330.jpg" alt="img"> </p>
+<p>git remote -v &#x67E5;&#x770B;&#x5F53;&#x524D;&#x6240;&#x6709;&#x8FDC;&#x7A0B;&#x5730;&#x5740;&#x522B;&#x540D;</p>
+<p>git remote add [&#x522B;&#x540D;] [&#x8FDC;&#x7A0B;&#x5730;&#x5740;]</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps331.jpg" alt="img"> </p>
+<h2 id="&#xFF08;&#x4E94;&#xFF09;&#x540C;&#x6B65;&#x5230;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;">&#xFF08;&#x4E94;&#xFF09;<strong>&#x540C;&#x6B65;&#x5230;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;</strong></h2>
+<p><strong>https&#x65B9;&#x5F0F;</strong></p>
+<p>git push [&#x522B;&#x540D;] [&#x5206;&#x652F;&#x540D;]</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps332.jpg" alt="img"> </p>
+<p><strong>SSH&#x65B9;&#x5F0F;</strong></p>
+<p>git remote rm origin</p>
+<p>git remote add origin [ssh&#x4ED3;&#x5E93;&#x5730;&#x5740;]</p>
+<p>git push -u origin [&#x5206;&#x652F;]</p>
+<h2 id="&#xFF08;&#x516D;&#xFF09;&#x4ECE;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x514B;&#x9686;">&#xFF08;&#x516D;&#xFF09;<strong>&#x4ECE;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x514B;&#x9686;</strong></h2>
+<p>&#x547D;&#x4EE4;&#xFF1A;git clone [&#x4ED3;&#x5E93;&#x8FDC;&#x7A0B;&#x5730;&#x5740;]</p>
+<p>&#x6548;&#x679C;&#xFF1A;</p>
+<ol>
+<li><p>&#x5B8C;&#x6574;&#x7684;&#x628A;&#x8FDC;&#x7A0B;&#x5E93;&#x4E0B;&#x8F7D;&#x5230;&#x672C;&#x5730;</p>
+</li>
+<li><p>&#x521B;&#x5EFA;origin&#x8FDC;&#x7A0B;&#x5730;&#x5740;&#x522B;&#x540D;</p>
+</li>
+<li><p>&#x521D;&#x59CB;&#x5316;&#x672C;&#x5730;&#x5E93;</p>
+</li>
+</ol>
+<p>&#x4F7F;&#x7528;TortoiseGit&#xFF1A;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps333.jpg" alt="img"> </p>
+<h2 id="&#xFF08;&#x4E03;&#xFF09;&#x56E2;&#x961F;&#x6210;&#x5458;&#x9080;&#x8BF7;">&#xFF08;&#x4E03;&#xFF09;<strong>&#x56E2;&#x961F;&#x6210;&#x5458;&#x9080;&#x8BF7;</strong></h2>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps334.jpg" alt="img"> </p>
+<p>&#x590D;&#x5236;&#x9080;&#x8BF7;&#x8FDE;&#x63A5;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps335.jpg" alt="img"> </p>
+<p>&#x200B;    &#x201C;&#x5CB3;&#x4E0D;&#x7FA4;&#x201D;&#x5176;&#x4ED6;&#x65B9;&#x5F0F;&#x628A;&#x9080;&#x8BF7;&#x8FDE;&#x63A5;&#x53D1;&#x9001;&#x7ED9;&#x201C;&#x4EE4;&#x72D0;&#x51B2;&#x201D;&#xFF0C;&#x201C;&#x4EE4;&#x72D0;&#x51B2;&#x201D;&#x767B;&#x5F55;&#x81EA;&#x5DF1;&#x7684;GitHub&#x8D26;&#x53F7;&#xFF0C;&#x8BBF;&#x95EE;&#x9080;&#x8BF7;&#x8FDE;&#x63A5;&#xFF0C;&#x63A5;&#x53D7;&#x9080;&#x8BF7;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps336.jpg" alt="img"> </p>
+<h2 id="&#xFF08;&#x516B;&#xFF09;&#x4ECE;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x53D6;&#x4EE3;&#x7801;">&#xFF08;&#x516B;&#xFF09;<strong>&#x4ECE;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x53D6;&#x4EE3;&#x7801;</strong></h2>
+<p>pull = fetch&#xFF08;&#x83B7;&#x53D6;&#x7684;&#x610F;&#x601D;&#xFF09; + merge</p>
+<p>git fetch [&#x8FDC;&#x7A0B;&#x5E93;&#x5730;&#x5740;&#x522B;&#x540D;] [&#x8FDC;&#x7A0B;&#x5206;&#x652F;&#x540D;]</p>
+<p>&#x5982;&#x679C;&#x8981;&#x67E5;&#x770B;&#xFF0C;&#x9700;&#x8981;&#x5207;&#x6362;&#x4ED3;&#x5E93;git checkout origin/master,&#x7136;&#x540E;cat &#x6587;&#x4EF6;</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;</p>
+<p>git fetch original master</p>
+<p>git checkout original/master</p>
+<p>cat &#x2026;.txt</p>
+<p>git checkout master</p>
+<p>git merge original/master</p>
+<p>git merge [&#x8FDC;&#x7A0B;&#x5E93;&#x5730;&#x5740;&#x522B;&#x540D;/&#x8FDC;&#x7A0B;&#x5206;&#x652F;&#x540D;]</p>
+<p>git pull [&#x8FDC;&#x7A0B;&#x5E93;&#x5730;&#x5740;&#x522B;&#x540D;] [&#x8FDC;&#x7A0B;&#x5206;&#x652F;&#x540D;]</p>
+<p>&#x6216;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps337.jpg" alt="img"> </p>
+<h2 id="&#xFF08;&#x4E5D;&#xFF09;&#x89E3;&#x51B3;&#x51B2;&#x7A81;">&#xFF08;&#x4E5D;&#xFF09;<strong>&#x89E3;&#x51B3;&#x51B2;&#x7A81;</strong></h2>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps338.jpg" alt="img"> </p>
+<p>&#x9996;&#x5148;&#x9700;&#x8981;pull&#x6700;&#x65B0;&#x7684;&#x4EE3;&#x7801;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps339.jpg" alt="img"> </p>
+<p>&#x7136;&#x540E;&#x5904;&#x7406;&#x51B2;&#x7A81;&#xFF0C;&#x548C;&#x5206;&#x652F;&#x5408;&#x5E76;&#x5904;&#x7406;&#x51B2;&#x7A81;&#x4E00;&#x6837;&#xFF0C;&#x6CE8;&#x610F;commit&#x65F6;&#x4E0D;&#x8981;&#x5E26;&#x6587;&#x4EF6;&#x540D;&#xFF0C;commit&#x540E;push&#x5230;&#x8FDC;&#x7A0B;</p>
+<p><strong>&#x8981;&#x70B9;&#xFF1A;</strong></p>
+<ol>
+<li><p>&#x5982;&#x679C;&#x4E0D;&#x662F;&#x57FA;&#x4E8E;GitHub&#x8FDC;&#x7A0B;&#x5E93;&#x7684;&#x6700;&#x65B0;&#x7248;&#x6240;&#x505A;&#x7684;&#x4FEE;&#x6539;&#xFF0C;&#x4E0D;&#x80FD;&#x63A8;&#x9001;&#xFF0C;&#x5FC5;&#x987B;&#x5148;&#x62C9;&#x53D6;</p>
+</li>
+<li><p>&#x62C9;&#x53D6;&#x4E0B;&#x6765;&#x5982;&#x679C;&#x8FDB;&#x5165;&#x51B2;&#x7A81;&#x72B6;&#x6001;&#xFF0C;&#x6A21;&#x4EFF;&#x5206;&#x652F;&#x51B2;&#x7A81;&#x89E3;&#x51B3;&#x5373;&#x53EF;</p>
+</li>
+</ol>
+<h2 id="&#xFF08;&#x5341;&#xFF09;&#x8DE8;&#x56E2;&#x961F;&#x534F;&#x4F5C;">&#xFF08;&#x5341;&#xFF09;<strong>&#x8DE8;&#x56E2;&#x961F;&#x534F;&#x4F5C;</strong></h2>
+<ol>
+<li><p>&#x628A;&#x9879;&#x76EE;&#x7684;&#x5730;&#x5740;&#x53D1;&#x9001;&#x7ED9;&#x56E2;&#x961F;&#x5916;&#x90E8;&#x7684;&#x4EBA;&#xFF08;&#x7EBF;&#x4E0B;&#x53D1;&#x9001;&#xFF09;</p>
+</li>
+<li><p>&#x56E2;&#x961F;&#x5916;&#x90E8;&#x4EBA;&#x5458;&#x767B;&#x5F55;github&#xFF0C;&#x7136;&#x540E;&#x8BBF;&#x95EE;&#x7ED9;&#x51FA;&#x7684;&#x5730;&#x5740;</p>
+</li>
+<li><p>&#x56E2;&#x961F;&#x5916;&#x4EBA;&#x5458;&#x628A;fork&#x540E;&#x7684;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;clone&#x5230;&#x672C;&#x5730;&#x8FDB;&#x884C;fork</p>
+</li>
+</ol>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps340.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps341.jpg" alt="img"> </p>
+<p>&#x56E2;&#x961F;&#x5916;&#x4EBA;&#x5458;&#x672C;&#x5730;&#x7F16;&#x8F91;&#x63D0;&#x4EA4;&#xFF0C;push&#x5230;&#x8FDC;&#x7A0B;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps342.jpg" alt="img"> </p>
+<p> pull request</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps343.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps344.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps345.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps346.jpg" alt="img"> </p>
+<p>&#x56E2;&#x961F;&#x5185;&#x4EBA;&#x5458;&#xFF0C;&#x67E5;&#x770B;&#x5BA1;&#x6838;&#x8BF7;&#x6C42;</p>
+<p>&#x56E2;&#x961F;&#x4EBA;&#x5458;&#x767B;&#x5F55;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps347.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps348.jpg" alt="img"> </p>
+<p>&#x67E5;&#x770B;&#x4FEE;&#x6539;&#x5185;&#x5BB9;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps349.jpg" alt="img"> </p>
+<p>n&#x7136;&#x540E;&#x5C06;&#x8FDC;&#x7A0B;&#x5E93;&#x62C9;&#x53D6;&#x5230;&#x672C;&#x5730;&#x5373;&#x53EF;&#xFF0C;&#x62C9;&#x53D6;&#x5230;&#x672C;&#x5730;&#x7ED3;&#x675F;&#x8DE8;&#x56E2;&#x961F;&#x534F;&#x4F5C;&#x7684;&#x8FC7;&#x7A0B;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps350.jpg" alt="img"> </p>
+<h2 id="&#xFF08;&#x5341;&#x4E00;&#xFF09;ssh&#x64CD;&#x4F5C;">&#xFF08;&#x5341;&#x4E00;&#xFF09;<strong>SSH&#x64CD;&#x4F5C;</strong></h2>
+<h3 id="1&#xFF0E;&#x4EC0;&#x4E48;&#x662F;ssh">1&#xFF0E;<strong>&#x4EC0;&#x4E48;&#x662F;ssh?</strong></h3>
+<p>SSH &#x4E3A; Secure Shell&#xFF08;&#x5B89;&#x5168;&#x5916;&#x58F3;&#x534F;&#x8BAE;&#xFF09;&#x7684;&#x7F29;&#x5199;&#xFF0C;&#x7531; IETF &#x7684;&#x7F51;&#x7EDC;&#x5C0F;&#x7EC4;&#xFF08;Network Working Group&#xFF09;&#x6240;&#x5236;&#x5B9A;&#x3002;SSH &#x662F;&#x76EE;&#x524D;&#x8F83;&#x53EF;&#x9760;&#xFF0C;&#x4E13;&#x4E3A;&#x8FDC;&#x7A0B;&#x767B;&#x5F55;&#x4F1A;&#x8BDD;&#x548C;&#x5176;&#x4ED6;&#x7F51;&#x7EDC;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x5B89;&#x5168;&#x6027;&#x7684;&#x534F;&#x8BAE;&#x3002;&#x5229;&#x7528; SSH &#x534F;&#x8BAE;&#x53EF;&#x4EE5;&#x6709;&#x6548;&#x9632;&#x6B62;&#x8FDC;&#x7A0B;&#x7BA1;&#x7406;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x4FE1;&#x606F;&#x6CC4;&#x9732;&#x95EE;&#x9898;&#x3002;</p>
+<h3 id="2&#xFF0E;&#x57FA;&#x4E8E;&#x5BC6;&#x5319;&#x7684;&#x5B89;&#x5168;&#x9A8C;&#x8BC1;">2&#xFF0E;<strong>&#x57FA;&#x4E8E;&#x5BC6;&#x5319;&#x7684;&#x5B89;&#x5168;&#x9A8C;&#x8BC1;</strong></h3>
+<p>&#x4F7F;&#x7528;ssh&#x534F;&#x8BAE;&#x901A;&#x4FE1;&#x65F6;&#xFF0C;&#x63A8;&#x8350;&#x4F7F;&#x7528;&#x57FA;&#x4E8E;&#x5BC6;&#x94A5;&#x7684;&#x9A8C;&#x8BC1;&#x65B9;&#x5F0F;&#x3002;&#x4F60;&#x5FC5;&#x987B;&#x4E3A;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x4E00;&#x5BF9;&#x5BC6;&#x5319;&#xFF0C;&#x5E76;&#x628A;&#x516C;&#x7528;&#x5BC6;&#x5319;&#x653E;&#x5728;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x7684;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x3002;&#x5982;&#x679C;&#x4F60;&#x8981;&#x8FDE;&#x63A5;&#x5230;SSH&#x670D;&#x52A1;&#x5668;&#x4E0A;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x8F6F;&#x4EF6;&#x5C31;&#x4F1A;&#x5411;&#x670D;&#x52A1;&#x5668;&#x53D1;&#x51FA;&#x8BF7;&#x6C42;&#xFF0C;&#x8BF7;&#x6C42;&#x7528;&#x4F60;&#x7684;&#x5BC6;&#x5319;&#x8FDB;&#x884C;&#x5B89;&#x5168;&#x9A8C;&#x8BC1;&#x3002;&#x670D;&#x52A1;&#x5668;&#x6536;&#x5230;&#x8BF7;&#x6C42;&#x4E4B;&#x540E;&#xFF0C;&#x5148;&#x5728;&#x8BE5;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x4F60;&#x7684;&#x4E3B;&#x76EE;&#x5F55;&#x4E0B;&#x5BFB;&#x627E;&#x4F60;&#x7684;&#x516C;&#x7528;&#x5BC6;&#x5319;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x5B83;&#x548C;&#x4F60;&#x53D1;&#x9001;&#x8FC7;&#x6765;&#x7684;&#x516C;&#x7528;&#x5BC6;&#x5319;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#x3002;&#x5982;&#x679C;&#x4E24;&#x4E2A;&#x5BC6;&#x5319;&#x4E00;&#x81F4;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x5C31;&#x7528;&#x516C;&#x7528;&#x5BC6;&#x5319;&#x52A0;&#x5BC6;&#x201C;&#x8D28;&#x8BE2;&#x201D;&#xFF08;challenge&#xFF09;&#x5E76;&#x628A;&#x5B83;&#x53D1;&#x9001;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x8F6F;&#x4EF6;&#x3002;&#x5BA2;&#x6237;&#x7AEF;&#x8F6F;&#x4EF6;&#x6536;&#x5230;&#x201C;&#x8D28;&#x8BE2;&#x201D;&#x4E4B;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x7528;&#x4F60;&#x7684;&#x79C1;&#x4EBA;&#x5BC6;&#x5319;&#x89E3;&#x5BC6;&#x518D;&#x628A;&#x5B83;&#x53D1;&#x9001;&#x7ED9;&#x670D;&#x52A1;&#x5668;&#x3002;</p>
+<h4 id="&#xFF08;1&#xFF09;ssh&#x5BC6;&#x94A5;&#x751F;&#x6210;">&#xFF08;1&#xFF09;<strong>ssh&#x5BC6;&#x94A5;&#x751F;&#x6210;</strong></h4>
+<p>&#x5728;windows&#x4E0B;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; Git Bash.exe&#x6765;&#x751F;&#x6210;&#x5BC6;&#x94A5;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5F00;&#x59CB;&#x83DC;&#x5355;&#x6216;&#x8005;&#x53F3;&#x952E;&#x83DC;&#x5355;&#x6253;&#x5F00;Git Bash</p>
+<p>   <img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps351.jpg" alt="img"></p>
+<p>git bash &#x6267;&#x884C;&#x547D;&#x4EE4;,&#x751F;&#x547D;&#x516C;&#x94A5;&#x548C;&#x79C1;&#x94A5;</p>
+<p>&#x547D;&#x4EE4;: <strong>ssh-keygen -t rsa</strong></p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps352.jpg" alt="img"> </p>
+<p>&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5B8C;&#x6210;&#x540E;,&#x5728;window&#x672C;&#x5730;&#x7528;&#x6237;.ssh&#x76EE;&#x5F55;C:\Users\&#x7528;&#x6237;&#x540D;.ssh&#x4E0B;&#x9762;&#x751F;&#x6210;&#x5982;&#x4E0B;&#x540D;&#x79F0;&#x7684;&#x516C;&#x94A5;&#x548C;&#x79C1;&#x94A5;:</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps353.jpg" alt="img"> </p>
+<h4 id="&#xFF08;2&#xFF09;ssh&#x5BC6;&#x94A5;&#x914D;&#x7F6E;">&#xFF08;2&#xFF09;<strong>ssh&#x5BC6;&#x94A5;&#x914D;&#x7F6E;</strong></h4>
+<p>&#x5BC6;&#x94A5;&#x751F;&#x6210;&#x540E;&#x9700;&#x8981;&#x5728;github&#x4E0A;&#x914D;&#x7F6E;&#x5BC6;&#x94A5;&#x672C;&#x5730;&#x624D;&#x53EF;&#x4EE5;&#x987A;&#x5229;&#x8BBF;&#x95EE;&#x3002;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps354.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps355.jpg" alt="img"> </p>
+<p>&#x5728;key&#x90E8;&#x5206;&#x5C06;id_rsa.pub&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x6DFB;&#x52A0;&#x8FDB;&#x53BB;&#xFF0C;&#x7136;&#x540E;&#x70B9;&#x51FB;&#x201C;Add SSH key&#x201D;&#x6309;&#x94AE;&#x5B8C;&#x6210;&#x914D;&#x7F6E;&#x3002;</p>
+<h3 id="3&#xFF0E;ssh&#x539F;&#x7406;">3&#xFF0E;<strong>SSH&#x539F;&#x7406;</strong></h3>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps356.jpg" alt="img"> </p>
+<h1 id="&#x4E5D;&#x3001;idea&#x4E2D;&#x64CD;&#x4F5C;git&#x638C;&#x63E1;">&#x4E5D;&#x3001;<strong>Idea&#x4E2D;&#x64CD;&#x4F5C;Git[&#x638C;&#x63E1;]</strong></h1>
+<h2 id="&#xFF08;&#x4E00;&#xFF09;&#x5728;idea&#x4E2D;&#x914D;&#x7F6E;git">&#xFF08;&#x4E00;&#xFF09;<strong>&#x5728;Idea&#x4E2D;&#x914D;&#x7F6E;git</strong></h2>
+<p>&#x5B89;&#x88C5;&#x597D;IntelliJ IDEA&#x540E;&#xFF0C;&#x5982;&#x679C;Git&#x5B89;&#x88C5;&#x5728;&#x9ED8;&#x8BA4;&#x8DEF;&#x5F84;&#x4E0B;&#xFF0C;&#x90A3;&#x4E48;idea&#x4F1A;&#x81EA;&#x52A8;&#x627E;&#x5230;git&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x5982;&#x679C;&#x66F4;&#x6539;&#x4E86;Git&#x7684;&#x5B89;&#x88C5;&#x4F4D;&#x7F6E;&#x5219;&#x9700;&#x8981;&#x624B;&#x52A8;&#x914D;&#x7F6E;&#x4E0B;Git&#x7684;&#x8DEF;&#x5F84;&#x3002;</p>
+<p>&#x9009;&#x62E9;File&#x2192;Settings&#x6253;&#x5F00;&#x8BBE;&#x7F6E;&#x7A97;&#x53E3;&#xFF0C;&#x627E;&#x5230;Version Control&#x4E0B;&#x7684;git&#x9009;&#x9879;&#xFF1A;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps357.jpg" alt="img"> </p>
+<p>&#x9009;&#x62E9;git&#x7684;&#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x540E;&#x53EF;&#x4EE5;&#x70B9;&#x51FB;&#x201C;Test&#x201D;&#x6309;&#x94AE;&#x6D4B;&#x8BD5;&#x662F;&#x5426;&#x6B63;&#x786E;&#x914D;&#x7F6E;&#x3002;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps358.jpg" alt="img"> </p>
+<h2 id="&#xFF08;&#x4E8C;&#xFF09;&#x5C06;&#x5DE5;&#x7A0B;&#x6DFB;&#x52A0;&#x81F3;git">&#xFF08;&#x4E8C;&#xFF09;<strong>&#x5C06;&#x5DE5;&#x7A0B;&#x6DFB;&#x52A0;&#x81F3;git</strong></h2>
+<p>1&#xFF09;&#x5728;idea&#x4E2D;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5DE5;&#x7A0B;&#xFF0C;&#x4F8B;&#x5982;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;java&#x5DE5;&#x7A0B;&#xFF0C;&#x540D;&#x79F0;&#x4E3A;idea-git-test&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps359.jpg" alt="img"> </p>
+<p>2&#xFF09;&#x521B;&#x5EFA;&#x672C;&#x5730;&#x4ED3;&#x5E93;</p>
+<p>&#x5728;&#x83DC;&#x5355;&#x4E2D;&#x9009;&#x62E9;&#x201C;vcs&#x201D;&#x2192;Import into Version Control&#x2192;Create Git Repository...</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps360.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps361.jpg" alt="img"> </p>
+<p>&#x9009;&#x62E9;&#x5DE5;&#x7A0B;&#x6240;&#x5728;&#x7684;&#x4E0A;&#x7EA7;&#x76EE;&#x5F55;&#x3002;&#x672C;&#x4F8B;&#x4E2D;&#x5E94;&#x8BE5;&#x9009;&#x62E9;idea-projects&#x76EE;&#x5F55;&#xFF0C;&#x7136;&#x540E;&#x70B9;&#x51FB;&#x201C;OK&#x201D;&#x6309;&#x94AE;&#xFF0C;&#x5728;&#x5DE5;&#x7A0B;&#x7684;&#x4E0A;&#x7EA7;&#x76EE;&#x5F55;&#x521B;&#x5EFA;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#xFF0C;&#x90A3;&#x4E48;idea-projects&#x76EE;&#x5F55;&#x5C31;&#x662F;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#x7684;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#xFF0C;&#x6B64;&#x76EE;&#x5F55;&#x4E2D;&#x7684;&#x5DE5;&#x7A0B;&#x5C31;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;&#x5230;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#x4E2D;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x628A;idea-git-test&#x5DE5;&#x7A0B;&#x6DFB;&#x52A0;&#x5230;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#x4E2D;&#x3002;</p>
+<p>&#x9009;&#x62E9;&#x4E4B;&#x540E;&#x5728;&#x5DE5;&#x5177;&#x680F;&#x4E0A;&#x5C31;&#x591A;&#x51FA;&#x4E86;git&#x76F8;&#x5173;&#x5DE5;&#x5177;&#x6309;&#x94AE;&#xFF1A;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps362.jpg" alt="img"> </p>
+<p>3&#xFF09;&#x5C06;&#x5DE5;&#x7A0B;&#x6DFB;&#x52A0;&#x81F3;&#x672C;&#x5730;&#x4ED3;&#x5E93;</p>
+<p>&#x76F4;&#x63A5;&#x70B9;&#x51FB;<img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps363.jpg" alt="img">commit&#x6309;&#x94AE;&#xFF0C;&#x5C06;&#x5DE5;&#x7A0B;&#x63D0;&#x4EA4;&#x81F3;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#x3002;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps364.jpg" alt="img"> </p>
+<p>&#x7136;&#x540E;&#x70B9;&#x51FB;&#x201C;commit&#x201D;&#x6309;&#x94AE;&#xFF0C;&#x5C06;&#x5DE5;&#x7A0B;&#x6DFB;&#x52A0;&#x81F3;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#x3002;</p>
+<p>4&#xFF09;&#x63A8;&#x9001;&#x5230;&#x8FDC;&#x7A0B;</p>
+<p>&#x5728;github&#x4E0A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x4ED3;&#x5E93;&#x7136;&#x540E;&#x5C06;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#x63A8;&#x9001;&#x5230;&#x8FDC;&#x7A0B;&#x3002;</p>
+<p>&#x5728;&#x5DE5;&#x7A0B;&#x4E0A;&#x70B9;&#x51FB;&#x53F3;&#x952E;&#xFF0C;&#x9009;&#x62E9;git&#x2192;Repository&#x2192;push&#xFF0C;</p>
+<p>&#x6216;&#x8005;&#x5728;&#x83DC;&#x5355;&#x4E2D;&#x9009;&#x62E9;vcs&#x2192;git&#x2192;push</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps365.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps366.jpg" alt="img"> </p>
+<p>&#x70B9;&#x51FB;&#x201C;Define remote&#x201D;&#x94FE;&#x63A5;&#xFF0C;&#x914D;&#x7F6E;https&#x5F62;&#x5F0F;&#x7684;URL&#xFF0C;git&#x5F62;&#x5F0F;&#x7684;&#x65E0;&#x6CD5;&#x901A;&#x8FC7;&#x3002;&#x7136;&#x540E;&#x70B9;&#x51FB;OK</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps367.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps368.jpg" alt="img"> </p>
+<p>&#x70B9;&#x51FB;&#x201C;push&#x201D;&#x6309;&#x94AE;&#x5C31;&#x8BB2;&#x672C;&#x5730;&#x4ED3;&#x5E93;&#x63A8;&#x9001;&#x5230;&#x8FDC;&#x7A0B;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x7B2C;&#x4E00;&#x6B21;&#x914D;&#x7F6E;&#x63A8;&#x9001;&#x9700;&#x8981;&#x8F93;&#x5165;github&#x7684;&#x7528;&#x6237;&#x540D;&#x548C;&#x5BC6;&#x7801;&#x3002;</p>
+<h2 id="&#xFF08;&#x4E09;&#xFF09;&#x4ECE;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x514B;&#x9686;">&#xFF08;&#x4E09;&#xFF09;<strong>&#x4ECE;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x514B;&#x9686;</strong></h2>
+<p>&#x5173;&#x95ED;&#x5DE5;&#x7A0B;&#x540E;&#xFF0C;&#x5728;idea&#x7684;&#x6B22;&#x8FCE;&#x9875;&#x4E0A;&#x6709;&#x201C;Check out from version control&#x201D;&#x4E0B;&#x62C9;&#x6846;&#xFF0C;&#x9009;&#x62E9;git</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps369.jpg" alt="img"> </p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps370.jpg" alt="img"> </p>
+<p>&#x6B64;&#x5904;&#x4ECD;&#x7136;&#x63A8;&#x8350;&#x4F7F;&#x7528;htts&#x5F62;&#x5F0F;&#x7684;url&#xFF0C;&#x70B9;&#x51FB;&#x201C;test&#x201D;&#x6309;&#x94AE;&#x540E;&#x663E;&#x793A;&#x8FDE;&#x63A5;&#x6210;&#x529F;&#x3002;</p>
+<p>&#x70B9;&#x51FB;OK&#x6309;&#x94AE;&#x540E;&#x6839;&#x636E;&#x63D0;&#x793A;&#x5C06;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;&#x514B;&#x9686;&#x4E0B;&#x6765;&#xFF0C;&#x7136;&#x540E;&#x5012;&#x5165;&#x5230;idea&#x4E2D;&#x3002;</p>
+<h2 id="&#xFF08;&#x56DB;&#xFF09;&#x4ECE;&#x670D;&#x52A1;&#x7AEF;&#x62C9;&#x53D6;&#x4EE3;&#x7801;">&#xFF08;&#x56DB;&#xFF09;<strong>&#x4ECE;&#x670D;&#x52A1;&#x7AEF;&#x62C9;&#x53D6;&#x4EE3;&#x7801;</strong></h2>
+<p>&#x5982;&#x679C;&#x9700;&#x8981;&#x4ECE;&#x670D;&#x52A1;&#x7AEF;&#x540C;&#x6B65;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5DE5;&#x5177;&#x6761;&#x4E2D;&#x7684;&#x201C;update&#x201D;&#x6309;&#x94AE;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps371.jpg" alt="img"> </p>
+<h1 id="&#x5341;&#x3001;git&#x57FA;&#x672C;&#x539F;&#x7406;&#x4E86;&#x89E3;">&#x5341;&#x3001;<strong>Git&#x57FA;&#x672C;&#x539F;&#x7406;[&#x4E86;&#x89E3;]</strong></h1>
+<h2 id="&#xFF08;&#x4E00;&#xFF09;&#x54C8;&#x5E0C;">&#xFF08;&#x4E00;&#xFF09;<strong>&#x54C8;&#x5E0C;</strong></h2>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps372.jpg" alt="img"> </p>
+<p>&#x54C8;&#x5E0C;&#x662F;&#x4E00;&#x4E2A;&#x7CFB;&#x5217;&#x7684;&#x52A0;&#x5BC6;&#x7B97;&#x6CD5;&#xFF0C;&#x5404;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;&#x867D;&#x7136;&#x52A0;&#x5BC6;&#x5F3A;&#x5EA6;&#x4E0D;&#x540C;&#xFF0C;&#x4F46;&#x662F;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x5171;&#x540C;&#x70B9;&#xFF1A;</p>
+<ol>
+<li><p>&#x4E0D;&#x7BA1;&#x8F93;&#x5165;&#x6570;&#x636E;&#x7684;&#x6570;&#x636E;&#x91CF;&#x6709;&#x591A;&#x5927;&#xFF0C;&#x8F93;&#x5165;&#x540C;&#x4E00;&#x4E2A;&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;&#xFF0C;&#x5F97;&#x5230;&#x7684;&#x52A0;&#x5BC6;&#x7ED3;&#x679C;&#x957F;&#x5EA6;&#x56FA;&#x5B9A;</p>
+</li>
+<li><p>&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;&#x786E;&#x5B9A;&#xFF0C;&#x8F93;&#x5165;&#x6570;&#x636E;&#x786E;&#x5B9A;&#xFF0C;&#x8F93;&#x51FA;&#x6570;&#x636E;&#x80FD;&#x591F;&#x4FDD;&#x8BC1;&#x4E0D;&#x53D8;</p>
+</li>
+<li><p>&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;&#x786E;&#x5B9A;&#xFF0C;&#x8F93;&#x5165;&#x6570;&#x636E;&#x6709;&#x53D8;&#x5316;&#xFF0C;&#x8F93;&#x51FA;&#x6570;&#x636E;&#x4E00;&#x5B9A;&#x6709;&#x53D8;&#x5316;&#xFF0C;&#x800C;&#x4E14;&#x901A;&#x5E38;&#x53D8;&#x5316;&#x5F88;&#x5927;</p>
+</li>
+<li><p>&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;&#x4E0D;&#x53EF;&#x9006;</p>
+</li>
+<li><p>Git&#x5E95;&#x5C42;&#x91C7;&#x7528;&#x7684;&#x662F;SHA-1&#x7B97;&#x6CD5;</p>
+</li>
+</ol>
+<p>&#x54C8;&#x5E0C;&#x7B97;&#x6CD5;&#x53EF;&#x4EE5;&#x88AB;&#x7528;&#x6765;&#x9A8C;&#x8BC1;&#x6587;&#x4EF6;&#xFF0C;&#x539F;&#x7406;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps373.jpg" alt="img"> </p>
+<h2 id="&#xFF08;&#x4E8C;&#xFF09;git&#x4FDD;&#x5B58;&#x7248;&#x672C;&#x7684;&#x673A;&#x5236;">&#xFF08;&#x4E8C;&#xFF09;<strong>Git&#x4FDD;&#x5B58;&#x7248;&#x672C;&#x7684;&#x673A;&#x5236;</strong></h2>
+<p>&#x96C6;&#x4E2D;&#x5F0F;&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;&#x7684;&#x6587;&#x4EF6;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF1A;
+&#x4EE5;&#x6587;&#x4EF6;&#x53D8;&#x66F4;&#x5217;&#x8868;&#x7684;&#x65B9;&#x5F0F;&#x5B58;&#x50A8;&#x4FE1;&#x606F;&#x3002;&#x7CFB;&#x7EDF;&#x5C06;&#x5B83;&#x4EEC;&#x4FDD;&#x5B58;&#x7684;&#x4FE1;&#x606F;&#x770B;&#x4F5C;&#x662F;&#x4E00;&#x7EC4;&#x57FA;&#x672C;&#x6587;&#x4EF6;&#x548C;&#x6BCF;&#x4E2A;&#x6587;&#x4EF6;&#x968F;&#x65F6;&#x95F4;&#x9010;&#x6B65;&#x7D2F;&#x79EF;&#x7684;&#x5DEE;&#x5F02;&#x3002;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps374.jpg" alt="img"> </p>
+<p>Git&#x7684;&#x6587;&#x4EF6;&#x7BA1;&#x7406;&#x673A;&#x5236;</p>
+<p>&#x200B;    Git&#x628A;&#x6570;&#x636E;&#x770B;&#x4F5C;&#x662F;&#x5C0F;&#x578B;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x4E00;&#x7EC4;&#x5FEB;&#x7167;&#x3002;&#x6BCF;&#x6B21;&#x63D0;&#x4EA4;&#x66F4;&#x65B0;&#x65F6;Git&#x90FD;&#x4F1A;&#x5BF9;&#x5F53;&#x524D;&#x7684;&#x5168;&#x90E8;&#x6587;&#x4EF6;&#x5236;&#x4F5C;&#x4E00;&#x4E2A;&#x5FEB;&#x7167;&#x5E76;&#x4FDD;&#x5B58;&#x8FD9;&#x4E2A;&#x5FEB;&#x7167;&#x7684;&#x7D22;&#x5F15;&#x3002;&#x4E3A;&#x4E86;&#x9AD8;&#x6548;&#xFF0C;&#x5982;&#x679C;&#x6587;&#x4EF6;&#x6CA1;&#x6709;&#x4FEE;&#x6539;&#xFF0C;Git&#x4E0D;&#x518D;&#x91CD;&#x65B0;&#x5B58;&#x50A8;&#x8BE5;&#x6587;&#x4EF6;&#xFF0C;&#x800C;&#x662F;&#x53EA;&#x4FDD;&#x7559;&#x4E00;&#x4E2A;&#x8FDE;&#x63A5;&#x6307;&#x5411;&#x4E4B;&#x524D;&#x5B58;&#x50A8;&#x7684;&#x6587;&#x4EF6;&#x3002;&#x6240;&#x4EE5;Git&#x7684;&#x5DE5;&#x4F5C;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x79F0;&#x4E4B;&#x4E3A;&#x5FEB;&#x7167;&#x6D41;</p>
+<p><img src="Git&#x7248;&#x672C;&#x63A7;&#x5236;&#x5DE5;&#x5177;/wps375.jpg" alt="img"> </p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../chapter-2/MavenIntro.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 第二章:管理工具Maven详细介绍">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第三章:版本管理工具GIT详细介绍","level":"1.4","depth":1,"previous":{"title":"第二章:管理工具Maven详细介绍","level":"1.3","depth":1,"path":"chapter-2/MavenIntro.md","ref":"chapter-2/MavenIntro.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","highlight","search","sharing","back-to-top-button","livereload","donate","page-treeview","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"images/alipay.jpg","alipayText":"(●'◡'●)","button":"Donate","title":"喜欢就请我一杯咖啡吧他( •̀ ω •́ )✧","wechat":"images/wechat.jpg","wechatText":"(●ˇ∀ˇ●)"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":true,"qq":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"守护之王觉行","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"《凡人学Java》","language":"zh-hans","links":{"sidebar":{"B站@觉行":"https://space.bilibili.com/331874257"}},"gitbook":"3.2.3","description":"纸上得来终觉浅，绝知此事要躬行"},"file":{"path":"chapter-3/GITIntro.md","mtime":"2022-07-14T13:41:53.384Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-07-14T13:46:05.459Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

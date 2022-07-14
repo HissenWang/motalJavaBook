@@ -1,0 +1,934 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第一章:开发工具IDEA介绍、安装、优化配置与快捷键 · 《凡人学Java》</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="守护之王觉行">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../chapter-2/MavenIntro.html" />
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://space.bilibili.com/331874257" target="_blank" class="custom-link">B站@觉行</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="IDEAIntro.html">
+            
+                <a href="IDEAIntro.html">
+            
+                    
+                    第一章:开发工具IDEA介绍、安装、优化配置与快捷键
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../chapter-2/MavenIntro.html">
+            
+                <a href="../chapter-2/MavenIntro.html">
+            
+                    
+                    第二章:管理工具Maven详细介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../chapter-3/GITIntro.html">
+            
+                <a href="../chapter-3/GITIntro.html">
+            
+                    
+                    第三章:版本管理工具GIT详细介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第一章:开发工具IDEA介绍、安装、优化配置与快捷键</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
+<li><div><a href="#&#x4E00;&#x3001;&#x7F16;&#x7801;&#x795E;&#x5668;-idea">&#x4E00;&#x3001;&#x7F16;&#x7801;&#x795E;&#x5668;-IDEA</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#xFF08;&#x4E00;&#xFF09;idea&#x4ECB;&#x7ECD;&#x4E86;&#x89E3;&#x5373;&#x53EF;&#xFF0C;&#x591A;&#x7528;&#x5728;&#x5439;&#x725B;">&#xFF08;&#x4E00;&#xFF09;IDEA&#x4ECB;&#x7ECD;[&#x4E86;&#x89E3;&#x5373;&#x53EF;&#xFF0C;&#x591A;&#x7528;&#x5728;&#x5439;&#x725B;]</a><i></i></div></li>
+<li><div><a href="#&#xFF08;&#x4E8C;&#xFF09;&#x4E0B;&#x8F7D;-&#x5B89;&#x88C5;&#x638C;&#x63E1;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x7EB8;&#x8001;&#x864E;">&#xFF08;&#x4E8C;&#xFF09;&#x4E0B;&#x8F7D;-&#x5B89;&#x88C5;[&#x638C;&#x63E1;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x7EB8;&#x8001;&#x864E;]</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#1&#xFF0E;&#x4E0B;&#x8F7D;">1&#xFF0E;&#x4E0B;&#x8F7D;</a><i></i></div></li>
+<li><div><a href="#2&#xFF0E;&#x5B89;&#x88C5;">2&#xFF0E;&#x5B89;&#x88C5;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#xFF08;1&#xFF09;&#x70B9;&#x51FB;&#x5B89;&#x88C5;">&#xFF08;1&#xFF09;&#x70B9;&#x51FB;&#x5B89;&#x88C5;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;2&#xFF09;&#x8FD0;&#x884C;&#x5E76;&#x7834;&#x89E3;">&#xFF08;2&#xFF09;&#x8FD0;&#x884C;&#x5E76;&#x7834;&#x89E3;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;3&#xFF09;&#x9009;&#x62E9;ui&#x4E3B;&#x9898;">&#xFF08;3&#xFF09;&#x9009;&#x62E9;UI&#x4E3B;&#x9898;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;4&#xFF09;&#x9009;&#x62E9;&#x63D2;&#x4EF6;&#x8DF3;&#x8FC7;">&#xFF08;4&#xFF09;&#x9009;&#x62E9;&#x63D2;&#x4EF6;(&#x8DF3;&#x8FC7;)</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#3&#xFF0E;&#x76EE;&#x5F55;&#x4ECB;&#x7ECD;">3&#xFF0E;&#x76EE;&#x5F55;&#x4ECB;&#x7ECD;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#xFF08;1&#xFF09;&#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x4ECB;&#x7ECD;">&#xFF08;1&#xFF09;&#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x4ECB;&#x7ECD;</a><i></i></div></li>
+<li><div><a href="#&#xFF08;2&#xFF09;&#x914D;&#x7F6E;&#x76EE;&#x5F55;">&#xFF08;2&#xFF09;&#x914D;&#x7F6E;&#x76EE;&#x5F55;</a><i></i></div></li>
+</ul></li>
+</ul></li>
+<li><div><a href="#&#xFF08;&#x4E09;&#xFF09;&#x5165;&#x95E8;&#x6848;&#x4F8B;&#x638C;&#x63E1;&#xFF0C;&#x7ECF;&#x5178;helloworld&#x8981;&#x6765;&#x4E86;">&#xFF08;&#x4E09;&#xFF09;&#x5165;&#x95E8;&#x6848;&#x4F8B;[&#x638C;&#x63E1;&#xFF0C;&#x7ECF;&#x5178;helloworld&#x8981;&#x6765;&#x4E86;]</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#1&#xFF0E;&#x521B;&#x5EFA;&#x666E;&#x901A;java&#x5DE5;&#x7A0B;">1&#xFF0E;&#x521B;&#x5EFA;&#x666E;&#x901A;Java&#x5DE5;&#x7A0B;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#xFF08;1&#xFF09;&#x521B;&#x5EFA;&#x5DE5;&#x7A0B;&#x5E76;&#x7F16;&#x5199;&#x4EE3;&#x7801;">&#xFF08;1&#xFF09;&#x521B;&#x5EFA;&#x5DE5;&#x7A0B;&#x5E76;&#x7F16;&#x5199;&#x4EE3;&#x7801;</a><i></i></div></li>
+</ul></li>
+</ul></li>
+<li><div><a href="#&#xFF08;&#x56DB;&#xFF09;&#x5E38;&#x89C1;&#x8BBE;&#x7F6E;&#x5E94;&#x7528;&#xFF0C;&#x8BA9;idea&#x53D8;&#x8212;&#x9002;&#x7684;&#x5173;&#x952E;&#x4E4B;&#x4E00;">&#xFF08;&#x56DB;&#xFF09;&#x5E38;&#x89C1;&#x8BBE;&#x7F6E;[&#x5E94;&#x7528;&#xFF0C;&#x8BA9;IDEA&#x53D8;&#x8212;&#x9002;&#x7684;&#x5173;&#x952E;&#x4E4B;&#x4E00;]</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#1&#xFF0E;&#x663E;&#x793A;&#x5DE5;&#x5177;&#x680F;&#x56FE;&#x6807;">1&#xFF0E;&#x663E;&#x793A;&#x5DE5;&#x5177;&#x680F;&#x56FE;&#x6807;</a><i></i></div></li>
+<li><div><a href="#2&#xFF0E;&#x67E5;&#x770B;&#x9879;&#x76EE;&#x914D;&#x7F6E;&#x9879;&#x76EE;&#x6E90;&#x76EE;&#x5F55;&#x3001;&#x8F93;&#x51FA;&#x4EE5;&#x53CA;&#x6240;&#x4F9D;&#x8D56;&#x7684;jar">2&#xFF0E;&#x67E5;&#x770B;&#x9879;&#x76EE;&#x914D;&#x7F6E;(&#x9879;&#x76EE;&#x6E90;&#x76EE;&#x5F55;&#x3001;&#x8F93;&#x51FA;&#x4EE5;&#x53CA;&#x6240;&#x4F9D;&#x8D56;&#x7684;jar**)</a><i></i></div></li>
+<li><div><a href="#3&#xFF0E;&#x5168;&#x5C40;&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;&#xFF08;&#x914D;&#x7F6E;&#x9488;&#x5BF9;&#x6574;&#x4E2A;idea&#x751F;&#x6548;&#xFF09;">3&#xFF0E;&#x5168;&#x5C40;&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;&#xFF08;&#x914D;&#x7F6E;&#x9488;&#x5BF9;&#x6574;&#x4E2A;Idea&#x751F;&#x6548;&#xFF09;</a><i></i></div></li>
+<li><div><a href="#4&#xFF0E;&#x666E;&#x901A;&#x8BBE;&#x7F6E;&#xFF08;&#x9488;&#x5BF9;project&#x7EA7;&#x522B;&#xFF0C;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#x7EA7;&#x522B;&#xFF09;">4&#xFF0E;&#x666E;&#x901A;&#x8BBE;&#x7F6E;&#xFF08;&#x9488;&#x5BF9;Project&#x7EA7;&#x522B;&#xFF0C;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#x7EA7;&#x522B;&#xFF09;</a><i></i></div></li>
+<li><div><a href="#5&#xFF0E;&#x66F4;&#x6539;&#x5B57;&#x4F53;&#x5927;&#x5C0F;&#x901A;&#x8FC7;ctrl&#x9F20;&#x6807;&#x6EDA;&#x8F6E;">5&#xFF0E;&#x66F4;&#x6539;&#x5B57;&#x4F53;&#x5927;&#x5C0F;&#x901A;&#x8FC7;ctrl+&#x9F20;&#x6807;&#x6EDA;&#x8F6E;</a><i></i></div></li>
+<li><div><a href="#6&#xFF0E;&#x4EE3;&#x7801;&#x63D0;&#x793A;&#x4E0D;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;">6&#xFF0E;&#x4EE3;&#x7801;&#x63D0;&#x793A;&#x4E0D;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;</a><i></i></div></li>
+<li><div><a href="#7&#xFF0E;&#x4FEE;&#x6539;&#x4E3B;&#x9898;">7&#xFF0E;&#x4FEE;&#x6539;&#x4E3B;&#x9898;</a><i></i></div></li>
+<li><div><a href="#8&#xFF0E;&#x4FEE;&#x6539;&#x5B57;&#x4F53;">8&#xFF0E;&#x4FEE;&#x6539;&#x5B57;&#x4F53;</a><i></i></div></li>
+<li><div><a href="#9&#xFF0E;&#x4FEE;&#x6539;&#x63A7;&#x5236;&#x53F0;&#x5B57;&#x4F53;&#x989C;&#x8272;">9&#xFF0E;&#x4FEE;&#x6539;&#x63A7;&#x5236;&#x53F0;&#x5B57;&#x4F53;&#x989C;&#x8272;</a><i></i></div></li>
+<li><div><a href="#10&#xFF0E;&#x4FEE;&#x6539;&#x6CE8;&#x91CA;&#x7684;&#x5B57;&#x4F53;&#x989C;&#x8272;&#x4E86;&#x89E3;">10&#xFF0E;&#x4FEE;&#x6539;&#x6CE8;&#x91CA;&#x7684;&#x5B57;&#x4F53;&#x989C;&#x8272;(&#x4E86;&#x89E3;)</a><i></i></div></li>
+<li><div><a href="#11&#xFF0E;&#x8BBE;&#x7F6E;&#x6587;&#x4EF6;&#x7F16;&#x7801;&#xFF08;&#x91CD;&#x8981;&#xFF09;">11&#xFF0E;&#x8BBE;&#x7F6E;&#x6587;&#x4EF6;&#x7F16;&#x7801;&#xFF08;&#x91CD;&#x8981;&#xFF09;</a><i></i></div></li>
+<li><div><a href="#12&#xFF0E;&#x8BBE;&#x7F6E;&#x9F20;&#x6807;&#x60AC;&#x6D6E;&#x63D0;&#x793A;">12&#xFF0E;&#x8BBE;&#x7F6E;&#x9F20;&#x6807;&#x60AC;&#x6D6E;&#x63D0;&#x793A;</a><i></i></div></li>
+<li><div><a href="#13&#xFF0E;&#x81EA;&#x52A8;&#x5BFC;&#x5305;amp&#x4F18;&#x5316;&#x5BFC;&#x5305;">13&#xFF0E;&#x81EA;&#x52A8;&#x5BFC;&#x5305;&amp;&#x4F18;&#x5316;&#x5BFC;&#x5305;</a><i></i></div></li>
+<li><div><a href="#14&#xFF0E;&#x8BBE;&#x7F6E;&#x81EA;&#x52A8;&#x7F16;&#x8BD1;">14&#xFF0E;&#x8BBE;&#x7F6E;&#x81EA;&#x52A8;&#x7F16;&#x8BD1;</a><i></i></div></li>
+<li><div><a href="#15&#xFF0E;&#x5728;editor&#x8FDB;&#x884C;&#x7A7A;&#x683C;&#x4E0E;tab&#x7F29;&#x8FDB;&#x8BBE;&#x7F6E;">15&#xFF0E;&#x5728;Editor&#x8FDB;&#x884C;&#x7A7A;&#x683C;&#x4E0E;tab&#x7F29;&#x8FDB;&#x8BBE;&#x7F6E;</a><i></i></div></li>
+<li><div><a href="#16&#xFF0E;&#x663E;&#x793A;&#x884C;&#x53F7;&#x548C;&#x65B9;&#x6CD5;&#x5206;&#x5272;&#x7EBF;">16&#xFF0E;&#x663E;&#x793A;&#x884C;&#x53F7;&#x548C;&#x65B9;&#x6CD5;&#x5206;&#x5272;&#x7EBF;</a><i></i></div></li>
+<li><div><a href="#17&#xFF0E;&#x53BB;&#x9664;&#x5355;&#x8BCD;&#x62FC;&#x5199;&#x68C0;&#x67E5;">17&#xFF0E;&#x53BB;&#x9664;&#x5355;&#x8BCD;&#x62FC;&#x5199;&#x68C0;&#x67E5;</a><i></i></div></li>
+<li><div><a href="#18&#xFF0E;&#x6E05;&#x7406;&#x7F13;&#x5B58;&#x548C;&#x7D22;&#x5F15;">18&#xFF0E;&#x6E05;&#x7406;&#x7F13;&#x5B58;&#x548C;&#x7D22;&#x5F15;</a><i></i></div></li>
+<li><div><a href="#19&#xFF0E;&#x8BBE;&#x7F6E;&#x76EE;&#x5F55;&#x6298;&#x53E0;">19&#xFF0E;&#x8BBE;&#x7F6E;&#x76EE;&#x5F55;&#x6298;&#x53E0;</a><i></i></div></li>
+<li><div><a href="#20&#xFF0E;&#x5B9A;&#x4F4D;&#x5230;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x6240;&#x5728;&#x76EE;&#x5F55;img">20&#xFF0E;&#x5B9A;&#x4F4D;&#x5230;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x6240;&#x5728;&#x76EE;&#x5F55;img</a><i></i></div></li>
+<li><div><a href="#21&#xFF0E;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x751F;&#x6210;&#x6A21;&#x677F;">21&#xFF0E;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x751F;&#x6210;&#x6A21;&#x677F;</a><i></i></div></li>
+<li><div><a href="#22&#xFF0E;debug">22&#xFF0E;Debug</a><i></i></div></li>
+<li><div><a href="#23&#xFF0E;&#x7701;&#x7535;&#x6A21;&#x5F0F;">23&#xFF0E;&#x7701;&#x7535;&#x6A21;&#x5F0F;</a><i></i></div></li>
+<li><div><a href="#24&#xFF0E;&#x663E;&#x793A;&#x5185;&#x5B58;&#x5360;&#x7528;">24&#xFF0E;&#x663E;&#x793A;&#x5185;&#x5B58;&#x5360;&#x7528;</a><i></i></div></li>
+<li><div><a href="#25&#xFF0E;&#x8BBE;&#x7F6E;&#x6C34;&#x5E73;&#x6216;&#x8005;&#x5782;&#x76F4;&#x5206;&#x5C4F;&#x7F16;&#x8F91;">25&#xFF0E;&#x8BBE;&#x7F6E;&#x6C34;&#x5E73;&#x6216;&#x8005;&#x5782;&#x76F4;&#x5206;&#x5C4F;&#x7F16;&#x8F91;</a><i></i></div></li>
+<li><div><a href="#26&#xFF0E;&#x8BBE;&#x7F6E;&#x542F;&#x52A8;idea&#x6216;&#x6253;&#x5F00;&#x9879;&#x76EE;&#x65F6;&#x63D0;&#x793A;">26&#xFF0E;&#x8BBE;&#x7F6E;&#x542F;&#x52A8;idea&#x6216;&#x6253;&#x5F00;&#x9879;&#x76EE;&#x65F6;&#x63D0;&#x793A;</a><i></i></div></li>
+<li><div><a href="#27&#xFF0E;&#x8BBE;&#x7F6E;&#x4EE3;&#x7801;&#x73AF;&#x7ED5;">27&#xFF0E;&#x8BBE;&#x7F6E;&#x4EE3;&#x7801;&#x73AF;&#x7ED5;</a><i></i></div></li>
+<li><div><a href="#28&#xFF0E;&#x53D6;&#x6D88;&#x66F4;&#x65B0;">28&#xFF0E;&#x53D6;&#x6D88;&#x66F4;&#x65B0;</a><i></i></div></li>
+<li><div><a href="#29&#xFF0E;&#x67E5;&#x770B;&#x672C;&#x5730;&#x6587;&#x4EF6;&#x7F16;&#x8F91;&#x5386;&#x53F2;">29&#xFF0E;&#x67E5;&#x770B;&#x672C;&#x5730;&#x6587;&#x4EF6;&#x7F16;&#x8F91;&#x5386;&#x53F2;</a><i></i></div></li>
+<li><div><a href="#30&#xFF0E;&#x751F;&#x6210;-javadoc">30&#xFF0E;&#x751F;&#x6210; javadoc</a><i></i></div></li>
+<li><div><a href="#31&#xFF0E;&#x81EA;&#x5B9A;&#x4E49;&#x4EE3;&#x7801;&#x6A21;&#x7248;">31&#xFF0E;&#x81EA;&#x5B9A;&#x4E49;&#x4EE3;&#x7801;&#x6A21;&#x7248;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#xFF08;&#x4E94;&#xFF09;idea&#x5FEB;&#x6377;&#x952E;&#x5E94;&#x7528;&#xFF0C;&#x8BA9;idea&#x53D8;&#x8212;&#x9002;&#x7684;&#x5173;&#x952E;&#x4E4B;&#x4E8C;">&#xFF08;&#x4E94;&#xFF09;IDEA&#x5FEB;&#x6377;&#x952E;[&#x5E94;&#x7528;&#xFF0C;&#x8BA9;IDEA&#x53D8;&#x8212;&#x9002;&#x7684;&#x5173;&#x952E;&#x4E4B;&#x4E8C;]</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#1&#xFF0E;idea&#x539F;&#x751F;&#x5FEB;&#x6377;&#x952E;">1&#xFF0E;Idea&#x539F;&#x751F;&#x5FEB;&#x6377;&#x952E;</a><i></i></div></li>
+<li><div><a href="#2&#xFF0E;&#x8BBE;&#x7F6E;eclipse&#x98CE;&#x683C;&#x5FEB;&#x6377;&#x952E;">2&#xFF0E;&#x8BBE;&#x7F6E;eclipse&#x98CE;&#x683C;&#x5FEB;&#x6377;&#x952E;</a><i></i></div></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+
+<h1 id="&#x5F00;&#x53D1;&#x5DE5;&#x5177;idea&#x7684;&#x4ECB;&#x7ECD;&#x3001;&#x5B89;&#x88C5;&#x3001;&#x914D;&#x7F6E;&#x4F18;&#x5316;&#x4E0E;&#x5FEB;&#x6377;&#x952E;"><strong>&#x5F00;&#x53D1;&#x5DE5;&#x5177;IDEA&#x7684;&#x4ECB;&#x7ECD;&#x3001;&#x5B89;&#x88C5;&#x3001;&#x914D;&#x7F6E;&#x4F18;&#x5316;&#x4E0E;&#x5FEB;&#x6377;&#x952E;</strong></h1>
+<h1 id="&#x4E00;&#x3001;&#x7F16;&#x7801;&#x795E;&#x5668;-idea">&#x4E00;&#x3001;<strong>&#x7F16;&#x7801;&#x795E;&#x5668;-IDEA</strong></h1>
+<h2 id="&#xFF08;&#x4E00;&#xFF09;idea&#x4ECB;&#x7ECD;&#x4E86;&#x89E3;&#x5373;&#x53EF;&#xFF0C;&#x591A;&#x7528;&#x5728;&#x5439;&#x725B;">&#xFF08;&#x4E00;&#xFF09;<strong>IDEA&#x4ECB;&#x7ECD;[&#x4E86;&#x89E3;&#x5373;&#x53EF;&#xFF0C;&#x591A;&#x7528;&#x5728;&#x5439;&#x725B;]</strong></h2>
+<p>1&#x3001;&#x5B98;&#x7F51;&#x4E0B;&#x8F7D;&#xFF1A;</p>
+<p><a href="http://www.jetbrains.com/idea/download" target="_blank">http://www.jetbrains.com/idea/download</a>  </p>
+<p>2&#x3001;&#x5B98;&#x7F51;&#x6559;&#x7A0B;:</p>
+<p> <a href="https://www.jetbrains.com/help/idea/install-and-set-up-product.html" target="_blank">https://www.jetbrains.com/help/idea/install-and-set-up-product.html</a></p>
+<p>3&#x3001;&#x767E;&#x5EA6;&#x767E;&#x79D1;&#x4ECB;&#x7ECD;&#xFF1A;</p>
+<p> <a href="https://baike.baidu.com/item/IntelliJ IDEA/9548353?fromtitle=idea&amp;fromid=1671803&amp;fr=aladdin" target="_blank">IntelliJ IDEA_&#x767E;&#x5EA6;&#x767E;&#x79D1; (baidu.com)</a> </p>
+<p> IDEA &#x5168;&#x79F0; IntelliJ IDEA&#xFF0C;&#x662F;<a href="https://baike.baidu.com/item/java/85979" target="_blank">java</a><a href="https://baike.baidu.com/item/&#x7F16;&#x7A0B;&#x8BED;&#x8A00;/9845131" target="_blank">&#x7F16;&#x7A0B;&#x8BED;&#x8A00;</a>&#x5F00;&#x53D1;&#x7684;&#x96C6;&#x6210;&#x73AF;&#x5883;&#x3002;IntelliJ&#x5728;&#x4E1A;&#x754C;&#x88AB;&#x516C;&#x8BA4;&#x4E3A;&#x6700;&#x597D;&#x7684;java&#x5F00;&#x53D1;&#x5DE5;&#x5177;&#xFF0C;&#x5C24;&#x5176;&#x5728;&#x667A;&#x80FD;&#x4EE3;&#x7801;&#x52A9;&#x624B;&#x3001;&#x4EE3;&#x7801;&#x81EA;&#x52A8;&#x63D0;&#x793A;&#x3001;<a href="https://baike.baidu.com/item/&#x91CD;&#x6784;/2182519" target="_blank">&#x91CD;&#x6784;</a>&#x3001;<a href="https://baike.baidu.com/item/JavaEE/3066623" target="_blank">JavaEE</a>&#x652F;&#x6301;&#x3001;&#x5404;&#x7C7B;&#x7248;&#x672C;&#x5DE5;&#x5177;(<a href="https://baike.baidu.com/item/git/12647237" target="_blank">git</a>&#x3001;<a href="https://baike.baidu.com/item/svn/3311103" target="_blank">svn</a>&#x7B49;)&#x3001;<a href="https://baike.baidu.com/item/JUnit/1211849" target="_blank">JUnit</a>&#x3001;<a href="https://baike.baidu.com/item/CVS/405463" target="_blank">CVS</a>&#x6574;&#x5408;&#x3001;&#x4EE3;&#x7801;&#x5206;&#x6790;&#x3001; &#x521B;&#x65B0;&#x7684;<a href="https://baike.baidu.com/item/GUI/479966" target="_blank">GUI</a>&#x8BBE;&#x8BA1;&#x7B49;&#x65B9;&#x9762;&#x7684;&#x529F;&#x80FD;&#x53EF;&#x4EE5;&#x8BF4;&#x662F;&#x8D85;&#x5E38;&#x7684;&#x3002;IDEA&#x662F;<a href="https://baike.baidu.com/item/JetBrains/7502758" target="_blank">JetBrains</a>&#x516C;&#x53F8;&#x7684;&#x4EA7;&#x54C1;&#xFF0C;&#x8FD9;&#x5BB6;&#x516C;&#x53F8;<a href="https://baike.baidu.com/item/&#x603B;&#x90E8;/5289033" target="_blank">&#x603B;&#x90E8;</a>&#x4F4D;&#x4E8E;<a href="https://baike.baidu.com/item/&#x6377;&#x514B;&#x5171;&#x548C;&#x56FD;/418555" target="_blank">&#x6377;&#x514B;&#x5171;&#x548C;&#x56FD;</a>&#x7684;&#x9996;&#x90FD;<a href="https://baike.baidu.com/item/&#x5E03;&#x62C9;&#x683C;/632" target="_blank">&#x5E03;&#x62C9;&#x683C;</a>&#xFF0C;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x4EE5;&#x4E25;&#x8C28;&#x8457;&#x79F0;&#x7684;<a href="https://baike.baidu.com/item/&#x4E1C;&#x6B27;/7149362" target="_blank">&#x4E1C;&#x6B27;</a><a href="https://baike.baidu.com/item/&#x7A0B;&#x5E8F;&#x5458;/62748" target="_blank">&#x7A0B;&#x5E8F;&#x5458;</a>&#x4E3A;&#x4E3B;&#x3002;&#x5B83;&#x7684;<a href="https://baike.baidu.com/item/&#x65D7;&#x8230;/4724820" target="_blank">&#x65D7;&#x8230;</a>&#x7248;&#x672C;&#x8FD8;&#x652F;&#x6301;<a href="https://baike.baidu.com/item/HTML/97049" target="_blank">HTML</a>&#xFF0C;<a href="https://baike.baidu.com/item/CSS/5457" target="_blank">CSS</a>&#xFF0C;<a href="https://baike.baidu.com/item/PHP/9337" target="_blank">PHP</a>&#xFF0C;<a href="https://baike.baidu.com/item/MySQL/471251" target="_blank">MySQL</a>&#xFF0C;<a href="https://baike.baidu.com/item/Python/407313" target="_blank">Python</a>&#x7B49;&#x3002;&#x514D;&#x8D39;&#x7248;&#x53EA;&#x652F;&#x6301;Java,<a href="https://baike.baidu.com/item/Kotlin/1133714" target="_blank">Kotlin</a>&#x7B49;&#x5C11;&#x6570;&#x8BED;&#x8A00;&#x3002; &#x516C;&#x53F8;&#x65D7;&#x4E0B;&#x8FD8;&#x6709;&#x5176;&#x5B83;&#x4EA7;&#x54C1;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;</p>
+<ul>
+<li><p>WebStorm&#xFF1A;&#x7528;&#x4E8E;&#x5F00;&#x53D1; JavaScript&#x3001;HTML5&#x3001;CSS3 &#x7B49;&#x524D;&#x7AEF;&#x6280;&#x672F;&#xFF1B;</p>
+</li>
+<li><p>PyCharm&#xFF1A;&#x7528;&#x4E8E;&#x5F00;&#x53D1; python</p>
+</li>
+<li><p>CLion&#xFF1A;&#x7528;&#x4E8E;&#x5F00;&#x53D1; C/C++</p>
+</li>
+<li><p>DataGrip&#xFF1A;&#x7528;&#x4E8E;&#x5F00;&#x53D1;&#x6570;&#x636E;&#x5E93;&#x548C; SQL</p>
+</li>
+<li><p>GoLand&#xFF1A;&#x7528;&#x4E8E;&#x5F00;&#x53D1; Go</p>
+</li>
+<li><p>Android Studio&#xFF1A;&#x7528;&#x4E8E;&#x5F00;&#x53D1; android</p>
+</li>
+</ul>
+<p>4&#x3001; IntelliJ IDEA &#x5BF9;&#x786C;&#x4EF6;&#x7684;&#x8981;&#x6C42;&#xFF1A;</p>
+<p>2G &#x5185;&#x5B58;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x53EA;&#x9002;&#x5408;&#x5199;&#x5C0F;&#x7A0B;&#x5E8F;&#x3001;&#x5C0F;&#x9879;&#x76EE;&#x6216;&#x662F;&#x5F00;&#x53D1;&#x9759;&#x6001;&#x9875;&#x9762;&#x3002;Java Web &#x9879;&#x76EE;&#x6700;&#x597D;&#x7684;&#x65B9;&#x6848;&#x662F; 8G &#x5185;&#x5B58;&#x6216;&#x662F;&#x4EE5;&#x4E0A;&#xFF0C;&#x786C;&#x76D8;&#x80FD;&#x518D;&#x7528;&#x4E0A;&#x56FA;&#x6001;&#x662F;&#x6700;&#x597D;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;IntelliJ IDEA &#x6709;&#x5927;&#x91CF;&#x7684;&#x7F13;&#x5B58;&#x3001;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#xFF0C;&#x628A; IntelliJ IDEA &#x7684;&#x7F13;&#x5B58;&#x3001;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#x653E;&#x5728;&#x56FA;&#x6001;&#x4E0A;&#xFF0C;IntelliJ IDEA &#x6D41;&#x7545;&#x5EA6;&#x4E5F;&#x4F1A;&#x52A0;&#x5FEB;&#x5F88;&#x591A;&#x3002;</p>
+<h2 id="&#xFF08;&#x4E8C;&#xFF09;&#x4E0B;&#x8F7D;-&#x5B89;&#x88C5;&#x638C;&#x63E1;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x7EB8;&#x8001;&#x864E;">&#xFF08;&#x4E8C;&#xFF09;<strong>&#x4E0B;&#x8F7D;-&#x5B89;&#x88C5;[&#x638C;&#x63E1;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x7EB8;&#x8001;&#x864E;]</strong></h2>
+<h3 id="1&#xFF0E;&#x4E0B;&#x8F7D;">1&#xFF0E;<strong>&#x4E0B;&#x8F7D;</strong></h3>
+<p><a href="https://www.jetbrains.com/idea/download" target="_blank">https://www.jetbrains.com/idea/download</a></p>
+<p><img src="imageFolder/wps116.jpg" alt="img"> </p>
+<h3 id="2&#xFF0E;&#x5B89;&#x88C5;">2&#xFF0E;<strong>&#x5B89;&#x88C5;</strong></h3>
+<h4 id="&#xFF08;1&#xFF09;&#x70B9;&#x51FB;&#x5B89;&#x88C5;">&#xFF08;1&#xFF09;<strong>&#x70B9;&#x51FB;&#x5B89;&#x88C5;</strong></h4>
+<p>&#x672C;&#x6559;&#x7A0B;&#x6240;&#x5BF9;&#x5E94;&#x7684;&#x7248;&#x672C;2017.3.2&#x7248;&#x672C;&#xFF0C;&#x5176;&#x5B9E;&#x7248;&#x672C;&#x4E0D;&#x540C;&#xFF0C;&#x6309;&#x94AE;&#x56FE;&#x6807;&#x548C;&#x63CF;&#x8FF0;&#x4E00;&#x822C;&#x4E0D;&#x4F1A;&#x53D8;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x5FC5;&#x523B;&#x610F;&#x8FFD;&#x6C42;&#x6700;&#x65B0;&#x7248;&#x672C;&#x3002;</p>
+<p><img src="imageFolder/wps117.jpg" alt="img"> </p>
+<p><strong>&#x6CE8;&#x610F;:&#x6240;&#x6709;&#x8F6F;&#x4EF6;&#x5B89;&#x88C5;&#x8DEF;&#x5F84;&#x4E2D;&#x4E0D;&#x80FD;&#x51FA;&#x73B0;&#x7A7A;&#x683C;&#x548C;&#x4E2D;&#x6587;&#xFF01;&#xFF01;&#xFF01;</strong>   </p>
+<p><img src="imageFolder/wps118.jpg" alt="img"> </p>
+<p><img src="imageFolder/wps119.jpg" alt="img"> </p>
+<p>&#x7B2C;&#x4E00;&#x9879;&#xFF0C;&#x5728;&#x684C;&#x9762;&#x4E0A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5FEB;&#x6377;&#x56FE;&#x6807;&#xFF0C;&#x5EFA;&#x8BAE;&#x52FE;&#x9009;&#x4E0A;&#xFF0C;&#x65B9;&#x4FBF;&#x6211;&#x4EEC;&#x5728;&#x5B89;&#x88C5;&#x540E;&#x5B9A;&#x4F4D; IntelliJ IDEA &#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x3002;&#x7B2C;&#x4E8C;&#x9879;&#x5173;&#x8054; Java &#x548C; Groovy &#x6587;&#x4EF6;&#xFF0C;&#x5EFA;&#x8BAE;&#x90FD;&#x4E0D;&#x8981;&#x52FE;&#x9009;&#x3002;&#x56E0;&#x4E3A;&#x6B63;&#x5E38;&#x6211;&#x4EEC;&#x4F1A;&#x5728; Windows &#x7684;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E0A;&#x6253;&#x5F00;&#x8FD9;&#x7C7B;&#x6587;&#x4EF6;&#x90FD;&#x662F;&#x4E3A;&#x4E86;&#x5FEB;&#x901F;&#x67E5;&#x9605;&#x6587;&#x4EF6;&#x91CC;&#x9762;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x5982;&#x679C;&#x7528; IntelliJ IDEA &#x5173;&#x8054;&#x4E0A;&#x4E4B;&#x540E;&#xFF0C;&#x4FBF;&#x4F1A;&#x9ED8;&#x8BA4;&#x7528;IntelliJ IDEA &#x6253;&#x5F00;&#xFF0C;&#x901F;&#x5EA6;&#x7F13;&#x6162;&#xFF0C;&#x6D6A;&#x8D39;&#x65F6;&#x95F4;&#x3002;</p>
+<p><img src="imageFolder/wps120.jpg" alt="img"> </p>
+<p><img src="imageFolder/wps121.jpg" alt="img"> </p>
+<h4 id="&#xFF08;2&#xFF09;&#x8FD0;&#x884C;&#x5E76;&#x7834;&#x89E3;">&#xFF08;2&#xFF09;<strong>&#x8FD0;&#x884C;&#x5E76;&#x7834;&#x89E3;</strong></h4>
+<p>&#x200B;    &#x53EF;&#x6839;&#x636E;&#x4E2A;&#x4EBA;&#x9700;&#x8981;&#x767E;&#x5EA6;idea&#x670D;&#x52A1;&#x5668;&#x7834;&#x89E3;&#xFF0C;&#x6216;&#x8005;idea&#x7834;&#x89E3;&#x7801;</p>
+<h4 id="&#xFF08;3&#xFF09;&#x9009;&#x62E9;ui&#x4E3B;&#x9898;">&#xFF08;3&#xFF09;<strong>&#x9009;&#x62E9;UI&#x4E3B;&#x9898;</strong></h4>
+<p><img src="imageFolder/wps122.jpg" alt="img"> </p>
+<h4 id="&#xFF08;4&#xFF09;&#x9009;&#x62E9;&#x63D2;&#x4EF6;&#x8DF3;&#x8FC7;">&#xFF08;4&#xFF09;<strong>&#x9009;&#x62E9;&#x63D2;&#x4EF6;(&#x8DF3;&#x8FC7;)</strong></h4>
+<p>&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x6309;&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;&#xFF0C;&#x70B9;&#x51FB;&#x4E0B;&#x4E00;&#x6B65;&#xFF0C;&#x540E;&#x7EED;&#x53EF;&#x4EE5;&#x5728;settings&#x4E2D;&#x4FEE;&#x6539;</p>
+<p><img src="imageFolder/wps123.jpg" alt="img"> </p>
+<h3 id="3&#xFF0E;&#x76EE;&#x5F55;&#x4ECB;&#x7ECD;">3&#xFF0E;<strong>&#x76EE;&#x5F55;&#x4ECB;&#x7ECD;</strong></h3>
+<h4 id="&#xFF08;1&#xFF09;&#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x4ECB;&#x7ECD;">&#xFF08;1&#xFF09;<strong>&#x5B89;&#x88C5;&#x76EE;&#x5F55;</strong>&#x4ECB;&#x7ECD;</h4>
+<p><img src="imageFolder/wps124.jpg" alt="img"> </p>
+<ol>
+<li><p>bin&#xFF1A;&#x5BB9;&#x5668;&#xFF0C;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x548C;&#x542F;&#x52A8;&#x53C2;&#x6570;&#x7B49;</p>
+</li>
+<li><p>help&#xFF1A;&#x5FEB;&#x6377;&#x952E;&#x6587;&#x6863;&#x548C;&#x5176;&#x4ED6;&#x5E2E;&#x52A9;&#x6587;&#x6863;</p>
+</li>
+<li><p>jre64&#xFF1A;64 &#x4F4D;java &#x8FD0;&#x884C;&#x73AF;&#x5883;</p>
+</li>
+<li><p>lib&#xFF1A;idea &#x4F9D;&#x8D56;&#x7684;&#x7C7B;&#x5E93;</p>
+</li>
+<li><p>license&#xFF1A;&#x5404;&#x4E2A;&#x63D2;&#x4EF6;&#x8BB8;&#x53EF;</p>
+</li>
+<li><p>plugins&#xFF1A;&#x63D2;&#x4EF6;</p>
+</li>
+<li>redist&#xFF1A;&#x6CE8;&#x518C;&#x76F8;&#x5173;&#x6587;&#x4EF6;</li>
+</ol>
+<p><strong>&#x5176;&#x4E2D;&#xFF0C;bin &#x76EE;&#x5F55;&#x4E0B;&#xFF1A;</strong></p>
+<p><img src="imageFolder/wps125.jpg" alt="img"> </p>
+<ol>
+<li><p>idea.exe &#x6587;&#x4EF6;&#x662F; IntelliJ IDEA 32 &#x4F4D;&#x7684;&#x53EF;&#x884C;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;IntelliJ IDEA &#x5B89;&#x88C5;&#x5B8C;&#x9ED8;&#x8BA4;&#x53D1;&#x9001;&#x5230;&#x684C;&#x9762;&#x7684;&#x4E5F;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x7684;&#x5FEB;&#x6377;&#x65B9;&#x5F0F;&#x3002;</p>
+</li>
+<li><p>idea.exe.vmoptions &#x6587;&#x4EF6;&#x662F; IntelliJ IDEA 32 &#x4F4D;&#x7684;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x7684; VM &#x914D;&#x7F6E;&#x6587;&#x4EF6;</p>
+</li>
+<li><p>idea64.exe &#x6587;&#x4EF6;&#x662F; IntelliJ IDEA 64 &#x4F4D;&#x7684;&#x53EF;&#x884C;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;&#x8981;&#x6C42;&#x5FC5;&#x987B;&#x7535;&#x8111;&#x4E0A;&#x88C5;&#x6709; JDK 64 &#x4F4D;&#x7248;&#x672C;&#x3002;64 &#x4F4D;&#x7684;&#x7CFB;&#x7EDF;&#x4E5F;&#x662F;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x8BE5;&#x6587;&#x4EF6;&#x3002;</p>
+</li>
+<li><p>idea64.exe.vmoptions &#x6587;&#x4EF6;&#x662F; IntelliJ IDEA 64 &#x4F4D;&#x7684;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x7684; VM &#x914D;&#x7F6E;&#x6587;&#x4EF6;</p>
+</li>
+<li><p>idea.properties &#x6587;&#x4EF6;&#x662F; IntelliJ IDEA &#x7684;&#x4E00;&#x4E9B;&#x5C5E;&#x6027;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</p>
+</li>
+</ol>
+<p>VM&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4FEE;&#x6539;&#x7684;&#x539F;&#x5219;&#x4E3B;&#x8981;&#x662F;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x673A;&#x5668;&#x7684;&#x5185;&#x5B58;&#x60C5;&#x51B5;&#x6765;&#x5224;&#x65AD;&#x7684;&#xFF0C;&#x4E2A;&#x4EBA;&#x662F;&#x5EFA;&#x8BAE; 8G &#x4EE5;&#x4E0B;&#x7684;&#x673A;&#x5B50;&#x6216;&#x662F;&#x9759;&#x6001;&#x9875;&#x9762;&#x5F00;&#x53D1;&#x8005;&#x90FD;&#x662F;&#x65E0;&#x9700;&#x4FEE;&#x6539;&#x7684;&#x3002;&#x5982;&#x679C;&#x4F60;&#x662F;&#x5F00;&#x53D1;&#x5927;&#x578B;&#x9879;&#x76EE;&#x3001;Java &#x9879;&#x76EE;&#x6216;&#x662F; Android &#x9879;&#x76EE;&#xFF0C;&#x5E76;&#x4E14;&#x5185;&#x5B58;&#x5927;&#x4E8E; 8G&#xFF0C;&#x5EFA;&#x8BAE;&#x8FDB;&#x884C;&#x4FEE;&#x6539;&#xFF1A;</p>
+<ol>
+<li>-Xms128m&#xFF0C;16 G &#x5185;&#x5B58;&#x7684;&#x673A;&#x5668;&#x53EF;&#x5C1D;&#x8BD5;&#x8BBE;&#x7F6E;&#x4E3A; -Xms512m    (&#x8BBE;&#x7F6E;&#x521D;&#x59CB;&#x7684;&#x5185;&#x5B58;&#x6570;&#xFF0C;&#x589E;&#x52A0;&#x8BE5;&#x503C;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8; Java &#x7A0B;&#x5E8F;&#x7684;&#x542F;&#x52A8;&#x901F;&#x5EA6;&#x3002;)</li>
+<li><p>-Xmx750m&#xFF0C;16 G &#x5185;&#x5B58;&#x7684;&#x673A;&#x5668;&#x53EF;&#x5C1D;&#x8BD5;&#x8BBE;&#x7F6E;&#x4E3A; -Xmx1500m    (&#x8BBE;&#x7F6E;&#x6700;&#x5927;&#x5185;&#x5B58;&#x6570;&#xFF0C;&#x63D0;&#x9AD8;&#x8BE5;&#x503C;&#xFF0C;&#x53EF;&#x4EE5;&#x51CF;&#x5C11;&#x5185;&#x5B58; Garage &#x6536;&#x96C6;&#x7684;&#x9891;&#x7387;&#xFF0C;&#x63D0;&#x9AD8;&#x7A0B;&#x5E8F;&#x6027;&#x80FD;)</p>
+</li>
+<li><p>-XX:ReservedCodeCacheSize=240m&#xFF0C;16G &#x5185;&#x5B58;&#x7684;&#x673A;&#x5668;&#x53EF;&#x5C1D;&#x8BD5;&#x8BBE;&#x7F6E;&#x4E3A;-XX:ReservedCodeCacheSize=500m    (&#x7F13;&#x5B58;&#x5927;&#x5C0F;)</p>
+</li>
+</ol>
+<h4 id="&#xFF08;2&#xFF09;&#x914D;&#x7F6E;&#x76EE;&#x5F55;">&#xFF08;2&#xFF09;<strong>&#x914D;&#x7F6E;&#x76EE;&#x5F55;</strong></h4>
+<p><img src="imageFolder/wps126.jpg" alt="img"> </p>
+<ol>
+<li><p>&#x5BF9;&#x4E8E;&#x8FD9;&#x4E2A;&#x8BBE;&#x7F6E;&#x76EE;&#x5F55;&#x6709;&#x4E00;&#x4E2A;&#x7279;&#x6027;&#xFF0C;&#x5C31;&#x662F;&#x4F60;&#x5220;&#x9664;&#x6389;&#x6574;&#x4E2A;&#x76EE;&#x5F55;&#x4E4B;&#x540E;&#xFF0C;&#x91CD;&#x65B0;&#x542F;&#x52A8; IntelliJ IDEA &#x4F1A;&#x518D;&#x81EA;&#x52A8;&#x5E2E;&#x4F60;&#x518D;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x5168;&#x65B0;&#x7684;&#x9ED8;&#x8BA4;&#x914D;&#x7F6E;&#xFF0C;&#x6240;&#x4EE5;&#x5F88;&#x591A;&#x65F6;&#x5019;&#x5982;&#x679C;&#x4F60;&#x628A; IntelliJ IDEA &#x914D;&#x7F6E;&#x6539;&#x574F;&#x4E86;&#xFF0C;&#x6CA1;&#x5173;&#x7CFB;&#xFF0C;&#x5220;&#x6389;&#x8BE5;&#x76EE;&#x5F55;&#xFF0C;&#x4E00;&#x5207;&#x90FD;&#x4F1A;&#x8FD8;&#x539F;&#x5230;&#x9ED8;&#x8BA4;&#x3002;</p>
+</li>
+<li><p>config &#x76EE;&#x5F55;&#x662F; IntelliJ IDEA &#x4E2A;&#x6027;&#x5316;&#x5316;&#x914D;&#x7F6E;&#x76EE;&#x5F55;&#xFF0C;&#x6216;&#x8005;&#x8BF4;&#x662F;&#x6574;&#x4E2A; IDE &#x8BBE;&#x7F6E;&#x76EE;&#x5F55;&#x3002;&#x4E5F;&#x662F;&#x6211;&#x4E2A;&#x4EBA;&#x8BA4;&#x4E3A;&#x6700;&#x91CD;&#x8981;&#x7684;&#x76EE;&#x5F55;&#xFF0C;&#x6CA1;&#x6709;&#x4E4B;&#x4E00;&#xFF0C;&#x5B89;&#x88C5;&#x65B0;&#x7248;&#x672C;&#x7684; IntelliJ IDEA &#x4F1A;&#x81EA;&#x52A8;&#x626B;&#x63CF;&#x786C;&#x76D8;&#x4E0A;&#x7684;&#x65E7;&#x914D;&#x7F6E;&#x76EE;&#x5F55;&#xFF0C;&#x6307;&#x7684;&#x5C31;&#x662F;&#x8BE5;&#x76EE;&#x5F55;&#x3002;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55;&#x4E3B;&#x8981;&#x8BB0;&#x5F55;&#x4E86;&#xFF1A;IDE &#x4E3B;&#x8981;&#x914D;&#x7F6E;&#x529F;&#x80FD;&#x3001;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x4EE3;&#x7801;&#x6A21;&#x677F;&#x3001;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6587;&#x4EF6;&#x6A21;&#x677F;&#x3001;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x5FEB;&#x6377;&#x952E;&#x3001;Project &#x7684; tasks &#x8BB0;&#x5F55;&#x7B49;&#x7B49;&#x4E2A;&#x6027;&#x5316;&#x7684;&#x8BBE;&#x7F6E;&#x3002;</p>
+</li>
+<li><p>system &#x76EE;&#x5F55;&#x662F; IntelliJ IDEA &#x7CFB;&#x7EDF;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#xFF0C;&#x662F; IntelliJ IDEA &#x4E0E;&#x5F00;&#x53D1;&#x9879;&#x76EE;&#x4E00;&#x4E2A;&#x6865;&#x6881;&#x76EE;&#x5F55;&#xFF0C;&#x91CC;&#x9762;&#x4E3B;&#x8981;&#x6709;&#xFF1A;&#x7F13;&#x5B58;&#x3001;&#x7D22;&#x5F15;&#x3001;&#x5BB9;&#x5668;&#x6587;&#x4EF6;&#x8F93;&#x51FA;&#x7B49;&#x7B49;&#xFF0C;&#x867D;&#x7136;&#x4E0D;&#x662F;&#x6700;&#x91CD;&#x8981;&#x76EE;&#x5F55;&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x662F;&#x6700;&#x4E0D;&#x53EF;&#x6216;&#x7F3A;&#x76EE;&#x5F55;&#x4E4B;&#x4E00;&#x3002;</p>
+</li>
+</ol>
+<p>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x4F4D;&#x7F6E;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4FEE;&#x6539;&#x5B89;&#x88C5;&#x76EE;&#x5F55;bin/idea.properties&#x6587;&#x4EF6;&#x6765;&#x6307;&#x5B9A;</p>
+<p><img src="imageFolder/wps127.jpg" alt="img"> </p>
+<p>&#x4E0A;&#x56FE;&#x662F; IntelliJ IDEA &#x4E00;&#x4E9B;&#x5C5E;&#x6027;&#x914D;&#x7F6E;&#xFF0C;&#x6CA1;&#x6709; 32 &#x4F4D;&#x548C; 64 &#x4F4D;&#x4E4B;&#x5206;&#xFF0C;&#x4FEE;&#x6539;&#x539F;&#x5219;&#x4E3B;&#x8981;&#x6839;&#x636E;&#x4E2A;&#x4EBA;&#x5BF9; IntelliJ IDEA &#x7684;&#x4E2A;&#x6027;&#x5316;&#x914D;&#x7F6E;&#x60C5;&#x51B5;&#x6765;&#x5206;&#x6790;&#x3002;&#x5E38;&#x4FEE;&#x6539;&#x7684;&#x5C31;&#x662F;&#x4E0B;&#x9762; 4 &#x4E2A;&#x53C2;&#x6570;&#xFF1A;</p>
+<ol>
+<li><p>idea.config.path=${user.home}/.IntelliJIdea/config &#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x6307;&#x5411; IntelliJ IDEA &#x7684;&#x4E2A;&#x6027;&#x5316;&#x3002;&#x914D;&#x7F6E;&#x76EE;&#x5F55;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;&#x88AB;&#x6CE8;&#x91CA;&#xFF0C;&#x6253;&#x5F00;&#x6CE8;&#x91CA;&#x4E4B;&#x540E;&#x624D;&#x7B97;&#x542F;&#x7528;&#x8BE5;&#x5C5E;&#x6027;&#xFF0C;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x7279;&#x522B;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x659C;&#x6760;&#x65B9;&#x5411;&#xFF0C;&#x8FD9;&#x91CC;&#x7528;&#x7684;&#x662F;&#x6B63;&#x659C;&#x6760;&#x3002;</p>
+</li>
+<li><p>idea.system.path=${user.home}/.IntelliJIdea/system &#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x6307;&#x5411; IntelliJ IDEA &#x7684;&#x7CFB;&#x7EDF;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;&#x88AB;&#x6CE8;&#x91CA;&#xFF0C;&#x6253;&#x5F00;&#x6CE8;&#x91CA;&#x4E4B;&#x540E;&#x624D;&#x7B97;&#x542F;&#x7528;&#x8BE5;&#x5C5E;&#x6027;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x7684;&#x9879;&#x76EE;&#x5F88;&#x591A;&#xFF0C;&#x5219;&#x8BE5;&#x76EE;&#x5F55;&#x4F1A;&#x5F88;&#x5927;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x7684; C &#x76D8;&#x7A7A;&#x95F4;&#x4E0D;&#x591F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8FD8;&#x662F;&#x5EFA;&#x8BAE;&#x628A;&#x8BE5;&#x76EE;&#x5F55;&#x8F6C;&#x79FB;&#x5230;&#x5176;&#x4ED6;&#x76D8;&#x7B26;&#x4E0B;&#x3002;</p>
+</li>
+<li>idea.max.intellisense.filesize=2500&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x63D0;&#x9AD8;&#x5728;&#x7F16;&#x8F91;&#x5927;&#x6587;&#x4EF6;&#x65F6;&#x5019;&#x7684;&#x4EE3;&#x7801;&#x5E2E;&#x52A9;&#xFF0C;IntelliJ IDEA &#x5728;&#x7F16;&#x8F91;&#x5927;&#x6587;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#x8FD8;&#x662F;&#x5F88;&#x5BB9;&#x6613;&#x5361;&#x987F;&#x7684;&#x3002;</li>
+<li>idea.cycle.buffer.size=1024&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x63A7;&#x5236;&#x63A7;&#x5236;&#x53F0;&#x8F93;&#x51FA;&#x7F13;&#x5B58;&#x3002;&#x5982;&#x679C;&#x9047;&#x5230;&#x9879;&#x76EE;&#x5F00;&#x542F;&#x5F88;&#x591A;&#x8F93;&#x51FA;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x63A7;&#x5236;&#x53F0;&#x5F88;&#x5FEB;&#x5C31;&#x88AB;&#x5237;&#x6EE1;&#x4E86;&#xFF0C;&#x6CA1;&#x529E;&#x6CD5;&#x518D;&#x81EA;&#x52A8;&#x8F93;&#x51FA;&#x540E;&#x9762;&#x5185;&#x5BB9;&#xFF0C;&#x8FD9;&#x79CD;&#x9879;&#x76EE;&#x5EFA;&#x8BAE;&#x589E;&#x5927;&#x8BE5;&#x503C;&#x6216;&#x662F;&#x76F4;&#x63A5;&#x7981;&#x7528;&#x6389;&#xFF0C;&#x7981;&#x7528;&#x8BED;idea.cycle.buffer.size=disabled&#x3002;</li>
+</ol>
+<h2 id="&#xFF08;&#x4E09;&#xFF09;&#x5165;&#x95E8;&#x6848;&#x4F8B;&#x638C;&#x63E1;&#xFF0C;&#x7ECF;&#x5178;helloworld&#x8981;&#x6765;&#x4E86;">&#xFF08;&#x4E09;&#xFF09;<strong>&#x5165;&#x95E8;&#x6848;&#x4F8B;[&#x638C;&#x63E1;&#xFF0C;&#x7ECF;&#x5178;helloworld&#x8981;&#x6765;&#x4E86;]</strong></h2>
+<h3 id="1&#xFF0E;&#x521B;&#x5EFA;&#x666E;&#x901A;java&#x5DE5;&#x7A0B;">1&#xFF0E;<strong>&#x521B;&#x5EFA;&#x666E;&#x901A;Java&#x5DE5;&#x7A0B;</strong></h3>
+<h4 id="&#xFF08;1&#xFF09;&#x521B;&#x5EFA;&#x5DE5;&#x7A0B;&#x5E76;&#x7F16;&#x5199;&#x4EE3;&#x7801;">&#xFF08;1&#xFF09;<strong>&#x521B;&#x5EFA;&#x5DE5;&#x7A0B;&#x5E76;&#x7F16;&#x5199;&#x4EE3;&#x7801;</strong></h4>
+<p><img src="imageFolder/wps128.jpg" alt="img"> </p>
+<ol>
+<li><p>Create New Project &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x9879;&#x76EE;&#x3002;</p>
+</li>
+<li><p>Import Project &#x5BFC;&#x5165;&#x4E00;&#x4E2A;&#x5DF2;&#x6709;&#x9879;&#x76EE;&#x3002;</p>
+</li>
+<li><p>Open &#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x5DF2;&#x6709;&#x9879;&#x76EE;&#x3002;</p>
+</li>
+<li><p>Check out from Version Control &#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x7684;&#x9879;&#x76EE;&#x5730;&#x5740; Checkout Github &#x4E0A;&#x9762;&#x9879;&#x76EE;&#x6216;&#x662F;&#x5176;&#x4ED6; Git &#x6258;&#x7BA1;&#x670D;&#x52A1;&#x5668;&#x4E0A;&#x7684;&#x9879;&#x76EE;&#x3002;</p>
+</li>
+</ol>
+<p><img src="imageFolder/wps129.jpg" alt="img"> </p>
+<p>&#x70B9;&#x51FB;next</p>
+<p><img src="imageFolder/wps130.jpg" alt="img"> </p>
+<p>&#x6307;&#x5B9A;&#x540D;&#x79F0;&#x548C;&#x4F4D;&#x7F6E;</p>
+<p><img src="imageFolder/wps131.jpg" alt="img"> </p>
+<p><img src="imageFolder/wps132.jpg" alt="img"> </p>
+<p> &#x663E;&#x793A;&#x5DE5;&#x5177;</p>
+<p><img src="imageFolder/wps133.jpg" alt="img"> </p>
+<p>&#x754C;&#x9762;&#x8BF4;&#x660E;</p>
+<p><img src="imageFolder/wps134.jpg" alt="img"> </p>
+<ol>
+<li><p>&#x5DE5;&#x7A0B;&#x4E0B;&#x7684;src &#x76EE;&#x5F55;&#xFF0C;&#x7528;&#x4E8E;&#x5B58;&#x653E;&#x4EE3;&#x7801;&#x3002;</p>
+</li>
+<li><p>&#x5DE5;&#x7A0B;&#x4E0B;&#x7684;.idea &#x548C; .iml &#x6587;&#x4EF6;&#x90FD;&#x662F; IDEA &#x5DE5;&#x7A0B;&#x7279;&#x6709;&#x7684;&#x3002;</p>
+</li>
+<li><p>.idea &#x5373;&#x4E3A; Project &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x3002;</p>
+</li>
+<li><p>.iml &#x5373;&#x4E3A; Module &#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x3002;</p>
+</li>
+</ol>
+<p>&#x8BBE;&#x7F6E;&#x9879;&#x76EE;jdk&#x73AF;&#x5883;</p>
+<p><img src="imageFolder/wps135.jpg" alt="img"> </p>
+<p>&#x521B;&#x5EFA;&#x7C7B;</p>
+<p><img src="imageFolder/wps136.jpg" alt="img"><img src="imageFolder/wps137.jpg" alt="img"> </p>
+<p><img src="imageFolder/wps138.jpg" alt="img"> </p>
+<p>&#x7F16;&#x5199;&#x4EE3;&#x7801;</p>
+<p><img src="imageFolder/wps139.jpg" alt="img"> </p>
+<p><img src="imageFolder/wps140.jpg" alt="img"> </p>
+<p><img src="imageFolder/wps141.jpg" alt="img"> </p>
+<p><strong>&#x8BF4;&#x660E;&#xFF1A;&#x5728; IDEA &#x91CC;&#x5199;&#x5B8C;&#x4EE3;&#x7801;&#xFF0C;&#x4E0D;&#x7528;&#x70B9;&#x51FB;&#x4FDD;&#x5B58;&#x3002;</strong></p>
+<p>&#x8FD0;&#x884C;&#x4EE3;&#x7801;</p>
+<p><img src="imageFolder/wps142.jpg" alt="img"> </p>
+<p><img src="imageFolder/wps143.jpg" alt="img"> </p>
+<h2 id="&#xFF08;&#x56DB;&#xFF09;&#x5E38;&#x89C1;&#x8BBE;&#x7F6E;&#x5E94;&#x7528;&#xFF0C;&#x8BA9;idea&#x53D8;&#x8212;&#x9002;&#x7684;&#x5173;&#x952E;&#x4E4B;&#x4E00;"><strong>&#xFF08;&#x56DB;&#xFF09;&#x5E38;&#x89C1;&#x8BBE;&#x7F6E;[&#x5E94;&#x7528;&#xFF0C;&#x8BA9;IDEA&#x53D8;&#x8212;&#x9002;&#x7684;&#x5173;&#x952E;&#x4E4B;&#x4E00;]</strong></h2>
+<h3 id="1&#xFF0E;&#x663E;&#x793A;&#x5DE5;&#x5177;&#x680F;&#x56FE;&#x6807;">1&#xFF0E;<strong>&#x663E;&#x793A;&#x5DE5;&#x5177;&#x680F;&#x56FE;&#x6807;</strong></h3>
+<p><img src="imageFolder/wps177.jpg" alt="img"> </p>
+<h3 id="2&#xFF0E;&#x67E5;&#x770B;&#x9879;&#x76EE;&#x914D;&#x7F6E;&#x9879;&#x76EE;&#x6E90;&#x76EE;&#x5F55;&#x3001;&#x8F93;&#x51FA;&#x4EE5;&#x53CA;&#x6240;&#x4F9D;&#x8D56;&#x7684;jar">2&#xFF0E;<strong>&#x67E5;&#x770B;&#x9879;&#x76EE;&#x914D;&#x7F6E;(&#x9879;&#x76EE;&#x6E90;&#x76EE;&#x5F55;&#x3001;&#x8F93;&#x51FA;&#x4EE5;&#x53CA;&#x6240;&#x4F9D;&#x8D56;&#x7684;jar**</strong>)</h3>
+<p><img src="imageFolder/wps178.jpg" alt="img"> </p>
+<p>&#x6216;&#x8005;</p>
+<p><img src="imageFolder/wps179.jpg" alt="img"> </p>
+<p><img src="imageFolder/wps180.jpg" alt="img"> </p>
+<p> <strong>project language level&#x7F16;&#x8BD1;&#x7EA7;&#x522B;&#x662F;&#x7528;&#x6765;&#x544A;&#x8BC9;IDEA&#xFF0C;&#x5E94;&#x8BE5;&#x7528;&#x54EA;&#x79CD;&#x7EA7;&#x522B;&#x7684;&#x8BED;&#x6CD5;&#x68C0;&#x67E5;&#x9879;&#x76EE;&#x6765;&#x63D0;&#x793A;&#x7F16;&#x7801;&#x6216;&#x9519;&#x8BEF;&#xFF0C;&#x6240;&#x4EE5;&#x7EA7;&#x522B;&#x4E00;&#x822C;&#x4E0D;&#x80FD;&#x9AD8;&#x4E8E;jdk&#x7248;&#x672C;&#xFF0C;&#x5426;&#x5219;&#x5BB9;&#x6613;&#x5F15;&#x8D77;&#x8BEF;&#x62A5;&#x3002;</strong></p>
+<p><img src="imageFolder/wps181.jpg" alt="img"> </p>
+<h3 id="3&#xFF0E;&#x5168;&#x5C40;&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;&#xFF08;&#x914D;&#x7F6E;&#x9488;&#x5BF9;&#x6574;&#x4E2A;idea&#x751F;&#x6548;&#xFF09;">3&#xFF0E;<strong>&#x5168;&#x5C40;&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;&#xFF08;&#x914D;&#x7F6E;&#x9488;&#x5BF9;&#x6574;&#x4E2A;Idea&#x751F;&#x6548;&#xFF09;</strong></h3>
+<p><img src="imageFolder/wps182.jpg" alt="img"> </p>
+<p>&#x6216;&#x8005;</p>
+<p><img src="imageFolder/wps183.jpg" alt="img"> </p>
+<h3 id="4&#xFF0E;&#x666E;&#x901A;&#x8BBE;&#x7F6E;&#xFF08;&#x9488;&#x5BF9;project&#x7EA7;&#x522B;&#xFF0C;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#x7EA7;&#x522B;&#xFF09;">4&#xFF0E;<strong>&#x666E;&#x901A;&#x8BBE;&#x7F6E;&#xFF08;&#x9488;&#x5BF9;Project&#x7EA7;&#x522B;&#xFF0C;&#x5DE5;&#x4F5C;&#x7A7A;&#x95F4;&#x7EA7;&#x522B;&#xFF09;</strong></h3>
+<p><img src="imageFolder/wps184.jpg" alt="img"> </p>
+<p>&#x8BF4;&#x660E;</p>
+<p><img src="imageFolder/wps185.jpg" alt="img"> </p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x901A;&#x8FC7;settings&#x8FDB;&#x884C;&#x7684;&#x666E;&#x901A;&#x8BBE;&#x7F6E;&#x6709;&#x4E00;&#x4E9B;&#x53EF;&#x4EE5;&#x5168;&#x5C40;&#x751F;&#x6548;</p>
+<h3 id="5&#xFF0E;&#x66F4;&#x6539;&#x5B57;&#x4F53;&#x5927;&#x5C0F;&#x901A;&#x8FC7;ctrl&#x9F20;&#x6807;&#x6EDA;&#x8F6E;">5&#xFF0E;<strong>&#x66F4;&#x6539;&#x5B57;&#x4F53;&#x5927;&#x5C0F;&#x901A;&#x8FC7;ctrl+&#x9F20;&#x6807;&#x6EDA;&#x8F6E;</strong></h3>
+<p><img src="imageFolder/wps186.jpg" alt="img"> </p>
+<h3 id="6&#xFF0E;&#x4EE3;&#x7801;&#x63D0;&#x793A;&#x4E0D;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;">6&#xFF0E;<strong>&#x4EE3;&#x7801;&#x63D0;&#x793A;&#x4E0D;&#x533A;&#x5206;&#x5927;&#x5C0F;&#x5199;</strong></h3>
+<p><img src="imageFolder/wps187.jpg" alt="img"> </p>
+<h3 id="7&#xFF0E;&#x4FEE;&#x6539;&#x4E3B;&#x9898;">7&#xFF0E;<strong>&#x4FEE;&#x6539;&#x4E3B;&#x9898;</strong></h3>
+<p>l &#x4FEE;&#x6539;&#x4E3B;&#x9898;</p>
+<p><img src="imageFolder/wps188.jpg" alt="img"> </p>
+<h3 id="8&#xFF0E;&#x4FEE;&#x6539;&#x5B57;&#x4F53;">8&#xFF0E;<strong>&#x4FEE;&#x6539;&#x5B57;&#x4F53;</strong></h3>
+<p><img src="imageFolder/wps189.jpg" alt="img"> </p>
+<p>&#x4FEE;&#x6539;&#x63A7;&#x5236;&#x53F0;&#x8F93;&#x51FA;&#x5B57;&#x4F53;</p>
+<p><img src="imageFolder/wps190.jpg" alt="img"> </p>
+<h3 id="9&#xFF0E;&#x4FEE;&#x6539;&#x63A7;&#x5236;&#x53F0;&#x5B57;&#x4F53;&#x989C;&#x8272;">9&#xFF0E;<strong>&#x4FEE;&#x6539;&#x63A7;&#x5236;&#x53F0;&#x5B57;&#x4F53;&#x989C;&#x8272;</strong></h3>
+<p><img src="imageFolder/wps191.jpg" alt="img"> </p>
+<h3 id="10&#xFF0E;&#x4FEE;&#x6539;&#x6CE8;&#x91CA;&#x7684;&#x5B57;&#x4F53;&#x989C;&#x8272;&#x4E86;&#x89E3;">10&#xFF0E;<strong>&#x4FEE;&#x6539;&#x6CE8;&#x91CA;&#x7684;&#x5B57;&#x4F53;&#x989C;&#x8272;(&#x4E86;&#x89E3;)</strong></h3>
+<p><img src="imageFolder/wps192.jpg" alt="img"> </p>
+<ol>
+<li><p>Doc Comment &#x2013; Text&#xFF1A;&#x4FEE;&#x6539;&#x6587;&#x6863;&#x6CE8;&#x91CA;&#x7684;&#x5B57;&#x4F53;&#x989C;&#x8272;</p>
+</li>
+<li><p>Block comment(&#x5757;&#x6CE8;&#x91CA;)&#xFF1A;&#x4FEE;&#x6539;&#x591A;&#x884C;&#x6CE8;&#x91CA;&#x7684;&#x5B57;&#x4F53;&#x989C;&#x8272;</p>
+</li>
+<li><p>Line comment&#xFF1A;&#x4FEE;&#x6539;&#x5F53;&#x884C;&#x6CE8;&#x91CA;&#x7684;&#x5B57;&#x4F53;&#x989C;&#x8272;</p>
+</li>
+</ol>
+<h3 id="11&#xFF0E;&#x8BBE;&#x7F6E;&#x6587;&#x4EF6;&#x7F16;&#x7801;&#xFF08;&#x91CD;&#x8981;&#xFF09;">11&#xFF0E;<strong>&#x8BBE;&#x7F6E;&#x6587;&#x4EF6;&#x7F16;&#x7801;&#xFF08;&#x91CD;&#x8981;&#xFF09;</strong></h3>
+<p><img src="imageFolder/wps193.jpg" alt="img"> </p>
+<p>&#x8BF4;&#x660E;&#xFF1A;</p>
+<ol>
+<li>Transparent native-to-ascii conversion &#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x8F6C;&#x6362; ASCII&#x7801;&#x8868;&#xFF0C;&#x4E00;&#x822C;&#x90FD;&#x8981;&#x52FE;&#x9009;&#xFF0C;&#x4E0D;&#x7136; Properties &#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x6CE8;&#x91CA;&#x663E;&#x793A;&#x7684;&#x90FD;&#x4E0D;&#x4F1A;&#x662F;&#x4E2D;&#x6587;&#x3002;</li>
+<li>BOM for UTF-8 &#x662F;&#x8BA9;&#x7F16;&#x7801;&#x5E26;bom&#x7B7E;&#x540D;&#xFF0C;&#x544A;&#x8BC9;&#x7F16;&#x8F91;&#x5668;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x91C7;&#x53D6;&#x4F55;&#x79CD;&#x7F16;&#x7801;&#xFF08;UTF-16&#xFF1F;UTF-32&#xFF1F;&#xFF09;&#xFF0C;&#x4F1A;&#x4EA7;&#x751F;&#x66F4;&#x591A;&#x8F93;&#x51FA;&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x822C;&#x4E0D;&#x9009;&#xFF0C;&#x9009;&#x62E9;&#x540E;&#x4F1A;&#x7F16;&#x8BD1;&#x62A5;&#x9519;&#x3002;</li>
+</ol>
+<h3 id="12&#xFF0E;&#x8BBE;&#x7F6E;&#x9F20;&#x6807;&#x60AC;&#x6D6E;&#x63D0;&#x793A;">12&#xFF0E;<strong>&#x8BBE;&#x7F6E;&#x9F20;&#x6807;&#x60AC;&#x6D6E;&#x63D0;&#x793A;</strong></h3>
+<p><img src="imageFolder/wps194.jpg" alt="img"> </p>
+<h3 id="13&#xFF0E;&#x81EA;&#x52A8;&#x5BFC;&#x5305;&#x4F18;&#x5316;&#x5BFC;&#x5305;">13&#xFF0E;<strong>&#x81EA;&#x52A8;&#x5BFC;&#x5305;&amp;&#x4F18;&#x5316;&#x5BFC;&#x5305;</strong></h3>
+<p><img src="imageFolder/wps195.jpg" alt="img"> </p>
+<h3 id="14&#xFF0E;&#x8BBE;&#x7F6E;&#x81EA;&#x52A8;&#x7F16;&#x8BD1;">14&#xFF0E;<strong>&#x8BBE;&#x7F6E;&#x81EA;&#x52A8;&#x7F16;&#x8BD1;</strong></h3>
+<p><img src="imageFolder/wps196.jpg" alt="img"> </p>
+<p><img src="imageFolder/wps197.jpg" alt="img"> </p>
+<h3 id="15&#xFF0E;&#x5728;editor&#x8FDB;&#x884C;&#x7A7A;&#x683C;&#x4E0E;tab&#x7F29;&#x8FDB;&#x8BBE;&#x7F6E;">15&#xFF0E;<strong>&#x5728;Editor&#x8FDB;&#x884C;&#x7A7A;&#x683C;&#x4E0E;tab&#x7F29;&#x8FDB;&#x8BBE;&#x7F6E;</strong></h3>
+<p><img src="imageFolder/wps198.jpg" alt="img"> </p>
+<p><img src="imageFolder/wps199.jpg" alt="img"> </p>
+<h3 id="16&#xFF0E;&#x663E;&#x793A;&#x884C;&#x53F7;&#x548C;&#x65B9;&#x6CD5;&#x5206;&#x5272;&#x7EBF;">16&#xFF0E;<strong>&#x663E;&#x793A;&#x884C;&#x53F7;&#x548C;&#x65B9;&#x6CD5;&#x5206;&#x5272;&#x7EBF;</strong></h3>
+<p><img src="imageFolder/wps200.jpg" alt="img"> </p>
+<h3 id="17&#xFF0E;&#x53BB;&#x9664;&#x5355;&#x8BCD;&#x62FC;&#x5199;&#x68C0;&#x67E5;">17&#xFF0E;<strong>&#x53BB;&#x9664;&#x5355;&#x8BCD;&#x62FC;&#x5199;&#x68C0;&#x67E5;</strong></h3>
+<p><img src="imageFolder/wps201.jpg" alt="img"> </p>
+<h3 id="18&#xFF0E;&#x6E05;&#x7406;&#x7F13;&#x5B58;&#x548C;&#x7D22;&#x5F15;">18&#xFF0E;<strong>&#x6E05;&#x7406;&#x7F13;&#x5B58;&#x548C;&#x7D22;&#x5F15;</strong></h3>
+<p>&#x968F;&#x7740;&#x9879;&#x76EE;&#x8D8A;&#x6765;&#x8D8A;&#x5927;&#xFF0C;&#x65B0;&#x7F16;&#x5199;&#x7684;&#x4EE3;&#x7801;&#x6CA1;&#x6709;&#x7ACB;&#x5373;&#x751F;&#x6548;&#xFF08;&#x5F15;&#x7528;&#x7B49;&#xFF09;&#xFF0C;&#x6B64;&#x65F6;&#x53EF;&#x4EE5;&#x6E05;&#x7406;&#x7F13;&#x5B58;&#x548C;&#x7D22;&#x5F15;</p>
+<p><img src="imageFolder/wps202.jpg" alt="img"> </p>
+<p>&#x901A;&#x8FC7;&#x4E0A;&#x9762;&#x65B9;&#x5F0F;&#x6E05;&#x9664;&#x7F13;&#x5B58;&#x3001;&#x7D22;&#x5F15;&#x672C;&#x8D28;&#x4E5F;&#x5C31;&#x662F;&#x53BB;&#x5220;&#x9664; C &#x76D8;&#x4E0B;&#x7684; system &#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x5BF9;&#x5E94;&#x7684;&#x6587;&#x4EF6;&#x800C;&#x5DF2;&#xFF0C;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x7528;&#x4E0A;&#x8FF0;&#x65B9;&#x6CD5;&#x4E5F;&#x53EF;&#x4EE5;&#x5220;&#x9664;&#x6574;&#x4E2A; system &#x3002;&#x5F53; IntelliJ IDEA &#x518D;&#x6B21;&#x542F;&#x52A8;&#x9879;&#x76EE;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x91CD;&#x65B0;&#x521B;&#x5EFA;&#x65B0;&#x7684; system &#x76EE;&#x5F55;&#x4EE5;&#x53CA;&#x5BF9;&#x5E94;&#x9879;&#x76EE;&#x7F13;&#x5B58;&#x548C;&#x7D22;&#x5F15;&#x3002;&#x5982;&#x679C;&#x4F60;&#x9047;&#x5230;&#x4E86;&#x56E0;&#x4E3A;&#x7D22;&#x5F15;&#x3001;&#x7F13;&#x5B58;&#x574F;&#x4E86;&#x4EE5;&#x81F3;&#x4E8E;&#x9879;&#x76EE;&#x6253;&#x4E0D;&#x5F00;&#xFF0C;&#x90A3;&#x4E5F;&#x5EFA;&#x8BAE;&#x4F60;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5220;&#x9664; system &#x76EE;&#x5F55;&#xFF0C;&#x4E00;&#x822C;&#x8FD9;&#x6837;&#x90FD;&#x53EF;&#x4EE5;&#x5F88;&#x597D;&#x5730;&#x89E3;&#x51B3;&#x4F60;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<h3 id="19&#xFF0E;&#x8BBE;&#x7F6E;&#x76EE;&#x5F55;&#x6298;&#x53E0;">19&#xFF0E;<strong>&#x8BBE;&#x7F6E;&#x76EE;&#x5F55;&#x6298;&#x53E0;</strong></h3>
+<p><img src="imageFolder/wps203.jpg" alt="img"> </p>
+<h3 id="20&#xFF0E;&#x5B9A;&#x4F4D;&#x5230;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x6240;&#x5728;&#x76EE;&#x5F55;">20&#xFF0E;<strong>&#x5B9A;&#x4F4D;&#x5230;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x6240;&#x5728;&#x76EE;&#x5F55;</strong><img src="imageFolder/wps204.jpg" alt="img"></h3>
+<h3 id="21&#xFF0E;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x751F;&#x6210;&#x6A21;&#x677F;">21&#xFF0E;<strong>&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x751F;&#x6210;&#x6A21;&#x677F;</strong></h3>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@author</span> ${USER}
+ * <span class="hljs-doctag">@date</span> ${DATE} ${TIME}
+ * <span class="hljs-doctag">@description</span> 
+ */</span>
+</code></pre>
+<p><img src="imageFolder/wps205.jpg" alt="img"> </p>
+<h3 id="22&#xFF0E;debug">22&#xFF0E;<strong>Debug</strong></h3>
+<p><img src="imageFolder/wps206.jpg" alt="img"> </p>
+<p><img src="imageFolder/wps207.jpg" alt="img"> </p>
+<h3 id="23&#xFF0E;&#x7701;&#x7535;&#x6A21;&#x5F0F;">23&#xFF0E;<strong>&#x7701;&#x7535;&#x6A21;&#x5F0F;</strong></h3>
+<p><img src="imageFolder/wps208.png" alt="img">    &#x5982;&#x4E0A;&#x56FE;&#x6807;&#x6CE8; 1 &#x6240;&#x793A;&#xFF0C;IntelliJ IDEA &#x6709;&#x4E00;&#x79CD;&#x53EB;&#x505A; &#x7701;&#x7535;&#x6A21;&#x5F0F; &#x7684;&#x72B6;&#x6001;&#xFF0C;&#x5F00;&#x542F;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x4E4B;&#x540E; IntelliJ IDEA &#x4F1A;&#x5173;&#x6389;&#x4EE3;&#x7801;&#x68C0;&#x67E5;&#x548C;&#x4EE3;&#x7801;&#x63D0;&#x793A;&#x7B49;&#x529F;&#x80FD;&#x3002;&#x6240;&#x4EE5;&#x4E00;&#x822C;&#x6211;&#x4E5F;&#x4F1A;&#x8BA4;&#x4E3A;&#x8FD9;&#x662F;&#x4E00;&#x79CD; &#x9605;&#x8BFB;&#x6A21;&#x5F0F;&#x3002;&#x5982;&#x679C;&#x4F60;&#x5728;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#x9047;&#x5230;&#x7A81;&#x7136;&#x4EE3;&#x7801;&#x6587;&#x4EF6;&#x4E0D;&#x80FD;&#x8FDB;&#x884C;&#x68C0;&#x67E5;&#x548C;&#x63D0;&#x793A;&#x53EF;&#x4EE5;&#x6765;&#x770B;&#x770B;&#x8FD9;&#x91CC;&#x662F;&#x5426;&#x6709;&#x5F00;&#x542F;&#x8BE5;&#x529F;&#x80FD;&#x3002; </p>
+<h3 id="24&#xFF0E;&#x663E;&#x793A;&#x5185;&#x5B58;&#x5360;&#x7528;">24&#xFF0E;<strong>&#x663E;&#x793A;&#x5185;&#x5B58;&#x5360;&#x7528;</strong></h3>
+<p><img src="imageFolder/wps209.jpg" alt="img"> </p>
+<p><img src="imageFolder/wps210.jpg" alt="img"> </p>
+<h3 id="25&#xFF0E;&#x8BBE;&#x7F6E;&#x6C34;&#x5E73;&#x6216;&#x8005;&#x5782;&#x76F4;&#x5206;&#x5C4F;&#x7F16;&#x8F91;">25&#xFF0E;<strong>&#x8BBE;&#x7F6E;&#x6C34;&#x5E73;&#x6216;&#x8005;&#x5782;&#x76F4;&#x5206;&#x5C4F;&#x7F16;&#x8F91;</strong></h3>
+<p><img src="imageFolder/wps211.jpg" alt="img"> </p>
+<p><img src="imageFolder/wps212.jpg" alt="img"> </p>
+<h3 id="26&#xFF0E;&#x8BBE;&#x7F6E;&#x542F;&#x52A8;idea&#x6216;&#x6253;&#x5F00;&#x9879;&#x76EE;&#x65F6;&#x63D0;&#x793A;">26&#xFF0E;<strong>&#x8BBE;&#x7F6E;&#x542F;&#x52A8;idea&#x6216;&#x6253;&#x5F00;&#x9879;&#x76EE;&#x65F6;&#x63D0;&#x793A;</strong></h3>
+<p><img src="imageFolder/wps213.jpg" alt="img"> </p>
+<h3 id="27&#xFF0E;&#x8BBE;&#x7F6E;&#x4EE3;&#x7801;&#x73AF;&#x7ED5;">27&#xFF0E;<strong>&#x8BBE;&#x7F6E;&#x4EE3;&#x7801;&#x73AF;&#x7ED5;</strong></h3>
+<p>Ctrl + Alt + T </p>
+<p><img src="imageFolder/wps214.jpg" alt="img"> </p>
+<h3 id="28&#xFF0E;&#x53D6;&#x6D88;&#x66F4;&#x65B0;">28&#xFF0E;<strong>&#x53D6;&#x6D88;&#x66F4;&#x65B0;</strong></h3>
+<p><img src="imageFolder/wps215.jpg" alt="img"> </p>
+<h3 id="29&#xFF0E;&#x67E5;&#x770B;&#x672C;&#x5730;&#x6587;&#x4EF6;&#x7F16;&#x8F91;&#x5386;&#x53F2;">29&#xFF0E;<strong>&#x67E5;&#x770B;&#x672C;&#x5730;&#x6587;&#x4EF6;&#x7F16;&#x8F91;&#x5386;&#x53F2;</strong></h3>
+<p>&#x7C7B;&#x4F3C;ctrl+z&#x529F;&#x80FD;&#x7684;&#x5347;&#x7EA7;</p>
+<p><img src="imageFolder/wps216.jpg" alt="img"> </p>
+<h3 id="30&#xFF0E;&#x751F;&#x6210;-javadoc">30&#xFF0E;<strong>&#x751F;&#x6210; javadoc</strong></h3>
+<p><img src="imageFolder/wps217.jpg" alt="img"> </p>
+<p><img src="imageFolder/wps218.jpg" alt="img"> </p>
+<p>zh_CN</p>
+<p>-encoding UTF-8 -charset UTF-8</p>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x5982;&#x679C;&#x9879;&#x76EE;&#x8981;&#x6C42;&#x7684;JDK&#x4E0E;&#x5B9E;&#x9645;&#x73AF;&#x5883;&#x5B89;&#x88C5;&#x7684;JDK&#x4E0D;&#x5339;&#x914D;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x5BFC;&#x51FA;&#x5931;&#x8D25;&#xFF0C;&#x9700;&#x8981;&#x8C03;&#x6574;JDK&#x7248;&#x672C;&#x4E00;&#x81F4;&#x3002;</p>
+<h3 id="31&#xFF0E;&#x81EA;&#x5B9A;&#x4E49;&#x4EE3;&#x7801;&#x6A21;&#x7248;">31&#xFF0E;<strong>&#x81EA;&#x5B9A;&#x4E49;&#x4EE3;&#x7801;&#x6A21;&#x7248;</strong></h3>
+<p>&#x5173;&#x4E8E;&#x6A21;&#x677F;(Templates)</p>
+<p>&#x4EE3;&#x7801;&#x6A21;&#x677F;&#x7684;&#x539F;&#x7406;&#x5C31;&#x662F;&#x914D;&#x7F6E;&#x4E00;&#x4E9B;&#x5E38;&#x7528;&#x4EE3;&#x7801;&#x5B57;&#x6BCD;&#x7F29;&#x5199;&#xFF0C;&#x5728;&#x8F93;&#x5165;&#x7B80;&#x5199;&#x65F6;&#x53EF;&#x4EE5;&#x51FA;&#x73B0;&#x4F60;&#x9884;&#x5B9A;&#x4E49;&#x7684;&#x56FA;&#x5B9A;&#x6A21;&#x5F0F;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4F7F;&#x5F97;&#x5F00;&#x53D1;&#x6548;&#x7387;&#x5927;&#x5927;&#x63D0;&#x9AD8;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x53EF;&#x4EE5;&#x589E;&#x52A0;&#x4E2A;&#x6027;&#x5316;&#x3002;</p>
+<p>&#x6700;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#x5C31;&#x662F;&#x5728; Java &#x4E2D;&#x8F93;&#x5165; sout &#x4F1A;&#x51FA;&#x73B0; System.out.println();</p>
+<p>Idea&#x4E2D;&#x4EE3;&#x7801;&#x6A21;&#x677F;&#x6709;&#x4E24;&#x7C7B;Live Templates&#x548C;Postfix Completion</p>
+<p>&#x4E8C;&#x8005;&#x7684;&#x533A;&#x522B;&#xFF1A;Live Templates &#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#xFF0C;&#x800C; Postfix Completion &#x4E0D;&#x53EF;&#x4EE5;&#x3002;&#x540C;&#x65F6;&#xFF0C;&#x6709;&#x4E9B;&#x64CD;&#x4F5C;&#x4E8C;&#x8005;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x6A21;&#x677F;&#xFF0C;Postfix Templates &#x8F83; Live Templates &#x80FD;&#x5FEB; 0.01 &#x79D2;</p>
+<p>&#x5B98;&#x65B9;&#x4ECB;&#x7ECD; Live Templates&#xFF1A;</p>
+<p><a href="https://www.jetbrains.com/help/idea/using-live-templates.html" target="_blank">https://www.jetbrains.com/help/idea/using-live-templates.html</a></p>
+<p>Postfix Completion</p>
+<p><img src="imageFolder/wps219.jpg" alt="img"> </p>
+<p>Live Templates</p>
+<p><img src="imageFolder/wps220.jpg" alt="img"> </p>
+<ol>
+<li><p>tli&#x904D;&#x5386;&#x96C6;&#x5408;/itar&#x904D;&#x5386;&#x6570;&#x7EC4;&#xFF08;&#x4F7F;&#x7528;&#x8F83;&#x591A;&#xFF09;</p>
+</li>
+<li><p>psvm :  &#x53EF;&#x751F;&#x6210; main  &#x65B9;&#x6CD5; </p>
+</li>
+<li><p>sout : System.out.println()  &#x5FEB;&#x6377;&#x8F93;&#x51FA;</p>
+</li>
+<li><p>soutp=System.out.println(&quot;&#x65B9;&#x6CD5;&#x5F62;&#x53C2;&#x540D; = &quot; + &#x5F62;&#x53C2;&#x540D;);</p>
+</li>
+<li><p>soutv=System.out.println(&quot;&#x53D8;&#x91CF;&#x540D; = &quot; + &#x53D8;&#x91CF;);</p>
+</li>
+<li><p>soutm=System.out.println(&quot;&#x5F53;&#x524D;&#x7C7B;&#x540D;.&#x5F53;&#x524D;&#x65B9;&#x6CD5;&quot;);</p>
+</li>
+<li><p>&#x201C;abc&#x201D;.sout =&gt; System.out.println(&quot;abc&quot;);</p>
+</li>
+<li><p>fori :  &#x53EF;&#x751F;&#x6210; for  &#x5FAA;&#x73AF;</p>
+</li>
+<li><p>iter&#xFF1A;&#x53EF;&#x751F;&#x6210;&#x589E;&#x5F3A; for &#x5FAA;&#x73AF;</p>
+</li>
+<li><p>itar&#xFF1A;&#x53EF;&#x751F;&#x6210;&#x666E;&#x901A; for &#x5FAA;&#x73AF;</p>
+</li>
+<li><p>list.for :  &#x53EF;&#x751F;&#x6210;&#x96C6;&#x5408; list &#x7684; &#x7684; for  &#x5FAA;&#x73AF;</p>
+</li>
+<li><p>List<string> list = new ArrayList<string>();</string></string></p>
+</li>
+<li><p>&#x8F93;&#x5165;: list.for &#x5373;&#x53EF;&#x8F93;&#x51FA;for(String s:list){}</p>
+</li>
+<li><p>list.fori &#x6216; list.forr</p>
+</li>
+<li><p>ifn &#xFF1A;&#x53EF;&#x751F;&#x6210; if(xxx = null)</p>
+</li>
+<li><p>inn&#xFF1A;&#x53EF;&#x751F;&#x6210; if(xxx != null) &#x6216; xxx.nn &#x6216; xxx.null</p>
+</li>
+<li><p>prsf &#xFF1A;&#x53EF;&#x751F;&#x6210; private static final</p>
+</li>
+<li><p>psf&#xFF1A;&#x53EF;&#x751F;&#x6210; public static final</p>
+</li>
+<li><p>psfi&#xFF1A;&#x53EF;&#x751F;&#x6210; public static final int</p>
+</li>
+<li><p>psfs&#xFF1A;&#x53EF;&#x751F;&#x6210; public static final String</p>
+</li>
+</ol>
+<p> &#x4E24;&#x79CD;&#x6A21;&#x677F;&#x7684;&#x533A;&#x522B;&#xFF1A;&#x6709;&#x4E9B;&#x64CD;&#x4F5C;&#x4E8C;&#x8005;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x6A21;&#x677F;&#xFF0C;Postfix Templates &#x8F83; Live Templates &#x80FD;&#x5FEB; 0.01 &#x79D2;</p>
+<p>&#x7ECF;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p> <img src="imageFolder/1576482299207.png" alt="1576482299207"></p>
+<p>&#x4FEE;&#x6539;&#x73B0;&#x6709;&#x6A21;&#x677F; &#x4FEE;&#x6539;&#x73B0;&#x6709;&#x6A21;&#x677F;:Live Templates</p>
+<p>&#x5982;&#x679C;&#x5BF9;&#x4E8E;&#x73B0;&#x6709;&#x7684;&#x6A21;&#x677F;&#xFF0C;&#x611F;&#x89C9;&#x4E0D;&#x4E60;&#x60EF;&#x3001;&#x4E0D;&#x9002;&#x5E94;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#xFF1A;</p>
+<p>&#x4FEE;&#x6539; 1 &#xFF1A;</p>
+<p><img src="imageFolder/wps222.jpg" alt="img"> </p>
+<p>&#x4FEE;&#x6539; 2 &#xFF1A;</p>
+<p><img src="imageFolder/wps223.jpg" alt="img"> </p>
+<p>&#x7C7B;&#x4F3C;&#x7684;&#x8FD8;&#x53EF;&#x4EE5;&#x4FEE;&#x6539; psfs&#x3002;</p>
+<p>IDEA &#x63D0;&#x4F9B;&#x4E86;&#x5F88;&#x591A;&#x73B0;&#x6210;&#x7684; Templates&#x3002;&#x4F46;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x7684;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x65B0;&#x7684;Template&#x3002;</p>
+<p><img src="imageFolder/wps224.jpg" alt="img"> </p>
+<p>&#x5148;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x6A21;&#x677F;&#x7684;&#x7EC4;&#xFF1A;</p>
+<p><img src="imageFolder/wps225.jpg" alt="img"> </p>
+<p>&#x9009;&#x4E2D;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6A21;&#x677F;&#x7EC4;&#xFF0C;&#x70B9;&#x51FB;&#x201D;+&#x201D;&#x6765;&#x5B9A;&#x4E49;&#x6A21;&#x677F;&#x3002;</p>
+<p><img src="imageFolder/wps226.jpg" alt="img"> </p>
+<p><img src="imageFolder/wps227.jpg" alt="img"> </p>
+<pre><code class="lang-java"><span class="hljs-meta">@Test</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> test$VAR1$(){
+       $END$ 
+}
+</code></pre>
+<ol>
+<li><p>Abbreviatio&#xFF1A;&#x6A21;&#x677F;&#x7684;&#x7F29;&#x7565;&#x540D;&#x79F0;</p>
+</li>
+<li><p>Description&#xFF1A;&#x6A21;&#x677F;&#x7684;&#x63CF;&#x8FF0;</p>
+</li>
+<li><p>Template text&#xFF1A;&#x6A21;&#x677F;&#x7684;&#x4EE3;&#x7801;&#x7247;&#x6BB5;</p>
+</li>
+<li><p>&#x5E94;&#x7528;&#x8303;&#x56F4;&#xFF1A;&#x6BD4;&#x5982;&#x70B9;&#x51FB; Define&#xFF0C;&#x7136;&#x540E;&#x5728; java &#x7C7B;&#x6587;&#x4EF6;&#x4E2D;&#x5E94;&#x7528;&#x5373;&#x53EF;</p>
+</li>
+</ol>
+<h2 id="&#xFF08;&#x4E94;&#xFF09;idea&#x5FEB;&#x6377;&#x952E;&#x5E94;&#x7528;&#xFF0C;&#x8BA9;idea&#x53D8;&#x8212;&#x9002;&#x7684;&#x5173;&#x952E;&#x4E4B;&#x4E8C;">&#xFF08;&#x4E94;&#xFF09;<strong>IDEA&#x5FEB;&#x6377;&#x952E;[&#x5E94;&#x7528;&#xFF0C;&#x8BA9;IDEA&#x53D8;&#x8212;&#x9002;&#x7684;&#x5173;&#x952E;&#x4E4B;&#x4E8C;]</strong></h2>
+<h3 id="1&#xFF0E;idea&#x539F;&#x751F;&#x5FEB;&#x6377;&#x952E;">1&#xFF0E;<strong>Idea&#x539F;&#x751F;&#x5FEB;&#x6377;&#x952E;</strong></h3>
+<table>
+<thead>
+<tr>
+<th><strong>&#x5FEB;&#x6377;&#x952E;</strong></th>
+<th><strong>&#x4ECB;&#x7ECD;</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alt + Enter</td>
+<td>&#x6839;&#x636E;&#x5149;&#x6807;&#x5904;&#x6240;&#x5728;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x63D0;&#x4F9B;&#x5FEB;&#x901F;&#x4FEE;&#x590D;&#x9009;&#x62E9;&#xFF0C;&#x5149;&#x6807;&#x653E;&#x5728;&#x7684;&#x4F4D;&#x7F6E;&#x4E0D;&#x540C;&#x63D0;&#x793A;&#x7684;&#x7ED3;&#x679C;&#x4E5F;&#x4E0D;&#x540C;&#xFF08;&#x4E07;&#x80FD;&#x4FEE;&#x590D;&#x5FEB;&#x6377;&#x952E;&#xFF0C;&#x540C;&#x65F6;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x751F;&#x6210;&#x672C;&#x5730;&#x53D8;&#x91CF;==eclipse&#x4E2D;&#x7684;ctrl+1&#xFF09;&#x6CE8;&#x610F;&#xFF1A;&#x975E;&#x4E2A;&#x4EBA;&#x7F16;&#x7801;&#x95EE;&#x9898;&#x5BFC;&#x81F4;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x4F7F;&#x7528;&#x8BE5;&#x5FEB;&#x6377;&#x952E;&#x4FEE;&#x590D;</td>
+</tr>
+<tr>
+<td>Alt + Insert</td>
+<td>&#x4EE3;&#x7801;&#x81EA;&#x52A8;&#x751F;&#x6210;&#xFF0C;&#x5982;&#x751F;&#x6210;&#x5BF9;&#x8C61;&#x7684; set / get &#x65B9;&#x6CD5;&#xFF0C;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;toString() &#x7B49;</td>
+</tr>
+<tr>
+<td>Shift + Shift</td>
+<td>&#x67E5;&#x627E;&#x6240;&#x6709;&#x6587;&#x4EF6;</td>
+</tr>
+<tr>
+<td>Ctrl + D</td>
+<td>&#x590D;&#x5236;&#x5F53;&#x524D;&#x884C;&#x5230;&#x4E0B;&#x4E00;&#x884C;</td>
+</tr>
+<tr>
+<td>Ctrl + Y</td>
+<td>&#x5220;&#x9664;&#x5F53;&#x524D;&#x884C;</td>
+</tr>
+<tr>
+<td>Alt + &#x5DE6;&#x65B9;&#x5411;&#x952E;</td>
+<td>&#x5411;&#x5DE6;&#x5207;&#x6362;tab</td>
+</tr>
+<tr>
+<td>Alt + &#x53F3;&#x65B9;&#x5411;&#x952E;</td>
+<td>&#x5411;&#x53F3;&#x5207;&#x6362;tab</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + &#x5DE6;&#x65B9;&#x5411;&#x952E;</td>
+<td>&#x5FEB;&#x901F;&#x8FD4;&#x56DE;&#x4E0A;&#x6B21;&#x67E5;&#x770B;&#x4EE3;&#x7801;&#x7684;&#x4F4D;&#x7F6E;&#xFF08;Back&#xFF09;</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + &#x53F3;&#x65B9;&#x5411;&#x952E;</td>
+<td>&#x5FEB;&#x901F;&#x8FD4;&#x56DE;&#x4E0A;&#x6B21;&#x67E5;&#x770B;&#x4EE3;&#x7801;&#x7684;&#x4F4D;&#x7F6E;&#xFF08;Forward&#xFF09;</td>
+</tr>
+<tr>
+<td>Ctrl + F</td>
+<td>&#x5728;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x6587;&#x672C;&#x67E5;&#x627E;</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + F</td>
+<td>&#x5728;&#x5F53;&#x524D;&#x9879;&#x76EE;&#x8FDB;&#x884C;&#x6587;&#x672C;&#x67E5;&#x627E;</td>
+</tr>
+<tr>
+<td>Ctrl + R</td>
+<td>&#x5728;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x6587;&#x672C;&#x66FF;&#x6362;</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + R</td>
+<td>&#x5728;&#x5F53;&#x524D;&#x9879;&#x76EE;&#x8FDB;&#x884C;&#x6587;&#x672C;&#x66FF;&#x6362;</td>
+</tr>
+<tr>
+<td>Ctrl + /</td>
+<td>&#x6CE8;&#x91CA;&#x5149;&#x6807;&#x6240;&#x5728;&#x884C;&#x4EE3;&#x7801;&#xFF0C;&#x4F1A;&#x6839;&#x636E;&#x5F53;&#x524D;&#x4E0D;&#x540C;&#x6587;&#x4EF6;&#x7C7B;&#x578B;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x6CE8;&#x91CA;&#x7B26;&#x53F7;</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + /</td>
+<td>&#x4EE3;&#x7801;&#x5757;&#x6CE8;&#x91CA;</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + L</td>
+<td>&#x683C;&#x5F0F;&#x5316;&#x4EE3;&#x7801;&#xFF0C;&#x53EF;&#x4EE5;&#x5BF9;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x548C;&#x6574;&#x4E2A;&#x5305;&#x76EE;&#x5F55;&#x4F7F;&#x7528;</td>
+</tr>
+<tr>
+<td>Alt + 7</td>
+<td>&#x663E;&#x793A;&#x5F53;&#x524D;&#x7C7B;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x3001;&#x5168;&#x5C40;&#x5E38;&#x91CF;&#xFF0C;&#x65B9;&#x6CD5;&#x8FD8;&#x5305;&#x62EC;&#x5F62;&#x53C2;&#x548C;&#x8FD4;&#x56DE;&#x503C;</td>
+</tr>
+<tr>
+<td>Alt + F7</td>
+<td>&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x4E00;&#x4E2A;Java&#x7C7B;&#x3001;&#x65B9;&#x6CD5;&#x6216;&#x53D8;&#x91CF;&#x7684;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x60C5;&#x51B5;&#x3002;</td>
+</tr>
+<tr>
+<td>ctrl + alt +b</td>
+<td>&#x67E5;&#x770B;&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;</td>
+</tr>
+<tr>
+<td>ctrl + h</td>
+<td>&#x67E5;&#x770B;&#x7C7B;&#x6216;&#x63A5;&#x53E3;&#x7684;&#x7EE7;&#x627F;&#x5173;&#x7CFB;</td>
+</tr>
+<tr>
+<td>F7</td>
+<td>&#x5728; Debug &#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x8FDB;&#x5165;&#x4E0B;&#x4E00;&#x6B65;&#xFF0C;&#x5982;&#x679C;&#x5F53;&#x524D;&#x884C;&#x65AD;&#x70B9;&#x662F;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5219;&#x8FDB;&#x5165;&#x5F53;&#x524D;&#x65B9;&#x6CD5;&#x4F53;&#x5185;&#xFF0C;Step Into</td>
+</tr>
+<tr>
+<td>F8</td>
+<td>&#x5728; Debug &#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x8FDB;&#x5165;&#x4E0B;&#x4E00;&#x6B65;&#xFF0C;&#x5982;&#x679C;&#x5F53;&#x524D;&#x884C;&#x65AD;&#x70B9;&#x662F;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5219;&#x4E0D;&#x8FDB;&#x5165;&#x5F53;&#x524D;&#x65B9;&#x6CD5;&#x4F53;&#x5185;&#xFF0C;Step Over</td>
+</tr>
+<tr>
+<td>F9</td>
+<td>&#x5728; Debug &#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;&#x6062;&#x590D;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x8BE5;&#x65AD;&#x70B9;&#x4E0B;&#x9762;&#x4EE3;&#x7801;&#x8FD8;&#x6709;&#x65AD;&#x70B9;&#x5219;&#x505C;&#x5728;&#x4E0B;&#x4E00;&#x4E2A;&#x65AD;&#x70B9;&#x4E0A;&#xFF0C;Resume</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2&#xFF0E;&#x8BBE;&#x7F6E;eclipse&#x98CE;&#x683C;&#x5FEB;&#x6377;&#x952E;">2&#xFF0E;<strong>&#x8BBE;&#x7F6E;eclipse&#x98CE;&#x683C;&#x5FEB;&#x6377;&#x952E;</strong></h3>
+<p><img src="imageFolder/wps228.jpg" alt="img"> </p>
+<p>&#x5E38;&#x7528;&#x5FEB;&#x6377;&#x952E;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x63D0;&#x793A;&#x8865;&#x5168;</th>
+<th>Alt + /</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x5355;&#x884C;&#x6CE8;&#x91CA;</td>
+<td>ctrl + /</td>
+</tr>
+<tr>
+<td>&#x591A;&#x884C;&#x6CE8;&#x91CA;</td>
+<td>ctrl + shift + /</td>
+</tr>
+<tr>
+<td>&#x5411;&#x4E0B;&#x590D;&#x5236;&#x4E00;&#x884C;</td>
+<td>Ctrl + alt + down</td>
+</tr>
+<tr>
+<td>&#x5220;&#x9664;&#x4E00;&#x884C;&#x6216;&#x9009;&#x4E2D;&#x884C;</td>
+<td>Ctrl + d</td>
+</tr>
+<tr>
+<td>&#x5411;&#x4E0B;&#x79FB;&#x52A8;&#x884C;</td>
+<td>Alt + down</td>
+</tr>
+<tr>
+<td>&#x5411;&#x4E0A;&#x79FB;&#x52A8;&#x884C;</td>
+<td>Alt + up</td>
+</tr>
+<tr>
+<td>&#x4E07;&#x80FD;&#x7EA0;&#x9519;/&#x751F;&#x6210;&#x8FD4;&#x56DE;&#x503C;&#x53D8;&#x91CF;</td>
+<td>Alt + enter&#xFF08;&#x4F9D;&#x7136;&#x53EF;&#x7528;&#xFF09;</td>
+</tr>
+<tr>
+<td>&#x9000;&#x56DE;&#x5230;&#x524D;&#x4E00;&#x4E2A;&#x7F16;&#x8F91;&#x7684;&#x9875;&#x9762; (back)</td>
+<td>Alt + left</td>
+</tr>
+<tr>
+<td>&#x8FDB;&#x5165;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x7F16;&#x8F91;&#x7684;&#x9875;&#x9762;(&#x9488;&#x5BF9;&#x4E8E;&#x4E0A;&#x6761;) (forward)</td>
+<td>Alt + right</td>
+</tr>
+<tr>
+<td>&#x67E5;&#x770B;&#x7EE7;&#x627F;&#x5173;&#x7CFB;(type hierarchy)</td>
+<td>F4</td>
+</tr>
+<tr>
+<td>&#x683C;&#x5F0F;&#x5316;&#x4EE3;&#x7801;</td>
+<td>ctrl+shift+F</td>
+</tr>
+<tr>
+<td>&#x9009;&#x4E2D;&#x6570;&#x884C;&#xFF0C;&#x6574;&#x4F53;&#x5F80;&#x540E;&#x79FB;&#x52A8;</td>
+<td>tab</td>
+</tr>
+<tr>
+<td>&#x9009;&#x4E2D;&#x6570;&#x884C;&#xFF0C;&#x6574;&#x4F53;&#x5F80;&#x524D;&#x79FB;&#x52A8;</td>
+<td>shift + tab</td>
+</tr>
+<tr>
+<td>&#x67E5;&#x770B;&#x7C7B;&#x7684;&#x7ED3;&#x6784;&#xFF1A;&#x7C7B;&#x4F3C;&#x4E8E;eclipse &#x7684;outline</td>
+<td>ctrl+o</td>
+</tr>
+<tr>
+<td>&#x4FEE;&#x6539;&#x53D8;&#x91CF;&#x540D;&#x4E0E;&#x65B9;&#x6CD5;&#x540D;</td>
+<td>Alt + shift + r</td>
+</tr>
+<tr>
+<td>&#x5927;&#x5199;&#x8F6C;&#x5C0F;&#x5199;/ &#x5C0F;&#x5199;&#x8F6C;&#x5927;&#x5199;</td>
+<td>Ctrl + shift + y/x</td>
+</tr>
+<tr>
+<td>&#x751F;&#x6210;&#x6784;&#x9020;&#x5668;/get/set/toString</td>
+<td>Alt + insert&#xFF08;&#x4F9D;&#x7136;&#x53EF;&#x7528;&#xFF09;</td>
+</tr>
+<tr>
+<td>Shift+shift</td>
+<td>&#x4E07;&#x80FD;&#x641C;&#x7D22;&#xFF08;&#x4F9D;&#x7136;&#x53EF;&#x7528;&#xFF09;</td>
+</tr>
+<tr>
+<td>&#x67E5;&#x627E;/&#x66FF;&#x6362;(&#x5F53;&#x524D;)</td>
+<td>Ctrl + f</td>
+</tr>
+<tr>
+<td>&#x67E5;&#x627E;(&#x5168;&#x5C40;)</td>
+<td>Ctrl + h</td>
+</tr>
+<tr>
+<td>&#x67E5;&#x770B;&#x7C7B;&#x7684;&#x7EE7;&#x627F;&#x7ED3;&#x6784;&#x56FE;</td>
+<td>Ctrl + ALT+ u</td>
+</tr>
+<tr>
+<td>&#x6253;&#x5F00;&#x6700;&#x8FD1;&#x6539;&#x7684;&#x6587;&#x4EF6;</td>
+<td>Ctrl + E</td>
+</tr>
+<tr>
+<td>&#x67E5;&#x627E;&#x65B9;&#x6CD5;&#x5728;&#x54EA;&#x91CC;&#x88AB;&#x8C03;&#x7528;</td>
+<td>Ctrl + G</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: 介绍">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../chapter-2/MavenIntro.html" class="navigation navigation-next " aria-label="Next page: 第二章:管理工具Maven详细介绍">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第一章:开发工具IDEA介绍、安装、优化配置与快捷键","level":"1.2","depth":1,"next":{"title":"第二章:管理工具Maven详细介绍","level":"1.3","depth":1,"path":"chapter-2/MavenIntro.md","ref":"chapter-2/MavenIntro.md","articles":[]},"previous":{"title":"介绍","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","highlight","search","sharing","back-to-top-button","livereload","donate","page-treeview","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"images/alipay.jpg","alipayText":"(●'◡'●)","button":"Donate","title":"喜欢就请我一杯咖啡吧他( •̀ ω •́ )✧","wechat":"images/wechat.jpg","wechatText":"(●ˇ∀ˇ●)"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":true,"qq":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"守护之王觉行","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"《凡人学Java》","language":"zh-hans","links":{"sidebar":{"B站@觉行":"https://space.bilibili.com/331874257"}},"gitbook":"3.2.3","description":"纸上得来终觉浅，绝知此事要躬行"},"file":{"path":"chapter-1/IDEAIntro.md","mtime":"2022-07-07T07:39:08.850Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-07-14T13:46:05.459Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
