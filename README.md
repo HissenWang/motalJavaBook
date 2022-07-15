@@ -13,13 +13,9 @@ win10 + IDEA2019 + MySQL5.7 + JDK11 + Maven3.6 + tomcat8.5
 
 #### 安装教程
 
-1.  使用Typora或在线阅读
-
-#### 目录
-
-1.  [开发工具IDEA介绍、安装、优化配置与快捷键](10、凡人学Java系列1—idea的介绍、安装、优化配置与快捷键/开发工具IDEA介绍、安装、优化配置与快捷键.md)
+1.  使用Typora或在线阅读:https://hissenwang.github.io/motalJavaBook/
 
 #### 参与贡献
 
-1.  觉行
+觉行
 
