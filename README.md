@@ -23,4 +23,4 @@ win10 + IDEA2019 + MySQL5.7 + JDK11 + Maven3.6 + tomcat8.5
 
 ## 在线阅读地址
 
-[介绍 · 《凡人学Java》 (hissenwang.github.io)](https://hissenwang.github.io/motalJavaBook/)
+[《凡人学Java》 (hissenwang.github.io)](https://hissenwang.github.io/motalJavaBook/)
